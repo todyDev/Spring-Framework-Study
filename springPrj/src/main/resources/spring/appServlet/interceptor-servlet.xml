@@ -10,6 +10,7 @@
     <interceptors>
        <interceptor>
            <mapping path="/**"/>
+           <exclude-mapping path="/resources/**"/>
            <beans:bean id="commonInterceptor" class="com.tody.common.interceptor.CommonInterceptor"/>
        </interceptor>
     </interceptors>
