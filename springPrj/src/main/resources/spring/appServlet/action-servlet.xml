@@ -16,7 +16,7 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/bower_components/**" location="/resources/bower_components/"/>
 	<resources mapping="/dist/**" location="/resources/dist/"/>
-	<resources mapping="/bower_components/**" location="/resources/bower_components/"/>
+	<resources mapping="/plugins/**" location="/resources/plugins/"/>
 	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
