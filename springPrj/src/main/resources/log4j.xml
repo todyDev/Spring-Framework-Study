@@ -29,7 +29,7 @@
 	</logger>
 	    
 	<logger name="jdbc.resultsettable" additivity="false"> 
-		<level value="ifno"/>
+		<level value="info"/>
 		<appender-ref ref="console"/>
 	</logger>
 
