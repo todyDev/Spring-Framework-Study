@@ -21,12 +21,12 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Page Header
-                    <small>Optional description</small>
+                    Main Index
+                    <small>메인페이지 입니다. :)</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                    <li class="active">Here</li>
+                    <li><a href="#"><i class="fa fa-hand-peace-o"></i> Main</a></li>
+                    <li class="active">index</li>
                 </ol>
             </section>
 

@@ -32,10 +32,12 @@
 
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li class="header">HEADER</li>
+                    <li class="header">MAIN</li>
+                    <li class="active"><a href="#"><i class="fa fa-book"></i> <span>Study</span></a></li>
+                    <li class="header">게시판</li>
                     <!-- Optionally, you can add icons to the links -->
-                    <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+                    <li><a href="#"><i class="fa-th-list"></i> <span>게시판</span></a></li>
+                    <li><a href="#"><i class="fa-th-list"></i> <span>게시판</span></a></li>
                     <li class="treeview">
                         <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
                             <span class="pull-right-container">
@@ -43,8 +45,8 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#">Link in level 2</a></li>
-                            <li><a href="#">Link in level 2</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Link in level 2</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Link in level 2</a></li>
                         </ul>
                     </li>
                 </ul>
