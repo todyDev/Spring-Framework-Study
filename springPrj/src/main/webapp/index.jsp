@@ -4,16 +4,16 @@
 <html>
 
 <head>
-<%@ include file="WEB-INF/views/include/00_head.jsp" %>
+<%@ include file="/WEB-INF/views/include/00_head.jsp" %>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
 
         <!-- Main Header -->
-		<%@ include file="WEB-INF/views/include/10_header.jsp" %>
+		<%@ include file="/WEB-INF/views/include/10_header.jsp" %>
 		
         <!-- Left side column. contains the logo and sidebar -->
-		<%@ include file="WEB-INF/views/include/40_leftSideMenu.jsp" %>
+		<%@ include file="/WEB-INF/views/include/40_leftSideMenu.jsp" %>
 
 
         <!-- Content Wrapper. Contains page content -->
@@ -41,12 +41,12 @@
         <!-- /.content-wrapper -->
 
         <!-- Main Footer -->
-		<%@ include file="WEB-INF/views/include/70_footer.jsp" %>
+		<%@ include file="/WEB-INF/views/include/70_footer.jsp" %>
 
     </div>
     <!-- ./wrapper -->
     
-	<%@ include file="WEB-INF/views/include/01_plugins.jsp" %>
+	<%@ include file="/WEB-INF/views/include/01_plugins.jsp" %>
 
 </body>
 
