@@ -36,7 +36,7 @@
                 <div class="">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Inbox</h3>
+                            <h3 class="box-title">Board</h3>
 
                             <div class="box-tools pull-right">
                                 <div class="has-feedback">
@@ -48,12 +48,6 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body no-padding">
-                            <div class="mailbox-controls">
-                                <!-- Check all button -->
-                                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-edit"> 글작성</i>
-                                </button>
-                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                            </div>
                             <div class="table-responsive mailbox-messages">
                                 <table class="table table-hover">
                                     <tbody>
@@ -63,6 +57,38 @@
                                             <th>글쓴이</th>
                                             <th style="width: 80px">조회수</th>
                                             <th style="width: 100px">작성일</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="mailbox-attachment">1</td>
+                                            <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
+                                            </td>
+                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                                            <td class="mailbox-attachment">25</td>
+                                            <td class="mailbox-date">5 mins ago</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mailbox-attachment">1</td>
+                                            <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
+                                            </td>
+                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                                            <td class="mailbox-attachment">25</td>
+                                            <td class="mailbox-date">5 mins ago</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mailbox-attachment">1</td>
+                                            <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
+                                            </td>
+                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                                            <td class="mailbox-attachment">25</td>
+                                            <td class="mailbox-date">5 mins ago</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mailbox-attachment">1</td>
+                                            <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
+                                            </td>
+                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                                            <td class="mailbox-attachment">25</td>
+                                            <td class="mailbox-date">5 mins ago</td>
                                         </tr>
                                         <tr>
                                             <td class="mailbox-attachment">1</td>
@@ -93,15 +119,13 @@
                                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
                                 <!-- /.pull-right -->
                                 <div class="pull-right">
-                                    <div class="box-tools">
-                                        <ul class="pagination pagination-sm no-margin pull-right">
-                                            <li><a href="#">&laquo;</a></li>
-                                            <li><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">&raquo;</a></li>
-                                        </ul>
-                                    </div>
+	                                <div class="btn-group">
+					                 	<button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+					                 	<button type="button" class="btn btn-default btn-sm"><i class="fa">1</i></button>
+					                 	<button type="button" class="btn btn-default btn-sm"><i class="fa">2</i></button>
+					                 	<button type="button" class="btn btn-default btn-sm"><i class="fa">3</i></button>
+					                	<button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+					                </div>
                                     <!-- /.btn-group -->
                                 </div>
                                 <!-- /.pull-right -->
