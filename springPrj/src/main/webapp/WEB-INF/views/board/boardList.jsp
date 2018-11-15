@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 
 <head>
@@ -58,46 +60,25 @@
                                             <th style="width: 80px">조회수</th>
                                             <th style="width: 100px">작성일</th>
                                         </tr>
-                                        <tr>
-                                            <td class="mailbox-attachment">1</td>
-                                            <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                                            </td>
-                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                            <td class="mailbox-attachment">25</td>
-                                            <td class="mailbox-date">5 mins ago</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="mailbox-attachment">1</td>
-                                            <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                                            </td>
-                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                            <td class="mailbox-attachment">25</td>
-                                            <td class="mailbox-date">5 mins ago</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="mailbox-attachment">1</td>
-                                            <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                                            </td>
-                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                            <td class="mailbox-attachment">25</td>
-                                            <td class="mailbox-date">5 mins ago</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="mailbox-attachment">1</td>
-                                            <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                                            </td>
-                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                            <td class="mailbox-attachment">25</td>
-                                            <td class="mailbox-date">5 mins ago</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="mailbox-attachment">1</td>
-                                            <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                                            </td>
-                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                            <td class="mailbox-attachment">25</td>
-                                            <td class="mailbox-date">5 mins ago</td>
-                                        </tr>
+										<c:choose>
+										    <c:when test="${fn:length(list) > 0 }">
+										        <c:forEach items="${list }" var="bList">
+			                                        <tr>
+			                                            <td class="mailbox-attachment">${bList.IDX }</td>
+			                                            <td class="mailbox-subject"><b>${bList.TITLE }</b></td>
+			                                            <td class="mailbox-name"><a href="read-mail.html">${bList.CREA_ID }</a></td>
+			                                            <td class="mailbox-attachment">${bList.HIT_CNT }</td>
+			                                            <td class="mailbox-date">${bList.CREA_DATE }</td>
+			                                        </tr>
+										        </c:forEach>
+										    </c:when>
+										    <c:otherwise>
+										        <tr>
+										        	<td class="mailbox-attachment"></td>
+										            <td colspan="4">조회된 결과가 없습니다.</td>
+										        </tr>
+										    </c:otherwise>
+										</c:choose>
                                     </tbody>
                                 </table>
                                 <!-- /.table -->
