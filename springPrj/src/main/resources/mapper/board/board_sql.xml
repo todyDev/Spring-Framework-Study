@@ -15,7 +15,7 @@
 				) as CREA_DATE,
 				CREA_ID
 			FROM
-				prj.TB_BOARD
+				board
 			WHERE
 				DEL_CHK = 'N'
 			ORDER BY IDX DESC
