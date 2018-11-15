@@ -36,7 +36,7 @@
                     <li class="active"><a href="#"><i class="fa fa-book"></i> <span>Study</span></a></li>
                     <li class="header">게시판</li>
                     <!-- Optionally, you can add icons to the links -->
-                    <li><a href="#"><i class="fa fa-th-list"></i> <span>게시판</span></a></li>
+                    <li><a href='<c:url value="/board/boardList"/>'><i class="fa fa-th-list"></i> <span>게시판</span></a></li>
                     <li><a href="#"><i class="fa fa-th-list"></i> <span>게시판</span></a></li>
                     <li class="treeview">
                         <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
