@@ -4,17 +4,21 @@
 
     <select id="selectBoardList" resultType="hashmap" parameterType="hashmap">
         <![CDATA[
-            SELECT
-                IDX,
-                TITLE,
-                HIT_CNT,
-                CREA_DATE,
-                CREA_ID
-            FROM
-                board
-            WHERE
-                DEL_CHK = 'N'
-            ORDER BY IDX DESC
+			SELECT
+				IDX,
+				TITLE,
+				HIT_CNT,
+				IF(
+					DATE_FORMAT(CREA_DATE, '%Y%m%d') < DATE_FORMAT(now(),'%Y%m%d'),
+					DATE_FORMAT(CREA_DATE, '%Y.%m.%d'),
+					DATE_FORMAT(CREA_DATE, '%H:%i')
+				) as CREA_DATE,
+				CREA_ID
+			FROM
+				prj.TB_BOARD
+			WHERE
+				DEL_CHK = 'N'
+			ORDER BY IDX DESC
         ]]>
     </select>
  
