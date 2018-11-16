@@ -37,25 +37,27 @@
                         <h3 class="box-title">Board Write</h3>
                     </div>
                     <!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="form-group">
-                            <input class="form-control" placeholder="Writer:">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" placeholder="Subject:">
-                        </div>
-                        <div class="form-group">
-                            <textarea id="compose-textarea" class="form-control" style="height: 300px"></textarea>
-                        </div>
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer">
-                        <div class="pull-right">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Write</button>
-                            <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> Cancel</button>
-                        </div>
-                    </div>
-                    <!-- /.box-footer -->
+                    <form action='<c:url value="/board/boardWrite"/>' method="POST">
+	                    <div class="box-body">
+	                        <div class="form-group">
+	                            <input class="form-control" placeholder="Writer:" name="CREA_ID">
+	                        </div>
+	                        <div class="form-group">
+	                            <input class="form-control" placeholder="Subject:" name="TITLE">
+	                        </div>
+	                        <div class="form-group">
+	                            <textarea id="compose-textarea" class="form-control" style="height: 300px" name="CONTENTS"></textarea>
+	                        </div>
+	                    </div>
+	                    <!-- /.box-body -->
+	                    <div class="box-footer">
+	                        <div class="pull-right">
+	                            <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Write</button>
+	                            <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> Cancel</button>
+	                        </div>
+	                    </div>
+	                    <!-- /.box-footer -->
+                    </form>
                 </div>
                 <!-- /. box -->
             </section>
