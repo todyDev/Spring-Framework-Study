@@ -34,7 +34,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-	    <filter>
+	<filter>
         <filter-name>encodingFilter</filter-name>
     <filter-class>
             org.springframework.web.filter.CharacterEncodingFilter
@@ -46,7 +46,7 @@
     </filter>
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
-    <url-pattern>/</url-pattern>
+    <url-pattern>/*</url-pattern>
     </filter-mapping>
 
 </web-app>
