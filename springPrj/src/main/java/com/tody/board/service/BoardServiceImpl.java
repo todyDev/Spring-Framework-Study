@@ -21,4 +21,9 @@ public class BoardServiceImpl implements BoardService {
         return boardDAO.selectBoardList(commandMap);
     }
 
+	@Override
+	public void insertBoard(CommandMap commandMap) {
+		boardDAO.insertBoard(commandMap);
+	}
+
 }
