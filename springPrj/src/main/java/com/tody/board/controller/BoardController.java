@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tody.board.service.BoardService;
@@ -31,6 +32,17 @@ public class BoardController {
         
         return mav;
         
+    }
+    
+    @RequestMapping(value="/board/boardWrite")
+    public String boardWrite() throws Exception {
+        return "/board/boardWrite";
+    }
+    
+    @RequestMapping(value="/board/boardWrite", method=RequestMethod.POST)
+    public String boardWritePOST(CommandMap commandMap) throws Exception {
+    	boardServcie.insertBoard(commandMap);
+        return "redirect:/board/boardList";
     }
 	
 }
