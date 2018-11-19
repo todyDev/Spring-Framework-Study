@@ -20,4 +20,13 @@ public class BoardDAO extends AbstractDAO {
 		insert("board.insertBoard", commandMap.getMap());
 	}
 
+	public void updateHitBoard(Map<String, Object> map) {
+		update("board.updateHitBoard", map);
+	}
+
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> detailBoard(Map<String, Object> map) {
+		return (Map<String, Object>) selectOne("board.detailBoard", map);
+	}
+
 }
