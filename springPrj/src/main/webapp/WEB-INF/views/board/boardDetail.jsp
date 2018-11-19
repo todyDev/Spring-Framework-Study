@@ -51,6 +51,7 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
+                        	<a href='<c:url value="/board/boardList"/>' role="button" class="btn btn-default"><i class="fa fa-list"></i> 목록으로</a>
                             <div class="pull-right">
                                 <button type="button" class="btn btn-default"><i class="fa fa-reply"></i> Modify</button>
                                 <button type="button" class="btn btn-default"><i class="fa fa-trash-o"></i> Delete</button>
