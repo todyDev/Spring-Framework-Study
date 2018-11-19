@@ -40,17 +40,12 @@
                         <!-- /.box-header -->
                         <div class="box-body no-padding">
                             <div class="mailbox-read-info">
-                                <h3>제목</h3>
-                                <h5 class="mailbox-read-time">작성자 · 조회수 20 · 2018.10.28</h5>
+                                <h3>${detail.TITLE }</h3>
+                                <h5 class="mailbox-read-time">${detail.CREA_ID } · 조회수 ${detail.HIT_CNT } · ${detail.CREA_DATE }</h5>
                             </div>
                             <!-- /.mailbox-controls -->
                             <div class="mailbox-read-message">
-                                <p>게시글<br>Skateboard artisan letterpress before they sold out High Life messenger bag. Bitters chambray
-                                    leggings listicle, drinking vinegar chillwave synth. Fanny pack hoodie American Apparel twee. American
-                                    Apparel PBR listicle, salvia aesthetic occupy sustainable Neutra kogi. Organic synth Tumblr viral
-                                    plaid, shabby chic single-origin coffee Etsy 3 wolf moon slow-carb Schlitz roof party tousled squid
-                                    vinyl. Readymade next level literally trust fund. Distillery master cleanse migas, Vice sriracha
-                                    flannel chambray chia cronut.</p>
+                                <p>${detail.CONTENTS }</p>
                             </div>
                             <!-- /.mailbox-read-message -->
                         </div>
