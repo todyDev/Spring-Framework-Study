@@ -11,4 +11,6 @@ public interface BoardService {
 
 	void insertBoard(CommandMap commandMap);
 
+	Map<String, Object> viewBoardDetail(Map<String, Object> map);
+
 }

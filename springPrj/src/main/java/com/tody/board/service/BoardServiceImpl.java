@@ -26,4 +26,11 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.insertBoard(commandMap);
 	}
 
+	@Override
+	public Map<String, Object> viewBoardDetail(Map<String, Object> map) {
+        boardDAO.updateHitBoard(map);
+        Map<String, Object> detail = boardDAO.detailBoard(map);
+		return detail;
+	}
+
 }
