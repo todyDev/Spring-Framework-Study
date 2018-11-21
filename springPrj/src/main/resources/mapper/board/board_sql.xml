@@ -75,5 +75,19 @@
                 IDX = #{ IDX}
         ]]>
     </update>
+    
+    <update id="updateBoard" parameterType="hashmap">
+        <![CDATA[
+            UPDATE
+                board
+            SET
+                TITLE = #{ TITLE},
+                CONTENTS = #{ CONTENTS}
+            WHERE
+                IDX = #{ IDX}
+                and
+                CREA_ID = #{ CREA_ID}
+        ]]>
+    </update>
  
 </mapper>
