@@ -54,5 +54,21 @@ public class BoardController {
         
         return mv;
     }
+    
+    @RequestMapping(value="/board/boardModify")
+    public ModelAndView boardModify(CommandMap commandMap) throws Exception {
+        ModelAndView mv = new ModelAndView("/board/boardModify");
+        Map<String, Object> detail = boardServcie.selectBoardDetail(commandMap.getMap());
+        mv.addObject("detail",detail);
+        return mv;
+    }
+    
+    @RequestMapping(value="/board/boardModify", method=RequestMethod.POST)
+    public ModelAndView boardModifyPOST(CommandMap commandMap) throws Exception {
+        ModelAndView mv = new ModelAndView("redirect:/board/boardDetail");
+        mv.addObject("IDX", commandMap.get("IDX"));
+        boardServcie.updateBoard(commandMap.getMap());
+        return mv;
+    }
 	
 }
