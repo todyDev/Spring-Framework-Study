@@ -33,4 +33,14 @@ public class BoardServiceImpl implements BoardService {
 		return detail;
 	}
 
+	@Override
+	public Map<String, Object> selectBoardDetail(Map<String, Object> map) {
+		return boardDAO.detailBoard(map);
+	}
+
+	@Override
+	public void updateBoard(Map<String, Object> map) {
+		boardDAO.updateBoard(map);
+	}
+
 }

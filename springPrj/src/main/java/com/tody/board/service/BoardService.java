@@ -13,4 +13,8 @@ public interface BoardService {
 
 	Map<String, Object> viewBoardDetail(Map<String, Object> map);
 
+	Map<String, Object> selectBoardDetail(Map<String, Object> map);
+
+	void updateBoard(Map<String, Object> map);
+
 }
