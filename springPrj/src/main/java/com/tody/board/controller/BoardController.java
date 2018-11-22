@@ -70,5 +70,13 @@ public class BoardController {
         boardServcie.updateBoard(commandMap.getMap());
         return mv;
     }
+    
+    @RequestMapping(value="/board/boardDelete")
+    public ModelAndView boardDelete(CommandMap commandMap) throws Exception {
+        ModelAndView mv = new ModelAndView("redirect:/board/boardList");
+        log.debug(commandMap.getMap());
+        boardServcie.deleteBoard(commandMap.getMap());
+        return mv;
+    }
 	
 }
