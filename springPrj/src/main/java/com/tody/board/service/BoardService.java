@@ -17,4 +17,6 @@ public interface BoardService {
 
 	void updateBoard(Map<String, Object> map);
 
+	void deleteBoard(Map<String, Object> map);
+
 }
