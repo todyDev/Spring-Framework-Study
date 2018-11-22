@@ -89,5 +89,16 @@
                 CREA_ID = #{ CREA_ID}
         ]]>
     </update>
- 
+    
+    <update id="deleteBoard">
+        <![CDATA[
+            UPDATE
+                board
+            SET
+                DEL_CHK = 'Y'
+            WHERE
+                IDX = #{ IDX}
+        ]]>
+    </update>
+
 </mapper>

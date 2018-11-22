@@ -43,4 +43,9 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.updateBoard(map);
 	}
 
+	@Override
+	public void deleteBoard(Map<String, Object> map) {
+		boardDAO.deleteBoard(map);
+	}
+
 }
