@@ -60,25 +60,25 @@
                                             <th style="width: 80px">조회수</th>
                                             <th style="width: 100px">작성일</th>
                                         </tr>
-										<c:choose>
-										    <c:when test="${fn:length(list) > 0 }">
-										        <c:forEach items="${list }" var="bList">
-			                                        <tr>
-			                                            <td class="mailbox-attachment">${bList.IDX }</td>
-			                                            <td class="mailbox-subject"><a href='<c:url value='/board/boardDetail?IDX=${bList.IDX }'/>'>${bList.TITLE }</a></td>
-			                                            <td class="mailbox-name"><a href="#">${bList.CREA_ID }</a></td>
-			                                            <td class="mailbox-attachment">${bList.HIT_CNT }</td>
-			                                            <td class="mailbox-date">${bList.CREA_DATE }</td>
-			                                        </tr>
-										        </c:forEach>
-										    </c:when>
-										    <c:otherwise>
-										        <tr>
-										        	<td class="mailbox-attachment"></td>
-										            <td colspan="4">조회된 결과가 없습니다.</td>
-										        </tr>
-										    </c:otherwise>
-										</c:choose>
+                                        <c:choose>
+                                            <c:when test="${fn:length(list) > 0 }">
+                                                <c:forEach items="${list }" var="bList">
+                                                    <tr>
+                                                        <td class="mailbox-attachment">${bList.IDX }</td>
+                                                        <td class="mailbox-subject"><a href='<c:url value='/board/boardDetail?IDX=${bList.IDX }'/>'>${bList.TITLE }</a></td>
+                                                        <td class="mailbox-name"><a href="#">${bList.CREA_ID }</a></td>
+                                                        <td class="mailbox-attachment">${bList.HIT_CNT }</td>
+                                                        <td class="mailbox-date">${bList.CREA_DATE }</td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <tr>
+                                                    <td class="mailbox-attachment"></td>
+                                                    <td colspan="4">조회된 결과가 없습니다.</td>
+                                                </tr>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </tbody>
                                 </table>
                                 <!-- /.table -->
@@ -100,22 +100,22 @@
                                 <!-- /.pull-right -->
                                 <div class="pull-right">
 	                                <ul class="btn-group pagination" style="margin:0">
-	                                	<li>
-	                                		<a href="#" role="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></a>
-	                                	</li>
-	                                	<li>
-	                                		<a href="#" role="button" class="btn btn-default btn-sm"><i class="fa">1</i></a>
-	                                	</li>
-	                                	<li>
-	                                		<a href="#" role="button" class="btn btn-default btn-sm"><i class="fa">2</i></a>
-	                                	</li>
-	                                	<li>
-	                                		<a href="#" role="button" class="btn btn-default btn-sm"><i class="fa">3</i></a>
-	                                	</li>
-	                                	<li>
-	                                		<a href="#" role="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></a>
-	                                	</li>
-					                </ul>
+	                                    <li>
+	                                        <a href="#" role="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></a>
+	                                    </li>
+	                                    <li>
+	                                        <a href="#" role="button" class="btn btn-default btn-sm"><i class="fa">1</i></a>
+	                                    </li>
+	                                    <li>
+	                                        <a href="#" role="button" class="btn btn-default btn-sm"><i class="fa">2</i></a>
+	                                    </li>
+	                                    <li>
+	                                        <a href="#" role="button" class="btn btn-default btn-sm"><i class="fa">3</i></a>
+	                                    </li>
+	                                    <li>
+	                                        <a href="#" role="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></a>
+	                                    </li>
+	                                </ul>
                                     <!-- /.btn-group -->
                                 </div>
                                 <!-- /.pull-right -->
