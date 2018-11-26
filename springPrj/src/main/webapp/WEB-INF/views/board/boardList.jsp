@@ -99,13 +99,23 @@
                                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
                                 <!-- /.pull-right -->
                                 <div class="pull-right">
-	                                <div class="btn-group">
-					                 	<button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-					                 	<button type="button" class="btn btn-default btn-sm"><i class="fa">1</i></button>
-					                 	<button type="button" class="btn btn-default btn-sm"><i class="fa">2</i></button>
-					                 	<button type="button" class="btn btn-default btn-sm"><i class="fa">3</i></button>
-					                	<button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-					                </div>
+	                                <ul class="btn-group pagination" style="margin:0">
+	                                	<li>
+	                                		<a href="#" role="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></a>
+	                                	</li>
+	                                	<li>
+	                                		<a href="#" role="button" class="btn btn-default btn-sm"><i class="fa">1</i></a>
+	                                	</li>
+	                                	<li>
+	                                		<a href="#" role="button" class="btn btn-default btn-sm"><i class="fa">2</i></a>
+	                                	</li>
+	                                	<li>
+	                                		<a href="#" role="button" class="btn btn-default btn-sm"><i class="fa">3</i></a>
+	                                	</li>
+	                                	<li>
+	                                		<a href="#" role="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></a>
+	                                	</li>
+					                </ul>
                                     <!-- /.btn-group -->
                                 </div>
                                 <!-- /.pull-right -->
