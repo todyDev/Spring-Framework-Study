@@ -24,10 +24,10 @@ public class Criteria {
 			this.page = page;
 		}
 	}
-	public int getPerPageCount() {
+	public int getPerPageNum() {
 		return perPageNum;
 	}
-	public void setPerPageCount(int pageCount) {
+	public void setPerPageNum(int pageCount) {
 		int cnt = this.perPageNum;
 		if(pageCount != cnt) {
 			this.perPageNum = cnt;
