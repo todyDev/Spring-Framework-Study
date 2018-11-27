@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tody.board.service.BoardService;
 import com.tody.common.common.CommandMap;
 import com.tody.common.domain.Criteria;
+import com.tody.common.domain.PageMaker;
 
 @Controller
 public class BoardController {
@@ -28,8 +29,13 @@ public class BoardController {
         
         ModelAndView mav = new ModelAndView("/board/boardList");
         
+        PageMaker pageMaker = new PageMaker();
+        pageMaker.setCri(cri);
+        pageMaker.setTotalCount(100);
+        
         List<Map<String,Object>> list = boardServcie.selectBoardList(cri);
         mav.addObject("list", list);
+        mav.addObject("pageMaker", pageMaker);
         
         return mav;
         
