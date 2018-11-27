@@ -19,6 +19,7 @@
 			WHERE
 				DEL_CHK = 'N'
 			ORDER BY IDX DESC
+			LIMIT #{pageStart}, #{perPageNum}
         ]]>
     </select>
     
