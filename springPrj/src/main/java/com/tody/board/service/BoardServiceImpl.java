@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.tody.board.dao.BoardDAO;
 import com.tody.common.common.CommandMap;
+import com.tody.common.domain.Criteria;
 
 @Service("boardService")
 public class BoardServiceImpl implements BoardService {
@@ -17,8 +18,8 @@ public class BoardServiceImpl implements BoardService {
     private BoardDAO boardDAO;
  
     @Override
-    public List<Map<String, Object>> selectBoardList(CommandMap commandMap) {
-        return boardDAO.selectBoardList(commandMap);
+    public List<Map<String, Object>> selectBoardList(Criteria cri) {
+        return boardDAO.selectBoardList(cri);
     }
 
 	@Override
