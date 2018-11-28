@@ -31,7 +31,7 @@ public class BoardController {
         
         PageMaker pageMaker = new PageMaker();
         pageMaker.setCri(cri);
-        pageMaker.setTotalCount(100);
+        pageMaker.setTotalCount(boardServcie.countBoardListTotal());
         
         List<Map<String,Object>> list = boardServcie.selectBoardList(cri);
         mav.addObject("list", list);
