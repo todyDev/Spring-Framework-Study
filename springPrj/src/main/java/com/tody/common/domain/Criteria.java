@@ -2,8 +2,8 @@ package com.tody.common.domain;
 
 public class Criteria {
 	
-	private int page;
-	private int perPageNum;
+	private int page; //현재 페이지 번호
+	private int perPageNum; //페이지당 보여줄 게시글 수
 	
 	public int getPageStart() {
 		return (this.page-1)*perPageNum;
