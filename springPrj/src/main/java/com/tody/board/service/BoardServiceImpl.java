@@ -49,4 +49,9 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.deleteBoard(map);
 	}
 
+	@Override
+	public int countBoardListTotal() {
+		return boardDAO.countBoardList();
+	}
+
 }

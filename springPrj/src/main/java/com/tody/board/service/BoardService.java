@@ -20,4 +20,6 @@ public interface BoardService {
 
 	void deleteBoard(Map<String, Object> map);
 
+	int countBoardListTotal();
+
 }
