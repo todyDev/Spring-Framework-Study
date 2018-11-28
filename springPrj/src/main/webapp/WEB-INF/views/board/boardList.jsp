@@ -102,17 +102,17 @@
 	                                <ul class="btn-group pagination" style="margin:0">
 	                                    <c:if test="${pageMaker.prev }">
 	                                    <li>
-	                                        <a href='<c:url value="/board/boardList?page=${pageMaker.startPage-1 }"/>' role="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></a>
+	                                        <a href='<c:url value="/board/boardList${pageMaker.makeQuery(pageMaker.startPage-1) }"/>' role="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></a>
 	                                    </li>
 	                                    </c:if>
 	                                    <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
 	                                    <li <c:out value="${pageMaker.cri.page==idx ? 'class=active' : '' }" />>
-	                                        <a href='<c:url value="/board/boardList?page=${idx }"/>' role="button" class="btn btn-default btn-sm"><i class="fa">${idx }</i></a>
+	                                        <a href='<c:url value="/board/boardList${pageMaker.makeQuery(idx) }"/>' role="button" class="btn btn-default btn-sm"><i class="fa">${idx }</i></a>
 	                                    </li>
 	                                    </c:forEach>
 	                                    <c:if test="${pageMaker.next && pageMaker.endPage >0 }">
 	                                    <li>
-	                                        <a href='<c:url value="/board/boardList?page=${pageMaker.endPage+1 }"/>' role="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></a>
+	                                        <a href='<c:url value="/board/boardList${pageMaker.makeQuery(pageMaker.endPage+1) }"/>' role="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></a>
 	                                    </li>
 	                                    </c:if>
 	                                </ul>
