@@ -19,7 +19,17 @@
 			WHERE
 				DEL_CHK = 'N'
 			ORDER BY IDX DESC
+			LIMIT #{pageStart}, #{perPageNum}
         ]]>
+    </select>
+    
+    <select id="countBoardList" resultType="Integer">
+    	<![CDATA[
+    		SELECT
+    			count(*)
+    		FROM
+    			board
+    	]]>
     </select>
     
     <insert id="insertBoard" parameterType="hashmap">

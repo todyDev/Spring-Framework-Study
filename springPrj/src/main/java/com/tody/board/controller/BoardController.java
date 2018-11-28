@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tody.board.service.BoardService;
 import com.tody.common.common.CommandMap;
+import com.tody.common.domain.Criteria;
+import com.tody.common.domain.PageMaker;
 
 @Controller
 public class BoardController {
@@ -23,12 +25,17 @@ public class BoardController {
     private BoardService boardServcie;
     
     @RequestMapping(value="/board/boardList")
-    public ModelAndView openBoardList(CommandMap commandMap) throws Exception {
+    public ModelAndView openBoardList(Criteria cri) throws Exception {
         
         ModelAndView mav = new ModelAndView("/board/boardList");
         
-        List<Map<String,Object>> list = boardServcie.selectBoardList(commandMap);
+        PageMaker pageMaker = new PageMaker();
+        pageMaker.setCri(cri);
+        pageMaker.setTotalCount(boardServcie.countBoardListTotal());
+        
+        List<Map<String,Object>> list = boardServcie.selectBoardList(cri);
         mav.addObject("list", list);
+        mav.addObject("pageMaker", pageMaker);
         
         return mav;
         

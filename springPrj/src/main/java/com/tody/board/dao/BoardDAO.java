@@ -7,13 +7,14 @@ import org.springframework.stereotype.Repository;
 
 import com.tody.common.common.CommandMap;
 import com.tody.common.dao.AbstractDAO;
+import com.tody.common.domain.Criteria;
 
 @Repository("boardDAO")
 public class BoardDAO extends AbstractDAO {
 
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectBoardList(CommandMap commandMap) {
-		return (List<Map<String,Object>>)selectList("board.selectBoardList", commandMap);
+	public List<Map<String, Object>> selectBoardList(Criteria cri) {
+		return (List<Map<String,Object>>)selectList("board.selectBoardList", cri);
 	}
 
 	public void insertBoard(CommandMap commandMap) {
@@ -35,6 +36,10 @@ public class BoardDAO extends AbstractDAO {
 
 	public void deleteBoard(Map<String, Object> map) {
 		update("board.deleteBoard", map);
+	}
+	
+	public int countBoardList(){
+		return (Integer) selectOne("board.countBoardList");
 	}
 
 }
