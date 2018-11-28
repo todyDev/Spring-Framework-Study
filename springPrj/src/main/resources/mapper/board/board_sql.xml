@@ -23,6 +23,15 @@
         ]]>
     </select>
     
+    <select id="countBoardList" resultType="Integer">
+    	<![CDATA[
+    		SELECT
+    			count(*)
+    		FROM
+    			board
+    	]]>
+    </select>
+    
     <insert id="insertBoard" parameterType="hashmap">
         <![CDATA[
             INSERT INTO board

@@ -37,5 +37,9 @@ public class BoardDAO extends AbstractDAO {
 	public void deleteBoard(Map<String, Object> map) {
 		update("board.deleteBoard", map);
 	}
+	
+	public int countBoardList(){
+		return (Integer) selectOne("board.countBoardList");
+	}
 
 }
