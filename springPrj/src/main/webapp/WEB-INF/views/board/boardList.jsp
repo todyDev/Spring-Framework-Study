@@ -106,7 +106,7 @@
 	                                    </li>
 	                                    </c:if>
 	                                    <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
-	                                    <li>
+	                                    <li <c:out value="${pageMaker.cri.page==idx ? 'class=active' : '' }" />>
 	                                        <a href='<c:url value="/board/boardList?page=${idx }"/>' role="button" class="btn btn-default btn-sm"><i class="fa">${idx }</i></a>
 	                                    </li>
 	                                    </c:forEach>
