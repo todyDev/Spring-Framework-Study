@@ -65,7 +65,7 @@
                                                 <c:forEach items="${list }" var="bList">
                                                     <tr>
                                                         <td class="mailbox-attachment">${bList.IDX }</td>
-                                                        <td class="mailbox-subject"><a href='<c:url value='/board/boardDetail?IDX=${bList.IDX }'/>'>${bList.TITLE }</a></td>
+                                                        <td class="mailbox-subject"><a href='<c:url value='/board/boardDetail${pageMaker.makeQuery(pageMaker.cri.page) }&IDX=${bList.IDX }'/>'>${bList.TITLE }</a></td>
                                                         <td class="mailbox-name"><a href="#">${bList.CREA_ID }</a></td>
                                                         <td class="mailbox-attachment">${bList.HIT_CNT }</td>
                                                         <td class="mailbox-date">${bList.CREA_DATE }</td>

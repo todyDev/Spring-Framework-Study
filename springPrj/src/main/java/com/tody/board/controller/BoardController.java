@@ -53,11 +53,12 @@ public class BoardController {
     }
     
     @RequestMapping(value="/board/boardDetail")
-    public ModelAndView boardDetail(CommandMap commandMap) throws Exception {
+    public ModelAndView boardDetail(CommandMap commandMap, Criteria cri) throws Exception {
         
         ModelAndView mv = new ModelAndView("/board/boardDetail");
         Map<String, Object> detail = boardServcie.viewBoardDetail(commandMap.getMap());
         mv.addObject("detail",detail);
+        mv.addObject("cri", cri);
         
         return mv;
     }
