@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tody.board.service.BoardService;
 import com.tody.common.common.CommandMap;
@@ -64,18 +65,21 @@ public class BoardController {
     }
     
     @RequestMapping(value="/board/boardModify")
-    public ModelAndView boardModify(CommandMap commandMap) throws Exception {
+    public ModelAndView boardModify(CommandMap commandMap, Criteria cri) throws Exception {
         ModelAndView mv = new ModelAndView("/board/boardModify");
         Map<String, Object> detail = boardServcie.selectBoardDetail(commandMap.getMap());
         mv.addObject("detail",detail);
+        mv.addObject("cri", cri);
         return mv;
     }
     
     @RequestMapping(value="/board/boardModify", method=RequestMethod.POST)
-    public ModelAndView boardModifyPOST(CommandMap commandMap) throws Exception {
+    public ModelAndView boardModifyPOST(CommandMap commandMap, Criteria cri, RedirectAttributes redAttr) throws Exception {
         ModelAndView mv = new ModelAndView("redirect:/board/boardDetail");
         mv.addObject("IDX", commandMap.get("IDX"));
         boardServcie.updateBoard(commandMap.getMap());
+        redAttr.addAttribute("page", cri.getPage());
+        redAttr.addAttribute("perPagNum", cri.getPerPageNum());
         return mv;
     }
     
