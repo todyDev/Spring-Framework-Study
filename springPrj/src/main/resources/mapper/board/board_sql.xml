@@ -29,6 +29,8 @@
     			count(*)
     		FROM
     			board
+    		WHERE
+    			DEL_CHK='N'
     	]]>
     </select>
     

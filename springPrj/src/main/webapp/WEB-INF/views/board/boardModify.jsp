@@ -51,6 +51,8 @@
 	                    </div>
 	                    <!-- /.box-body -->
 	                    <input type="hidden" name="IDX" value="${detail.IDX }">
+	                    <input type="hidden" name="page" value="${cri.page }">
+	                    <input type="hidden" name="perPageNum" value="${cri.perPageNum }">
 	                    <div class="box-footer">
 	                        <div class="pull-right">
 	                            <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> 수정하기</button>

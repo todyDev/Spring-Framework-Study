@@ -1,5 +1,8 @@
 package com.tody.common.domain;
 
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 public class PageMaker {
 	
 	private Criteria cri;
@@ -68,6 +71,14 @@ public class PageMaker {
 	}
 	public void setDisplayPageNum(int displayPageNum) {
 		this.displayPageNum = displayPageNum;
+	}
+	
+	public String makeQuery(int page) {
+		UriComponents uri = UriComponentsBuilder.newInstance()
+				.queryParam("page", page)
+				.queryParam("perPageNum", cri.getPerPageNum())
+				.build();
+		return uri.toUriString();
 	}
 
 }
