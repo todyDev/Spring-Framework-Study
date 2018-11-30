@@ -54,7 +54,7 @@
                         	<a href='<c:url value="/board/boardList?page=${cri.page }&perPageNum=${cri.perPageNum }"/>' role="button" class="btn btn-default"><i class="fa fa-list"></i> 목록으로</a>
                             <div class="pull-right">
                                 <a href='<c:url value="/board/boardModify?IDX=${detail.IDX }&page=${cri.page }&perPageNum=${cri.perPageNum }"/>' role="button" class="btn btn-default"><i class="fa fa-reply"></i> 수정</a>
-                                <a href='<c:url value="/board/boardDelete?IDX=${detail.IDX }"/>' role="button" class="btn btn-default"><i class="fa fa-trash-o"></i> 삭제</a>
+                                <a href='<c:url value="/board/boardDelete?IDX=${detail.IDX }&page=${cri.page }&perPageNum=${cri.perPageNum }"/>' role="button" class="btn btn-default"><i class="fa fa-trash-o"></i> 삭제</a>
                             </div>
                         </div>
                         <!-- /.box-footer -->

@@ -84,9 +84,11 @@ public class BoardController {
     }
     
     @RequestMapping(value="/board/boardDelete")
-    public ModelAndView boardDelete(CommandMap commandMap) throws Exception {
+    public ModelAndView boardDelete(CommandMap commandMap, Criteria cri, RedirectAttributes redAttr) throws Exception {
         ModelAndView mv = new ModelAndView("redirect:/board/boardList");
         boardServcie.deleteBoard(commandMap.getMap());
+        redAttr.addAttribute("page", cri.getPage());
+        redAttr.addAttribute("perPagNum", cri.getPerPageNum());
         return mv;
     }
 	
