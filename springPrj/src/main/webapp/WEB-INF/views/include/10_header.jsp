@@ -26,7 +26,7 @@
                         </li>
                         <!-- sign up -->
                         <li>
-                            <a href="#">Sign up</a>
+                            <a href='<c:url value='/join/terms'/>'>Sign up</a>
                         </li>
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
