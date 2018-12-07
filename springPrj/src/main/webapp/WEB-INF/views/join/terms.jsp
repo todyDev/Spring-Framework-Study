@@ -26,7 +26,7 @@
                 </div>
                 <div class="checkbox icheck" style="position: absolute; bottom: 150px; right: 15px">
                     <label>
-                        <input type="checkbox">
+                        <input type="checkbox" id="termsAgree">
                     </label>
                </div>
             </div>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="checkbox icheck" style="position: absolute; bottom: 150px; right: 15px">
                     <label>
-                        <input type="checkbox">
+                        <input type="checkbox" id="policyAgree">
                     </label>
                </div>
             </div>
@@ -48,7 +48,7 @@
                     <a href="#" style="color: #999"><i class="fa  fa-chevron-circle-left"> 이전으로</i></a>
                 </div>
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">다음 단계</button>
+                    <button type="submit" id="nextBtn" class="btn btn-primary btn-block btn-flat">다음 단계</button>
                 </div>
             </div>
         </div>
@@ -66,6 +66,15 @@
                 radioClass: 'iradio_square-blue',
                 increaseArea: '20%'
             });
+        });
+        
+        $('#nextBtn').click(function(){
+        	if($('#termsAgree').prop('checked') && $('#policyAgree').prop('checked')){
+        		return true;
+        	} else {
+        		alert('서비스 약관과 개인정보 수집 및 이용에 대해 모두 동의해 주세요.');
+        		return false;
+        	}
         });
     </script>
 </body>
