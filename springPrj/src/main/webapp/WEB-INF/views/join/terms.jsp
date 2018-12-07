@@ -24,6 +24,11 @@
                 </div>
                 <div class="box-body" style="height: 150px; overflow: auto; padding: 0 18px; font-size: 12px;">
                 </div>
+                <div class="checkbox icheck" style="position: absolute; bottom: 150px; right: 15px">
+                    <label>
+                        <input type="checkbox">
+                    </label>
+               </div>
             </div>
             <!-- /.box -->
             <div class="box">
@@ -32,14 +37,15 @@
                 </div>
                 <div class="box-body" style="height: 150px; overflow: auto; padding: 0 18px; font-size: 12px;">
                 </div>
+                <div class="checkbox icheck" style="position: absolute; bottom: 150px; right: 15px">
+                    <label>
+                        <input type="checkbox">
+                    </label>
+               </div>
             </div>
             <div class="row">
-                <div class="col-xs-8">
-                    <div class="checkbox icheck" style="margin-top: 5px; margin-bottom: 5px">
-                        <label>
-                            <input type="checkbox"> 약관에 모두 동의합니다.
-                        </label>
-                    </div>
+                <div class="col-xs-8" style="top: 13px">
+                    <a href="#" style="color: #999"><i class="fa  fa-chevron-circle-left"> 이전으로</i></a>
                 </div>
                 <div class="col-xs-4">
                     <button type="submit" class="btn btn-primary btn-block btn-flat">다음 단계</button>
