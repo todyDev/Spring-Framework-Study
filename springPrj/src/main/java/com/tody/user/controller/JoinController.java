@@ -14,7 +14,7 @@ public class JoinController {
 	}
 	
 	@RequestMapping(value="/terms", method=RequestMethod.POST)
-	public String JoinTermsPOST() throws Exception {
+	public String joinTermsPOST() throws Exception {
 		return "/join/signup";
 	}
 
