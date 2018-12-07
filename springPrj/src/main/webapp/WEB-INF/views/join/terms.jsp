@@ -4,6 +4,8 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/views/include/00_head.jsp" %>
+<!-- iCheck -->
+<link rel="stylesheet" href='<c:url value='/plugins/iCheck/square/blue.css'/>'>
 <title>약관 동의 | todyDev 회원 가입</title>
 </head>
 <body class="hold-transition register-page">
@@ -33,7 +35,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-8">
-                    <div class="checkbox iCheck" style="margin-top: 5px; margin-bottom: 5px">
+                    <div class="checkbox icheck" style="margin-top: 5px; margin-bottom: 5px">
                         <label>
                             <input type="checkbox"> 약관에 모두 동의합니다.
                         </label>
@@ -49,10 +51,12 @@
     <!-- /.register-box -->
 
 	<%@ include file="/WEB-INF/views/include/01_plugins.jsp" %>
+	<!-- iCheck -->
+	<script src='<c:url value='/plugins/iCheck/icheck.min.js'/>'></script>
     <script>
         $(function() {
             $('input').iCheck({
-                checkboxClass: 'iCheckbox_square-blue',
+                checkboxClass: 'icheckbox_square-blue',
                 radioClass: 'iradio_square-blue',
                 increaseArea: '20%'
             });
