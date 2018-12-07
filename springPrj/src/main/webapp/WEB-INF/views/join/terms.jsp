@@ -17,7 +17,8 @@
         <div class="register-box-body">
             <p class="login-box-msg" style="font-size: 20px">회원 가입 약관 동의</p>
             <p class="login-box-msg">서비스 약관 및 개인정보 수집, 이용에 동의해 주세요.</p>
-
+            
+            <form action='<c:url value='/join/terms'/>' method="post">
             <div class="box">
                 <div class="box-header">
                     서비스 약관 동의
@@ -51,6 +52,7 @@
                     <button type="submit" id="nextBtn" class="btn btn-primary btn-block btn-flat">다음 단계</button>
                 </div>
             </div>
+            </form>
         </div>
         <!-- /.form-box -->
     </div>
