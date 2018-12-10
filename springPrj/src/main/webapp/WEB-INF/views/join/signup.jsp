@@ -16,7 +16,7 @@
             <p class="login-box-msg" style="font-size: 20px">가입 정보 입력</p>
             <p class="login-box-msg">로그인 정보 및 가입 정보를 입력하세요.</p>
 
-            <form action="#" method="post">
+            <form action='<c:url value='/join/signup'/>' method="post">
                 <div class="form-group has-feedback">
                     <input type="text" class="form-control" placeholder="ID">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
