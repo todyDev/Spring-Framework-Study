@@ -1,12 +1,31 @@
 package com.tody.user.domain;
 
+import javax.persistence.Entity;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+
+@Entity
 public class RegisterRequest {
 	
+	@NotEmpty
+	@Pattern(regexp="\\w{4,8}")
 	private String ID;
+	
+	@NotEmpty
 	private String PASSWORD;
+	
+	@NotEmpty
 	private String chkPASSWORD;
+	
+	@NotEmpty
+	@Pattern(regexp="\\S{2,8}")
 	private String NAME;
+
+	@Email
 	private String EMAIL;
+	
+	@Pattern(regexp="^\\d{3}-\\d{3,4}-\\d{4}$")
 	private String PHONE;
 	
 	public boolean isPwEqualToCheckPw() {
