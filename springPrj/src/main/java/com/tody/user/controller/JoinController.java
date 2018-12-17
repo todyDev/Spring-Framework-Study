@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tody.user.domain.RegisterRequest;
+import com.tody.user.exception.AlreadyExistingEmailException;
+import com.tody.user.exception.AlreadyExistingIdException;
 import com.tody.user.service.UserService;
 
 @Controller
@@ -45,7 +47,15 @@ public class JoinController {
 			return "/join/signup";
 		}
 
-		userSer.register(regReq);
+		try {
+			userSer.register(regReq);
+		} catch (AlreadyExistingIdException e ) {
+			errors.rejectValue("ID", "duplicate.id");
+			return "/join/signup";
+		} catch (AlreadyExistingEmailException e ) {
+			errors.rejectValue("EMAIL", "duplicate.email");
+			return "/join/signup";
+		}
 
 		return "redirect:/";
 	}
