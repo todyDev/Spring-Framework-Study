@@ -28,6 +28,8 @@ public class UserServiceImpl implements UserService {
 			throw new AlreadyExistingIdException(regReq.getID());
 		}
 		
+		userDAO.registerUser(regReq);
+		
 	}
 
 }

@@ -27,5 +27,29 @@
 			) as chk
         ]]>
     </select>
+    
+    <insert id="register">
+    	<![CDATA[
+    		INSERT INTO user
+    		(
+    			ID,
+    			PASSWORD,
+    			NAME,
+    			EMAIL,
+    			PHONE,
+    			REGDATE
+    		)
+    		VALUES
+    		(
+    			#{ ID},
+    			#{ PASSWORD},
+    			#{ NAME},
+    			#{ EMAIL},
+    			#{ PHONE},
+    			SYSDATE()
+    		)
+    			
+    	]]>
+    </insert>
 
 </mapper>
