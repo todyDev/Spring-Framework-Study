@@ -1,5 +1,6 @@
 package com.tody.user.controller;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -9,10 +10,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tody.user.domain.RegisterRequest;
+import com.tody.user.service.UserService;
 
 @Controller
 @RequestMapping(value="/join")
 public class JoinController {
+	
+	@Resource(name="userService")
+	private UserService userSer;
 	
 	@RequestMapping(value="/terms")
 	public String joinTerms() throws Exception {
@@ -39,6 +44,8 @@ public class JoinController {
 			
 			return "/join/signup";
 		}
+
+		userSer.register(regReq);
 
 		return "redirect:/";
 	}
