@@ -22,17 +22,17 @@
                 <div class="form-group has-feedback">
                     <form:input type="text" class="form-control" placeholder="ID" path="ID"/>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                    <form:errors path="ID"/>
+                    <form:errors path="ID" style="color:red"/>
                 </div>
                 <div class="form-group has-feedback">
                     <form:input type="password" class="form-control" placeholder="PASSWORD" path="PASSWORD"/>
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                    <form:errors path="PASSWORD"/>
+                    <form:errors path="PASSWORD" style="color:red"/>
                 </div>
                 <div class="form-group has-feedback">
                     <form:input type="password" class="form-control" placeholder="Retype PASSWORD" path="chkPASSWORD"/>
                     <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-                    <form:errors path="chkPASSWORD"/>
+                    <form:errors path="chkPASSWORD" style="color:red"/>
                 </div>
                 <div class="text-center">
                 	<p>-<p>
@@ -40,17 +40,17 @@
                 <div class="form-group has-feedback">
                     <form:input type="text" class="form-control" placeholder="NAME" path="NAME"/>
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                    <form:errors path="NAME"/>
+                    <form:errors path="NAME" style="color:red"/>
                 </div>
                 <div class="form-group has-feedback">
                     <form:input type="text" class="form-control" placeholder="PHONE" path="PHONE"/>
                     <span class="glyphicon glyphicon-th form-control-feedback"></span>
-                    <form:errors path="PHONE"/>
+                    <form:errors path="PHONE" style="color:red"/>
                 </div>
                 <div class="form-group has-feedback">
                     <form:input type="text" class="form-control" placeholder="EMAIL" path="EMAIL"/>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                    <form:errors path="EMAIL"/>
+                    <form:errors path="EMAIL" style="color:red"/>
                 </div>
                 <div class="row">
                     <div class="col-xs-4">
