@@ -27,7 +27,12 @@ public class JoinController {
 	}
 	
 	@RequestMapping(value="/terms", method=RequestMethod.POST)
-	public ModelAndView joinTermsPOST() throws Exception {
+	public String joinTermsPOST() throws Exception {
+		return "redirect:/join/signup";
+	}
+	
+	@RequestMapping(value="/signup")
+	public ModelAndView joinSignupGET() throws Exception {
 		ModelAndView mv = new ModelAndView("/join/signup");
 		mv.addObject("registerRequest", new RegisterRequest());
 		return mv;
