@@ -67,34 +67,46 @@
     <%@ include file="/WEB-INF/views/include/01_plugins.jsp" %>
         <script>
     	$(function(){
-    		$("form").validate({
-    			rules: {
-    				id: {
-    					required: true
-    					
-    				},
-    				pw: {
-    					required: true
-    					
-    				},
-    				pwRe: {
-    					required: true
-    					
-    				},
-    				name: {
-    					required: true
-    					
-    				},
-    				email: {
-    					email: true
-    					
-    				},
-    				phone: {
-    					
-    				}
-    			}
-    		});
-    	});
+        	$(function(){
+        		$("form").validate({
+        			rules: {
+        				id: {
+        					required: true,
+        					idChk: true,
+        					minlength: 3,
+        					maxlength: 13
+        					
+        				},
+        				pw: {
+        					required: true,
+        					pwChk: true,
+        					minlength: 9,
+        					maxlength: 12
+        					
+        				},
+        				pwRe: {
+        					required: true,
+        					pwEqualChk: pw
+        					
+        				},
+        				name: {
+        					required: true,
+        					nameChk: true,
+        					minlength: 3,
+        					maxlength: 20
+        					
+        				},
+        				email: {
+        					email: true
+        					
+        				},
+        				phone: {
+        					phoneChk: true
+        					
+        				}
+        			}
+        		});
+        	});
     </script>
     
 </body>

@@ -15,6 +15,41 @@
 		factory( jQuery );
 	}
 }(function( $ ) {
+	
+/*
+ * 직접 만든 addMehods
+ * idChk: 아이디 확인 ; 첫 글자는 영문이며 영문, 숫자, _만 사용가능 + 3~19자리
+ * pwChk: 비밀번호 확인 ; 영문(대소문자구분), 숫자, 특수문자 조합 + 9~12자리
+ * pwEqualChk: 비밀번호 재확인
+ * phoneChk: 휴대폰 번호 예)010-2547-8652
+ * nameChk: 한글이름만, 영문이름만 가능
+ * 
+ */
+	
+$.validator.addMethod( "idChk", function( value, element ) {
+	return this.optional( element ) || /^[a-z]{1}[A-Za-z0-9_]/.test( value );
+});
+
+
+$.validator.addMethod( "pwChk", function( value, element ) {
+	return this.optional( element ) || /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]/.test( value );
+});
+
+$.validator.addMethod( "pwEqualChk", function( value, element, param ) {
+	var target = $( param );
+	return value === target.val();
+});
+	
+$.validator.addMethod( "phoneChk", function( value, element ) {
+	return this.optional( element ) || /^01([016789]?)-?([0-9]{3,4})-?([0-9]{4})$/.test( value );
+});
+
+$.validator.addMethod( "nameChk", function( value, element ) {
+	return this.optional( element ) || /^[가-힣]+$|[a-zA-Z]+$/.test( value );
+});
+
+/*
+ */
 
 ( function() {
 
