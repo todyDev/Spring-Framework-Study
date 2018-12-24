@@ -65,6 +65,37 @@
     <!-- /.register-box -->
 
     <%@ include file="/WEB-INF/views/include/01_plugins.jsp" %>
+        <script>
+    	$(function(){
+    		$("form").validate({
+    			rules: {
+    				id: {
+    					required: true
+    					
+    				},
+    				pw: {
+    					required: true
+    					
+    				},
+    				pwRe: {
+    					required: true
+    					
+    				},
+    				name: {
+    					required: true
+    					
+    				},
+    				email: {
+    					email: true
+    					
+    				},
+    				phone: {
+    					
+    				}
+    			}
+    		});
+    	});
+    </script>
     
 </body>
 </html>
