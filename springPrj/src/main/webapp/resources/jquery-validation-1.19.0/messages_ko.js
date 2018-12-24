@@ -29,7 +29,12 @@ $.extend( $.validator.messages, {
 	rangelength: $.validator.format( "문자 길이가 {0} 에서 {1} 사이의 값을 입력하세요." ),
 	range: $.validator.format( "{0} 에서 {1} 사이의 값을 입력하세요." ),
 	max: $.validator.format( "{0} 이하의 값을 입력하세요." ),
-	min: $.validator.format( "{0} 이상의 값을 입력하세요." )
+	min: $.validator.format( "{0} 이상의 값을 입력하세요." ),
+	idChk: "첫글자는 영문이며, 영문, 숫자, _만 사용가능합니다.",
+	pwChk: "영문(대소문자 구분), 숫자, 특수문자 조합으로 9~12자리여야 합니다.",
+	pwEqualChk: "비밀번호를 다시 확인해주세요.",
+	nameChk: "한글, 혹은 영문으로만 입력해주세요.",
+	phoneChk: "휴대폰번호를 정확히 입력해주세요."
 } );
 return $;
 }));
