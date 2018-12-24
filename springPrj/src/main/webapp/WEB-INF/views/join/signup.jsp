@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
 <%@ include file="/WEB-INF/views/include/00_head.jsp" %>
@@ -18,39 +17,33 @@
             <p class="login-box-msg" style="font-size: 20px">가입 정보 입력</p>
             <p class="login-box-msg">로그인 정보 및 가입 정보를 입력하세요.</p>
 
-            <form:form action="${pageContext.request.contextPath}/join/signup" method="post" commandName="registerRequest">
+            <form action="${pageContext.request.contextPath}/join/signup" method="post">
                 <div class="form-group has-feedback">
-                    <form:input type="text" class="form-control" placeholder="ID" path="ID"/>
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                    <form:errors path="ID" style="color:red"/>
+                    <input type="text" class="form-control" placeholder="ID" name="id" />
+                    <span class="glyphicon glyphicon-envelope form-control-feedback" style="top: -0px"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <form:input type="password" class="form-control" placeholder="PASSWORD" path="PASSWORD"/>
-                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                    <form:errors path="PASSWORD" style="color:red"/>
+                    <input type="password" class="form-control" placeholder="PASSWORD" name="pw" id="pw"/>
+                    <span class="glyphicon glyphicon-lock form-control-feedback" style="top: -0px"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <form:input type="password" class="form-control" placeholder="Retype PASSWORD" path="chkPASSWORD"/>
-                    <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-                    <form:errors path="chkPASSWORD" style="color:red"/>
+                    <input type="password" class="form-control" placeholder="Retype PASSWORD" name="pwRe" id="pwRe"/>
+                    <span class="glyphicon glyphicon-log-in form-control-feedback" style="top: -0px"></span>
                 </div>
                 <div class="text-center">
                 	<p>-<p>
                 </div>
                 <div class="form-group has-feedback">
-                    <form:input type="text" class="form-control" placeholder="NAME" path="NAME"/>
-                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                    <form:errors path="NAME" style="color:red"/>
+                    <input type="text" class="form-control" placeholder="NAME" name="name" id="name"/>
+                    <span class="glyphicon glyphicon-user form-control-feedback" style="top: -0px"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <form:input type="text" class="form-control" placeholder="PHONE" path="PHONE"/>
-                    <span class="glyphicon glyphicon-th form-control-feedback"></span>
-                    <form:errors path="PHONE" style="color:red"/>
+                    <input type="text" class="form-control" placeholder="PHONE" name="phone" id="phone"/>
+                    <span class="glyphicon glyphicon-th form-control-feedback" style="top: -0px"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <form:input type="text" class="form-control" placeholder="EMAIL" path="EMAIL"/>
+                    <input type="text" class="form-control" placeholder="EMAIL" name="email" id="email"/>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                    <form:errors path="EMAIL" style="color:red"/>
                 </div>
                 <div class="row">
                     <div class="col-xs-4">
@@ -61,7 +54,7 @@
                     </div>
                     <!-- /.col -->
                 </div>
-            </form:form>
+            </form>
             <div class="social-auth-links text-center">
                 <p>- OR -<p>
             </div>
