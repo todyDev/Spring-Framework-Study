@@ -37,7 +37,7 @@ public class JoinController {
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
 	public String joinSignupPOST(CommandMap commandMap) throws Exception {
 
-		log.debug(commandMap.getMap());
+		userSer.register(commandMap);
 		
 		return "redirect:/";
 	}

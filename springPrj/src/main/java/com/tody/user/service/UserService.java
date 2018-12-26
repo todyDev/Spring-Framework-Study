@@ -1,9 +1,9 @@
 package com.tody.user.service;
 
-import com.tody.user.domain.RegisterRequest;
+import com.tody.common.common.CommandMap;
 
 public interface UserService {
 
-	void register(RegisterRequest regReq) throws Exception;
+	void register(CommandMap commandMap) throws Exception;
 
 }
