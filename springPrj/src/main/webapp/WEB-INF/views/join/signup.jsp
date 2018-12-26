@@ -19,7 +19,7 @@
 
             <form action="${pageContext.request.contextPath}/join/signup" method="post">
                 <div class="form-group has-feedback">
-                    <input type="text" class="form-control" placeholder="ID" name="id" />
+                    <input type="text" class="form-control" placeholder="ID" name="id" id="id"/>
                     <span class="glyphicon glyphicon-envelope form-control-feedback" style="top: -0px"></span>
                 </div>
                 <div class="form-group has-feedback">
