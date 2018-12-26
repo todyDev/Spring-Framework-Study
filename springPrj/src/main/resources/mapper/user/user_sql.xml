@@ -28,7 +28,7 @@
         ]]>
     </select>
     
-    <insert id="register">
+    <insert id="register" parameterType="hashmap">
     	<![CDATA[
     		INSERT INTO user
     		(
@@ -41,11 +41,11 @@
     		)
     		VALUES
     		(
-    			#{ ID},
-    			#{ PASSWORD},
-    			#{ NAME},
-    			#{ EMAIL},
-    			#{ PHONE},
+    			#{ id},
+    			#{ pw},
+    			#{ name},
+    			#{ email},
+    			#{ phone},
     			SYSDATE()
     		)
     			
