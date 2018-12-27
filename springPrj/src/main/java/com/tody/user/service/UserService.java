@@ -6,4 +6,8 @@ public interface UserService {
 
 	void register(CommandMap commandMap) throws Exception;
 
+	boolean selectById(String id);
+
+	boolean selectByEmail(String email);
+	
 }
