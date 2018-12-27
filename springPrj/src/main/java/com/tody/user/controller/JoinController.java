@@ -50,4 +50,10 @@ public class JoinController {
 		return userSer.selectById(id);
 	}
 	
+	@RequestMapping(value="/chkemailinfo", method=RequestMethod.POST)
+	@ResponseBody
+	public boolean chkemailinfo(@RequestBody String email) throws Exception {
+		return userSer.selectByEmail(email);
+	}
+	
 }

@@ -25,4 +25,9 @@ public class UserServiceImpl implements UserService {
 		return userDAO.selectById(id);
 	}
 	
+	@Override
+	public boolean selectByEmail(String email) {
+		return userDAO.selectByEmail(email);
+	}
+	
 }
