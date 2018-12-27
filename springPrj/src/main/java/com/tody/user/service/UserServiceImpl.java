@@ -20,4 +20,9 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public boolean selectById(String id) {
+		return userDAO.selectById(id);
+	}
+	
 }
