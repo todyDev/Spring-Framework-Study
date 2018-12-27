@@ -69,30 +69,13 @@
     	var dupidck; //true: 중복, false: 가능
     	var dupemailck; //true: 중복, false: 가능
     	$(function(){
-    		$("#id").blur(function(){
-    			var id = $("#id").val();
-    			if(!id) return false;
-    			$.ajax({
-    				async: true,
-    				type: 'POST',
-    				data: id,
-    				url: "${pageContext.request.contextPath}/join/chkidinfo",
-    				dataType: "json",
-    				contentType: "application/json; charset=UTF-8",
-    				success: function(data) {
-    					if(data) {
-    						dupidck=true;
-    					    alert('중복된 아이디입니다.');
-    					} else dupidck=false;
-    				},
-    				error: function(request,status,error) {
-    					alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
-    				}
-    			});
-    		});
     		$("form").validate({
     			submitHandler: function() {
-    				if(dupidck || dupemailck) return false;
+    				if(dupidck || dupemailck) {
+    					if(dupidck) alert('중복된 아이디입니다.');
+    					if(dupemailck) alert('중복된 이메일입니다.');
+    					return false;
+    				}
     				else return true;
     			},
     			rules: {
@@ -128,6 +111,27 @@
     					
     				}
     			}
+    		});
+    		$("#id").blur(function(){
+    			var id = $("#id").val();
+    			if(!id) return false;
+    			$.ajax({
+    				async: true,
+    				type: 'POST',
+    				data: id,
+    				url: "${pageContext.request.contextPath}/join/chkidinfo",
+    				dataType: "json",
+    				contentType: "application/json; charset=UTF-8",
+    				success: function(data) {
+    					if(data) {
+    						dupidck=true;
+    					    alert('중복된 아이디입니다.');
+    					} else dupidck=false;
+    				},
+    				error: function(request,status,error) {
+    					alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
+    				}
+    			});
     		});
     		$("#email").blur(function(){
     			var email = $("#email").val();
