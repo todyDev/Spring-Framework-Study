@@ -84,7 +84,7 @@
         				alert('ajax data : '+data+' / dupck : '+dupck);
     				},
     				error: function(request,status,error) {
-    					alert('error:'+error);
+    					alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
     				}
     			});
     		});
