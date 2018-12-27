@@ -67,6 +67,7 @@
     <%@ include file="/WEB-INF/views/include/01_plugins.jsp" %>
     <script>
     	var dupidck; //true: 중복, false: 가능
+    	var dupemailck; //true: 중복, false: 가능
     	$(function(){
     		$("#id").blur(function(){
     			var id = $("#id").val();
@@ -91,7 +92,7 @@
     		});
     		$("form").validate({
     			submitHandler: function() {
-    				if(dupidck) return false;
+    				if(dupidck || dupemailck) return false;
     				else return true;
     			},
     			rules: {
@@ -127,6 +128,27 @@
     					
     				}
     			}
+    		});
+    		$("#email").blur(function(){
+    			var email = $("#email").val();
+    			if(!email) return false;
+    			$.ajax({
+    				async: true,
+    				type: 'POST',
+    				data: email,
+    				url: "${pageContext.request.contextPath}/join/chkemailinfo",
+    				dataType: "json",
+    				contentType: "application/json; charset=UTF-8",
+    				success: function(data) {
+    					if(data) {
+    						dupemailck=true;
+    					    alert('중복된 이메일입니다.');
+    					} else dupemailck=false;
+    				},
+    				error: function(request,status,error) {
+    					alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
+    				}
+    			});
     		});
     	});
     </script>
