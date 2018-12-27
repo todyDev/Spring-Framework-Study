@@ -79,9 +79,10 @@
     				dataType: "json",
     				contentType: "application/json; charset=UTF-8",
     				success: function(data) {
-    					if(!data) dupidck=false;
-        				else dupidck=true;
-        				alert('ajax data : '+data+' / dupck : '+dupck);
+    					if(data) {
+    						dupidck=true;
+    					    alert('중복된 아이디입니다.');
+    					} else dupidck=false;
     				},
     				error: function(request,status,error) {
     					alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
