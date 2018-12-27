@@ -66,8 +66,33 @@
 
     <%@ include file="/WEB-INF/views/include/01_plugins.jsp" %>
     <script>
+    	var dupidck; //true: 중복, false: 가능
     	$(function(){
+    		$("#id").blur(function(){
+    			var id = $("#id").val();
+    			if(!id) return false;
+    			$.ajax({
+    				async: true,
+    				type: 'POST',
+    				data: id,
+    				url: "${pageContext.request.contextPath}/join/chkidinfo",
+    				dataType: "json",
+    				contentType: "application/json; charset=UTF-8",
+    				success: function(data) {
+    					if(!data) dupidck=false;
+        				else dupidck=true;
+        				alert('ajax data : '+data+' / dupck : '+dupck);
+    				},
+    				error: function(request,status,error) {
+    					alert('error:'+error);
+    				}
+    			});
+    		});
     		$("form").validate({
+    			submitHandler: function() {
+    				if(dupidck) return false;
+    				else return true;
+    			},
     			rules: {
     				id: {
     					required: true,
