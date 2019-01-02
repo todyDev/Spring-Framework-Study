@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="upload">
+
+    <select id="selectBoardList" resultType="hashmap" parameterType="hashmap">
+        <![CDATA[
+			SELECT
+				IDX,
+				TITLE,
+				HIT_CNT,
+				IF(
+					DATE_FORMAT(CREA_DATE, '%Y%m%d') < DATE_FORMAT(now(),'%Y%m%d'),
+					DATE_FORMAT(CREA_DATE, '%Y.%m.%d'),
+					DATE_FORMAT(CREA_DATE, '%H:%i')
+				) as CREA_DATE,
+				CREA_ID
+			FROM
+				board
+			WHERE
+				DEL_CHK = 'N'
+			ORDER BY IDX DESC
+			LIMIT #{pageStart}, #{perPageNum}
+        ]]>
+    </select>
+    
+    <select id="countBoardList" resultType="Integer">
+    	<![CDATA[
+    		SELECT
+    			count(*)
+    		FROM
+    			board
+    		WHERE
+    			DEL_CHK='N'
+    	]]>
+    </select>
+    
+    <insert id="insertBoard" parameterType="hashmap">
+        <![CDATA[
+            INSERT INTO board
+            (
+                TITLE,
+                CONTENTS,
+                HIT_CNT,
+                DEL_CHK,
+                CREA_DATE,
+                CREA_ID
+            )
+            VALUES
+            (
+                #{ TITLE},
+                #{ CONTENTS},
+                0,
+                'N',
+                SYSDATE(),
+                #{ CREA_ID}
+            )
+        ]]>
+    </insert>
+    
+    <select id="detailBoard" resultType="hashmap">
+        <![CDATA[
+            SELECT
+                IDX,
+                TITLE,
+                CONTENTS,
+                HIT_CNT,
+                CREA_ID,
+                IF(
+                    DATE_FORMAT(CREA_DATE, '%Y%m%d') < DATE_FORMAT(now(),'%Y%m%d'),
+                    DATE_FORMAT(CREA_DATE, '%Y.%m.%d'),
+                    DATE_FORMAT(CREA_DATE, '%H:%i')
+                ) as CREA_DATE
+            FROM
+                board
+            WHERE
+                IDX = #{ IDX}
+        ]]>
+    </select>
+    
+    <update id="updateHitBoard">
+        <![CDATA[
+            UPDATE
+                board
+            SET
+                HIT_CNT = HIT_CNT + 1
+            WHERE
+                IDX = #{ IDX}
+        ]]>
+    </update>
+    
+    <update id="updateBoard" parameterType="hashmap">
+        <![CDATA[
+            UPDATE
+                board
+            SET
+                TITLE = #{ TITLE},
+                CONTENTS = #{ CONTENTS}
+            WHERE
+                IDX = #{ IDX}
+                and
+                CREA_ID = #{ CREA_ID}
+        ]]>
+    </update>
+    
+    <update id="deleteBoard">
+        <![CDATA[
+            UPDATE
+                board
+            SET
+                DEL_CHK = 'Y'
+            WHERE
+                IDX = #{ IDX}
+        ]]>
+    </update>
+
+</mapper>
