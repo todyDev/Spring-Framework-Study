@@ -21,6 +21,7 @@
 	<resources mapping="/bower_components/**" location="/resources/bower_components/"/>
 	<resources mapping="/dist/**" location="/resources/dist/"/>
 	<resources mapping="/plugins/**" location="/resources/plugins/"/>
+	<resources mapping="/jquery-validation-1.19.0/**" location="/resources/jquery-validation-1.19.0/"/>
 	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->

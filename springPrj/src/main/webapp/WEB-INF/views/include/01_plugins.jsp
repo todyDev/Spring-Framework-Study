@@ -12,3 +12,8 @@
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
+     
+     <!-- jQuery Validation -->
+    <script src='<c:url value="/jquery-validation-1.19.0/jquery.validate.min.js"/>'></script>
+    <script src='<c:url value="/jquery-validation-1.19.0/additional-methods.js"/>'></script>
+    <script src='<c:url value="/jquery-validation-1.19.0/messages_ko.js"/>'></script>
