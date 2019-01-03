@@ -91,6 +91,7 @@
                                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
                                 <!-- /.pull-right -->
                                 <div class="pull-right">
+	                                <c:if test="${fn:length(list) > 0 }">
 	                                <ul class="btn-group pagination" style="margin:0">
 	                                    <c:if test="${pageMaker.prev }">
 	                                    <li>
@@ -108,6 +109,7 @@
 	                                    </li>
 	                                    </c:if>
 	                                </ul>
+	                                </c:if>
                                     <!-- /.btn-group -->
                                 </div>
                                 <!-- /.pull-right -->
