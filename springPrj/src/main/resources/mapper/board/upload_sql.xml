@@ -15,7 +15,7 @@
 				) as CREA_DATE,
 				CREA_ID
 			FROM
-				board
+				upload
 			WHERE
 				DEL_CHK = 'N'
 			ORDER BY IDX DESC
@@ -28,7 +28,7 @@
     		SELECT
     			count(*)
     		FROM
-    			board
+    			upload
     		WHERE
     			DEL_CHK='N'
     	]]>
@@ -36,7 +36,7 @@
     
     <insert id="insertBoard" parameterType="hashmap">
         <![CDATA[
-            INSERT INTO board
+            INSERT INTO upload
             (
                 TITLE,
                 CONTENTS,
@@ -71,7 +71,7 @@
                     DATE_FORMAT(CREA_DATE, '%H:%i')
                 ) as CREA_DATE
             FROM
-                board
+                upload
             WHERE
                 IDX = #{ IDX}
         ]]>
@@ -80,7 +80,7 @@
     <update id="updateHitBoard">
         <![CDATA[
             UPDATE
-                board
+                upload
             SET
                 HIT_CNT = HIT_CNT + 1
             WHERE
@@ -91,7 +91,7 @@
     <update id="updateBoard" parameterType="hashmap">
         <![CDATA[
             UPDATE
-                board
+                upload
             SET
                 TITLE = #{ TITLE},
                 CONTENTS = #{ CONTENTS}
@@ -105,7 +105,7 @@
     <update id="deleteBoard">
         <![CDATA[
             UPDATE
-                board
+                upload
             SET
                 DEL_CHK = 'Y'
             WHERE
