@@ -37,7 +37,7 @@
                         <h3 class="box-title">Board Write</h3>
                     </div>
                     <!-- /.box-header -->
-                    <form action='<c:url value="/upload/boardWrite"/>' method="POST">
+                    <form action='<c:url value="/upload/boardWrite"/>' method="POST" enctype="multipart/form-data">
 	                    <div class="box-body">
 	                        <div class="form-group">
 	                            <input class="form-control" placeholder="Writer:" name="CREA_ID">
@@ -48,6 +48,9 @@
 	                        <div class="form-group">
 	                            <textarea id="compose-textarea" class="form-control" style="height: 300px" name="CONTENTS"></textarea>
 	                        </div>
+                            <div class="form-group">
+                                <input type="file" name="file">
+                            </div>
 	                    </div>
 	                    <!-- /.box-body -->
 	                    <div class="box-footer">
