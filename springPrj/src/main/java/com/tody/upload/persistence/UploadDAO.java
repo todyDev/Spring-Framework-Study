@@ -42,4 +42,8 @@ public class UploadDAO extends AbstractDAO {
 		return (Integer) selectOne("upload.countBoardList");
 	}
 
+	public void insertFile(Map<String, Object> map) {
+		insert("upload.insertFile", map);
+	}
+
 }

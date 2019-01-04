@@ -34,7 +34,7 @@
     	]]>
     </select>
     
-    <insert id="insertBoard" parameterType="hashmap">
+    <insert id="insertBoard" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
         <![CDATA[
             INSERT INTO upload
             (
@@ -112,5 +112,30 @@
                 IDX = #{ IDX}
         ]]>
     </update>
+    
+    <insert id="insertFile" parameterType="hashmap">
+    	<![CDATA[
+    		INSERT INTO file
+    		(
+    			BOARD_IDX,
+    			ORG_FILE_NAME,
+    			SAVE_FILE_NAME,
+    			FILE_SIZE,
+    			CREA_ID,
+    			CREA_DATE,
+    			UPDATE_DATE
+    		)
+    		VALUES
+    		(
+    			#{ BOARD_IDX},
+    			#{ ORG_FILE_NAME},
+    			#{ SAVE_FILE_NAME},
+    			#{ FILE_SIZE},
+    			#{ CREA_ID},
+    			SYSDATE(),
+    			SYSDATE()
+    		)
+    	]]>
+    </insert>
 
 </mapper>
