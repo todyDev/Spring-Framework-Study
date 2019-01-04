@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -46,8 +47,8 @@ public class UploadController {
     }
     
     @RequestMapping(value="/boardWrite", method=RequestMethod.POST)
-    public String boardWritePOST(CommandMap commandMap) throws Exception {
-    	uploadService.insertBoard(commandMap);
+    public String boardWritePOST(CommandMap commandMap, MultipartFile file) throws Exception {
+    	uploadService.insertBoard(commandMap, file);
         return "redirect:/upload/boardList";
     }
     

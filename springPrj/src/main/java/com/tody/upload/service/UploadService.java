@@ -3,6 +3,8 @@ package com.tody.upload.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.tody.common.common.CommandMap;
 import com.tody.common.domain.Criteria;
 
@@ -12,7 +14,7 @@ public interface UploadService {
 
 	List<Map<String, Object>> selectBoardList(Criteria cri);
 
-	void insertBoard(CommandMap commandMap);
+	void insertBoard(CommandMap commandMap, MultipartFile file);
 
 	Map<String, Object> viewBoardDetail(Map<String, Object> map);
 
