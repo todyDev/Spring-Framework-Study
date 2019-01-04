@@ -14,7 +14,7 @@ public interface UploadService {
 
 	List<Map<String, Object>> selectBoardList(Criteria cri);
 
-	void insertBoard(CommandMap commandMap, MultipartFile file);
+	void insertBoard(CommandMap commandMap, MultipartFile file) throws Exception;
 
 	Map<String, Object> viewBoardDetail(Map<String, Object> map);
 
