@@ -37,8 +37,8 @@ public class FileUtils {
 		String orgFileExtension = orgFileName.substring(orgFileName.lastIndexOf("."));
 		String saveFileName = CommonUtils.getRandomString() + orgFileExtension;
 		
-		String boardIDX = (String) map.get("IDX");
-		String creaID = (String) map.get("CREA_ID");
+		String boardIDX = String.valueOf(map.get("IDX"));
+		String creaID = String.valueOf(map.get("CREA_ID"));
 
 		File target = new File(uploadPath);
 		if(!target.exists()) target.mkdirs();
@@ -51,7 +51,7 @@ public class FileUtils {
 		
 		listMap.put("BOARD_IDX", boardIDX);
 		listMap.put("ORG_FILE_NAME", orgFileName);
-		listMap.put("STORED_FILE_NAME", saveFileName);
+		listMap.put("SAVE_FILE_NAME", saveFileName);
 		listMap.put("FILE_SIZE", file.getSize());
 		listMap.put("CREA_ID", creaID);
 		list.add(listMap);
