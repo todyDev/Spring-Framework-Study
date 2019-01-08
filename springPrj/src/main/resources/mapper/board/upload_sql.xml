@@ -137,5 +137,20 @@
     		)
     	]]>
     </insert>
+    
+    <select id="detailFile" parameterType="hashmap" resultType="hashmap">
+    	<![CDATA[
+    		SELECT
+    			IDX,
+    			ORG_FILE_NAME,
+    			ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
+    		FROM
+    			file
+    		WHERE
+    			BOARD_IDX = #{ IDX}
+    			AND
+    			DEL_CHK = 'N'
+    	]]>
+    </select>
 
 </mapper>

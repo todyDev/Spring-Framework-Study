@@ -46,4 +46,9 @@ public class UploadDAO extends AbstractDAO {
 		insert("upload.insertFile", map);
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> detailFile(Map<String, Object> map) {
+		return selectList("upload.detailFile", map);
+	}
+
 }
