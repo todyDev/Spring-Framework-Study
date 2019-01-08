@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 
 <head>
@@ -50,6 +51,28 @@
                             <!-- /.mailbox-read-message -->
                         </div>
                         <!-- /.box-body -->
+                        
+                        <c:choose>
+                            <c:when test="${fn:length(list) > 0 }">
+	                        <div class="box-footer">
+	                            <ul class="mailbox-attachments clearfix">
+	                            	<c:forEach items="${list }" var="bList">
+			                            <li>
+			                               <span class="mailbox-attachment-icon has-img"><!-- <img src="../../dist/img/photo2.png" alt="Attachment"> --></span>
+			
+			                               <div class="mailbox-attachment-info">
+			                                   <a href="#" class="mailbox-attachment-name"><i class="fa fa-camera"></i> ${bList.ORG_FILE_NAME }</a>
+			                                   <span class="mailbox-attachment-size">
+			                                       ${bList.FILE_SIZE }kb
+			                                   </span>
+			                              </div>
+			                           </li>
+	                            	</c:forEach>
+	                            </ul>
+	                        </div>
+	                        <!-- /.box-footer -->
+                            </c:when>
+                        </c:choose>
                         <div class="box-footer">
                         	<a href='<c:url value="/upload/boardList?page=${cri.page }&perPageNum=${cri.perPageNum }"/>' role="button" class="btn btn-default"><i class="fa fa-list"></i> 목록으로</a>
                             <div class="pull-right">
