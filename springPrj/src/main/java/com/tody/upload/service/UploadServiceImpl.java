@@ -1,5 +1,6 @@
 package com.tody.upload.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +42,13 @@ public class UploadServiceImpl implements UploadService {
 	public Map<String, Object> viewBoardDetail(Map<String, Object> map) {
 		uploadDAO.updateHitBoard(map);
         Map<String, Object> detail = uploadDAO.detailBoard(map);
-		return detail;
+        List<Map<String, Object>> list = uploadDAO.detailFile(map);
+        
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("detail", detail);
+        resultMap.put("list", list);
+        
+		return resultMap;
 	}
 
 	@Override
