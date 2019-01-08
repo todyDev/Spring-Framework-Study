@@ -56,8 +56,9 @@ public class UploadController {
     public ModelAndView boardDetail(CommandMap commandMap, Criteria cri) throws Exception {
         
         ModelAndView mv = new ModelAndView("/upload/boardDetail");
-        Map<String, Object> detail = uploadService.viewBoardDetail(commandMap.getMap());
-        mv.addObject("detail",detail);
+        Map<String, Object> resultMap = uploadService.viewBoardDetail(commandMap.getMap());
+        mv.addObject("detail",resultMap.get("detail"));
+        mv.addObject("list", resultMap.get("list"));
         mv.addObject("cri", cri);
         
         return mv;
