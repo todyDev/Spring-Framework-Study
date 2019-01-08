@@ -61,7 +61,7 @@
 			                               <span class="mailbox-attachment-icon has-img"><!-- <img src="../../dist/img/photo2.png" alt="Attachment"> --></span>
 			
 			                               <div class="mailbox-attachment-info">
-			                                   <a href="#" class="mailbox-attachment-name"><i class="fa fa-camera"></i> ${bList.ORG_FILE_NAME }</a>
+			                                   <a href='<c:url value="/common/downloadFile?IDX=${bList.IDX }"/>' class="mailbox-attachment-name"><i class="fa fa-camera"></i> ${bList.ORG_FILE_NAME }</a>
 			                                   <span class="mailbox-attachment-size">
 			                                       ${bList.FILE_SIZE }kb
 			                                   </span>
