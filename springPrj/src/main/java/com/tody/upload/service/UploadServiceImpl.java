@@ -65,7 +65,7 @@ public class UploadServiceImpl implements UploadService {
 	}
 
 	@Override
-	public void updateBoard(Map<String, Object> map) {
+	public void updateBoard(Map<String, Object> map, MultipartFile[] file) throws Exception {
 		uploadDAO.updateBoard(map);
 	}
 

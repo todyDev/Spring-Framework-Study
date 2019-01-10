@@ -20,7 +20,7 @@ public interface UploadService {
 
 	Map<String, Object> selectBoardDetail(Map<String, Object> map);
 
-	void updateBoard(Map<String, Object> map);
+	void updateBoard(Map<String, Object> map, MultipartFile[] file) throws Exception;
 
 	void deleteBoard(Map<String, Object> map);
 

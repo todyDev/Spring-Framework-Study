@@ -75,10 +75,10 @@ public class UploadController {
     }
     
     @RequestMapping(value="/boardModify", method=RequestMethod.POST)
-    public ModelAndView boardModifyPOST(CommandMap commandMap, Criteria cri, RedirectAttributes redAttr) throws Exception {
+    public ModelAndView boardModifyPOST(CommandMap commandMap, Criteria cri, RedirectAttributes redAttr, MultipartFile[] file) throws Exception {
         ModelAndView mv = new ModelAndView("redirect:/upload/boardDetail");
         mv.addObject("IDX", commandMap.get("IDX"));
-        uploadService.updateBoard(commandMap.getMap());
+        uploadService.updateBoard(commandMap.getMap(), file);
         redAttr.addAttribute("page", cri.getPage());
         redAttr.addAttribute("perPagNum", cri.getPerPageNum());
         return mv;
