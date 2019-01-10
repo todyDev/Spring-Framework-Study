@@ -53,7 +53,15 @@ public class UploadServiceImpl implements UploadService {
 
 	@Override
 	public Map<String, Object> selectBoardDetail(Map<String, Object> map) {
-		return uploadDAO.detailBoard(map);
+		
+        Map<String, Object> detail = uploadDAO.detailBoard(map);
+        List<Map<String, Object>> list = uploadDAO.detailFile(map);
+        
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("detail", detail);
+        resultMap.put("list", list);
+        
+		return resultMap;
 	}
 
 	@Override

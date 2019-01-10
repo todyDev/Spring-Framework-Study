@@ -5,6 +5,10 @@
 
 <head>
 <%@ include file="/WEB-INF/views/include/00_head.jsp" %>
+<style type="text/css">
+.file_input {float:left}
+.file_name {float:left; padding-right:5px}
+</style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -37,7 +41,7 @@
                         <h3 class="box-title">Board Modify</h3>
                     </div>
                     <!-- /.box-header -->
-                    <form action='<c:url value="/upload/boardModify"/>' method="POST">
+                    <form action='<c:url value="/upload/boardModify"/>' method="POST" enctype="multipart/form-data">
 	                    <div class="box-body">
 	                        <div class="form-group">
 	                            <input class="form-control" placeholder="Writer:" name="CREA_ID" value="${detail.CREA_ID }" readonly>
@@ -47,6 +51,17 @@
 	                        </div>
 	                        <div class="form-group">
 	                            <textarea id="compose-textarea" class="form-control" style="height: 300px" name="CONTENTS">${detail.CONTENTS }</textarea>
+	                        </div>
+	                        <div class="box-footer" id="fileDiv">
+	                            <a href="#this" class="btn btn-default file_add" onclick="addFile()">파일추가</a><br/><br/>
+	                            <c:forEach items="${list }" var="bList" varStatus="var">
+	                            	<p>
+	                            	<input type="hidden" name="IDX_${var.index }" value="${bList.IDX }"/>
+	                            	<a href="#this" class="file_name" name="file_${var.index }">${bList.ORG_FILE_NAME }</a>
+	                            	<input type="file" name="file" class="file_input">
+	                            	<a href="#this" class="btn" name="delete">삭제</a>
+	                            	</p>
+	                           </c:forEach>
 	                        </div>
 	                    </div>
 	                    <!-- /.box-body -->
@@ -75,7 +90,27 @@
     <!-- ./wrapper -->
     
 	<%@ include file="/WEB-INF/views/include/01_plugins.jsp" %>
-
+	<script type="text/javascript">
+		var gfv_count = 1;
+		$(document).ready(function(){
+            $("a[name='delete']").on("click", function(e){
+                e.preventDefault();
+                deleteFile($(this));
+            });
+		})
+		function addFile() {
+			var str = "<p><input type='file' name='file' class='file_input'><a href='#this' class='btn' name='delete'>삭제</a></p>";
+			$("#fileDiv").append(str);
+			 $("a[name='delete']").on("click", function(e){
+	                e.preventDefault();
+	                deleteFile($(this));
+	            });
+		}
+		function deleteFile(obj) {
+			obj.parent().remove();
+		}
+	</script>
+	
 </body>
 
 </html>

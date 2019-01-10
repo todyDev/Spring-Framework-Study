@@ -67,8 +67,9 @@ public class UploadController {
     @RequestMapping(value="/boardModify")
     public ModelAndView boardModify(CommandMap commandMap, Criteria cri) throws Exception {
         ModelAndView mv = new ModelAndView("/upload/boardModify");
-        Map<String, Object> detail = uploadService.selectBoardDetail(commandMap.getMap());
-        mv.addObject("detail",detail);
+        Map<String, Object> resultMap = uploadService.selectBoardDetail(commandMap.getMap());
+        mv.addObject("detail",resultMap.get("detail"));
+        mv.addObject("list", resultMap.get("list"));
         mv.addObject("cri", cri);
         return mv;
     }
