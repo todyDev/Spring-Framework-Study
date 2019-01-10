@@ -5,6 +5,9 @@
 
 <head>
 <%@ include file="/WEB-INF/views/include/00_head.jsp" %>
+<style type="text/css">
+.file_input {float:left}
+</style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -48,8 +51,9 @@
 	                        <div class="form-group">
 	                            <textarea id="compose-textarea" class="form-control" style="height: 300px" name="CONTENTS"></textarea>
 	                        </div>
-                            <div class="form-group">
-                                <input type="file" name="file">
+                            <div class="form-group" id="fileDiv">
+	                            <a href="#this" class="btn btn-default file_add" onclick="addFile()">파일추가</a><br/><br/>
+                                <p><input type="file" name="file" class="file_input"><a href="#this" class="btn" name="delete">삭제</a></p>
                             </div>
 	                    </div>
 	                    <!-- /.box-body -->
@@ -75,6 +79,26 @@
     <!-- ./wrapper -->
     
 	<%@ include file="/WEB-INF/views/include/01_plugins.jsp" %>
+	<script type="text/javascript">
+		var gfv_count = 1;
+		$(document).ready(function(){
+            $("a[name='delete']").on("click", function(e){
+                e.preventDefault();
+                deleteFile($(this));
+            });
+		})
+		function addFile() {
+			var str = "<p><input type='file' name='file' class='file_input'><a href='#this' class='btn' name='delete'>삭제</a></p>";
+			$("#fileDiv").append(str);
+			 $("a[name='delete']").on("click", function(e){
+	                e.preventDefault();
+	                deleteFile($(this));
+	            });
+		}
+		function deleteFile(obj) {
+			obj.parent().remove();
+		}
+	</script>
 
 </body>
 
