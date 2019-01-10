@@ -29,7 +29,7 @@ public class UploadServiceImpl implements UploadService {
     }
 
 	@Override
-	public void insertBoard(CommandMap commandMap, MultipartFile file) throws Exception {
+	public void insertBoard(CommandMap commandMap, MultipartFile[] file) throws Exception {
 		uploadDAO.insertBoard(commandMap);
 		
 		List<Map<String, Object>> list = fileUtils.parseFileInfo(commandMap.getMap(), file);

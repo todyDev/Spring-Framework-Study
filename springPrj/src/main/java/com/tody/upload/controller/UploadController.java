@@ -47,7 +47,7 @@ public class UploadController {
     }
     
     @RequestMapping(value="/boardWrite", method=RequestMethod.POST)
-    public String boardWritePOST(CommandMap commandMap, MultipartFile file) throws Exception {
+    public String boardWritePOST(CommandMap commandMap, MultipartFile[] file) throws Exception {
     	uploadService.insertBoard(commandMap, file);
         return "redirect:/upload/boardList";
     }
