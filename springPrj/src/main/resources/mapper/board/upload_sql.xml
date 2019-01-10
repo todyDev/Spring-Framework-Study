@@ -163,5 +163,16 @@
                 IDX = #{ FILE_IDX}
         ]]>
     </update>
+    
+    <update id="virtualDeleteFile" parameterType="hashmap">
+        <![CDATA[
+            UPDATE
+                file
+            SET
+            	DEL_CHK = 'Y'
+            WHERE
+                BOARD_IDX = #{ IDX}
+        ]]>
+    </update>
 
 </mapper>
