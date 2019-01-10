@@ -43,21 +43,41 @@ public class FileUtils {
 			log.debug("transferTO: 업로드한 파일 데이터를 지정한 폴더에 저장");
 			log.debug("================== file   END ==================");
 			
-			String orgFileName = file[i].getOriginalFilename();
-			String orgFileExtension = orgFileName.substring(orgFileName.lastIndexOf("."));
-			String saveFileName = CommonUtils.getRandomString() + orgFileExtension;
-			
-			target = new File(uploadPath, saveFileName);
-			file[i].transferTo(target);
-			
-			listMap = new HashMap<String, Object>();
-			
-			listMap.put("BOARD_IDX", boardIDX);
-			listMap.put("ORG_FILE_NAME", orgFileName);
-			listMap.put("SAVE_FILE_NAME", saveFileName);
-			listMap.put("FILE_SIZE", file[i].getSize());
-			listMap.put("CREA_ID", creaID);
-			list.add(listMap);
+			if(!file[i].isEmpty()) {
+				
+				String orgFileName = file[i].getOriginalFilename();
+				String orgFileExtension = orgFileName.substring(orgFileName.lastIndexOf("."));
+				String saveFileName = CommonUtils.getRandomString() + orgFileExtension;
+				
+				target = new File(uploadPath, saveFileName);
+				file[i].transferTo(target);
+				
+				listMap = new HashMap<String, Object>();
+				
+				listMap.put("NEW_YN", "Y");
+				
+				listMap.put("BOARD_IDX", boardIDX);
+				listMap.put("ORG_FILE_NAME", orgFileName);
+				listMap.put("SAVE_FILE_NAME", saveFileName);
+				listMap.put("FILE_SIZE", file[i].getSize());
+				listMap.put("CREA_ID", creaID);
+				list.add(listMap);
+				
+			} else {
+				
+				String idx = "IDX_" + i;
+				
+				if(map.containsKey(idx) && map.get(idx) != null) {
+					
+					listMap = new HashMap<String, Object>();
+					
+					listMap.put("NEW_YN", "N");
+					listMap.put("FILE_IDX", map.get(idx));
+					list.add(listMap);
+				}
+				
+			}
+
 		}
 		
 		return list;
