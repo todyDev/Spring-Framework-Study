@@ -67,6 +67,15 @@ public class UploadServiceImpl implements UploadService {
 	@Override
 	public void updateBoard(Map<String, Object> map, MultipartFile[] file) throws Exception {
 		uploadDAO.updateBoard(map);
+		
+		List<Map<String, Object>> list = fileUtils.parseFileInfo(map, file);
+		for(int i=0; i<list.size(); i++) {
+			if(list.get(i).get("NEW_YN").equals("Y")) {
+				uploadDAO.insertFile(list.get(i));
+			} else {
+				uploadDAO.updateOrgFile(list.get(i));
+			}
+		}
 	}
 
 	@Override

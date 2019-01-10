@@ -152,5 +152,16 @@
     			DEL_CHK = 'N'
     	]]>
     </select>
+    
+    <update id="updateOrgFile" parameterType="hashmap">
+        <![CDATA[
+            UPDATE
+                file
+            SET
+            	DEL_CHK = 'N'
+            WHERE
+                IDX = #{ FILE_IDX}
+        ]]>
+    </update>
 
 </mapper>

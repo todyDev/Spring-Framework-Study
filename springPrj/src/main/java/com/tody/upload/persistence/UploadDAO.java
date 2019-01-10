@@ -50,5 +50,9 @@ public class UploadDAO extends AbstractDAO {
 	public List<Map<String, Object>> detailFile(Map<String, Object> map) {
 		return selectList("upload.detailFile", map);
 	}
+	
+	public void updateOrgFile(Map<String, Object> map) {
+		update("upload.updateOrgFile", map);
+	}
 
 }
