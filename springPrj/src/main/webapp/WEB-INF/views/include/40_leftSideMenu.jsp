@@ -39,7 +39,7 @@
                     <li><a href='<c:url value="/board/boardList"/>'><i class="fa fa-th-list"></i> <span>게시판 + 페이징</span></a></li>
                     <li><a href="#"><i class="fa fa-th-list"></i> <span>게시판 검색</span></a></li>
                     <li><a href="#"><i class="fa fa-th-list"></i> <span>게시판 댓글</span></a></li>
-                    <li><a href="#"><i class="fa fa-th-list"></i> <span>게시판 파일 업로드</span></a></li>
+                    <li><a href='<c:url value="/upload/boardList"/>'><i class="fa fa-th-list"></i> <span>게시판 파일 업로드</span></a></li>
                     <li class="header">회원 관련 (admin)</li>
                     <li><a href="#"><i class="fa fa-folder-open"></i> <span>회원 리스트</span></a></li>
                     <li class="treeview">
