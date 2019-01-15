@@ -39,6 +39,27 @@
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">Board</h3>
+                            <div class="box-tools pull-right">
+                                <div class="select-group" style="float: left; margin-right: 5px">
+                                    <select class="form-control input-sm" id="searchType">
+                                        <option value="n" <c:out value="${searchCriteria.searchType==null?'selected':'' }"/>>선택</option>
+                                        <option value="t" <c:out value="${searchCriteria.searchType eq 't'?'selected':'' }"/>>제목</option>
+                                        <option value="c" <c:out value="${searchCriteria.searchType eq 'c'?'selected':'' }"/>>내용</option>
+                                        <option value="w" <c:out value="${searchCriteria.searchType eq 'w'?'selected':'' }"/>>작성자</option>
+                                        <option value="tc" <c:out value="${searchCriteria.searchType eq 'tc'?'selected':'' }"/>>제목+내용</option>
+                                        <option value="cw" <c:out value="${searchCriteria.searchType eq 'cw'?'selected':'' }"/>>내용+작성자</option>
+                                        <option value="tcw" <c:out value="${searchCriteria.searchType eq 'tcw'?'selected':'' }"/>>제목+내용+작성자</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <div class="has-feedback">
+                                        <input type="text" class="form-control input-sm" id="keyword" value="${searchCriteria.keyword }" placeholder="search">
+                                        <button type="button" id="searchBtn" class="btn form-control-feedback" style="z-index: 5; pointer-events: auto;">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body no-padding">
@@ -128,6 +149,15 @@
     <!-- ./wrapper -->
     
 	<%@ include file="/WEB-INF/views/include/01_plugins.jsp" %>
+	<script type="text/javascript">
+		$(function(){
+			$("#searchBtn").on("click", function(event){
+				var keyword = encodeURIComponent($("#keyword").val());
+				var searchType = $("select option:selected").val();
+				self.location = "${pageContext.request.contextPath}/search/boardList${pageMaker.makeQuery(1)}&searchType="+searchType+"&keyword="+keyword;
+			});
+		});
+	</script>
 
 </body>
 
