@@ -18,6 +18,9 @@
 				board
 			WHERE
 				DEL_CHK = 'N'
+		]]>
+		<include refid="search"/>
+		<![CDATA[
 			ORDER BY IDX DESC
 			LIMIT #{pageStart}, #{perPageNum}
         ]]>
@@ -32,7 +35,41 @@
     		WHERE
     			DEL_CHK='N'
     	]]>
+    	<include refid="search"/>
     </select>
+    
+    <sql id="search">
+    	<if test="searchType != null">
+    		<if test="searchType == 't'.toString()">
+    			AND TITLE LIKE CONCAT('%', #{keyword}, '%')
+    		</if>
+    		<if test="searchType == 'c'.toString()">
+    			AND CONTENTS LIKE CONCAT('%', #{keyword}, '%')
+    		</if>
+    		<if test="searchType == 'w'.toString()">
+    			AND CREA_ID LIKE CONCAT('%', #{keyword}, '%')
+    		</if>
+    		<if test="searchType == 'tc'.toString()">
+    			AND (
+    				TITLE LIKE CONCAT('%', #{keyword}, '%')
+    				OR AND CONTENTS LIKE CONCAT('%', #{keyword}, '%')
+    			)
+    		</if>
+    		<if test="searchType == 'cw'.toString()">
+    			AND (
+    				CONTENTS LIKE CONCAT('%', #{keyword}, '%')
+    				OR AND CREA_ID LIKE CONCAT('%', #{keyword}, '%')
+    			)
+    		</if>
+    		<if test="searchType == 'tcw'.toString()">
+    			AND (
+    				TITLE LIKE CONCAT('%', #{keyword}, '%')
+    				OR CONTENTS LIKE CONCAT('%', #{keyword}, '%')
+    				OR AND CREA_ID LIKE CONCAT('%', #{keyword}, '%')
+    			)
+    		</if>
+    	</if>
+    </sql>
     
     <insert id="insertBoard" parameterType="hashmap">
         <![CDATA[
