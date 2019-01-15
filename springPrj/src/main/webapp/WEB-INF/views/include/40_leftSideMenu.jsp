@@ -37,7 +37,7 @@
                     <li class="header">게시판</li>
                     <!-- Optionally, you can add icons to the links -->
                     <li><a href='<c:url value="/board/boardList"/>'><i class="fa fa-th-list"></i> <span>게시판 + 페이징</span></a></li>
-                    <li><a href="#"><i class="fa fa-th-list"></i> <span>게시판 검색</span></a></li>
+                    <li><a href='<c:url value="/search/boardList"/>'><i class="fa fa-th-list"></i> <span>게시판 검색</span></a></li>
                     <li><a href="#"><i class="fa fa-th-list"></i> <span>게시판 댓글</span></a></li>
                     <li><a href='<c:url value="/upload/boardList"/>'><i class="fa fa-th-list"></i> <span>게시판 파일 업로드</span></a></li>
                     <li class="header">회원 관련 (admin)</li>
