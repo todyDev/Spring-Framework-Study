@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.tody.common.common.CommandMap;
-import com.tody.common.domain.Criteria;
+import com.tody.common.domain.SearchCriteria;
 import com.tody.search.persistence.SearchDAO;
 
 @Service("searchService")
@@ -18,7 +18,7 @@ public class SearchServiceImpl implements SearchService {
 	private SearchDAO searchDAO;
 	
     @Override
-    public List<Map<String, Object>> selectBoardList(Criteria cri) {
+    public List<Map<String, Object>> selectBoardList(SearchCriteria cri) {
         return searchDAO.selectBoardList(cri);
     }
 

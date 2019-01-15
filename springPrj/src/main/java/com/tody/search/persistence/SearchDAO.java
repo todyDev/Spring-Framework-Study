@@ -7,13 +7,13 @@ import org.springframework.stereotype.Repository;
 
 import com.tody.common.common.CommandMap;
 import com.tody.common.dao.AbstractDAO;
-import com.tody.common.domain.Criteria;
+import com.tody.common.domain.SearchCriteria;
 
 @Repository("searchDAO")
 public class SearchDAO extends AbstractDAO {
 	
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectBoardList(Criteria cri) {
+	public List<Map<String, Object>> selectBoardList(SearchCriteria cri) {
 		return (List<Map<String,Object>>)selectList("search.selectBoardList", cri);
 	}
 

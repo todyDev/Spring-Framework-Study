@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.tody.common.common.CommandMap;
-import com.tody.common.domain.Criteria;
+import com.tody.common.domain.SearchCriteria;
 
 public interface SearchService {
 	
-	List<Map<String, Object>> selectBoardList(Criteria cri);
+	List<Map<String, Object>> selectBoardList(SearchCriteria cri);
 
 	void insertBoard(CommandMap commandMap);
 

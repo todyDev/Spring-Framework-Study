@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.tody.common.common.CommandMap;
 import com.tody.common.domain.Criteria;
 import com.tody.common.domain.PageMaker;
+import com.tody.common.domain.SearchCriteria;
 import com.tody.search.service.SearchService;
 
 @Controller
@@ -24,7 +25,7 @@ public class SearchController {
 	private SearchService searchService;
     
     @RequestMapping(value="/boardList")
-    public ModelAndView openBoardList(Criteria cri) throws Exception {
+    public ModelAndView openBoardList(SearchCriteria cri) throws Exception {
         
         ModelAndView mav = new ModelAndView("/search/boardList");
         
