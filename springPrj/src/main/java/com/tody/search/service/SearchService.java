@@ -20,6 +20,6 @@ public interface SearchService {
 
 	void deleteBoard(Map<String, Object> map);
 
-	int countBoardListTotal();
+	int countBoardListTotal(SearchCriteria cri);
 
 }

@@ -38,8 +38,8 @@ public class SearchDAO extends AbstractDAO {
 		update("search.deleteBoard", map);
 	}
 	
-	public int countBoardList(){
-		return (Integer) selectOne("search.countBoardList");
+	public int countBoardList(SearchCriteria cri){
+		return (Integer) selectOne("search.countBoardList", cri);
 	}
 
 }

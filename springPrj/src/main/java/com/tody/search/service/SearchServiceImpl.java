@@ -50,8 +50,8 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	@Override
-	public int countBoardListTotal() {
-		return searchDAO.countBoardList();
+	public int countBoardListTotal(SearchCriteria cri) {
+		return searchDAO.countBoardList(cri);
 	}
 
 }

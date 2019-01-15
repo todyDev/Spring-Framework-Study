@@ -31,7 +31,7 @@ public class SearchController {
         
         PageMaker pageMaker = new PageMaker();
         pageMaker.setCri(cri);
-        pageMaker.setTotalCount(searchService.countBoardListTotal());
+        pageMaker.setTotalCount(searchService.countBoardListTotal(cri));
         
         List<Map<String,Object>> list = searchService.selectBoardList(cri);
         mav.addObject("list", list);
