@@ -22,7 +22,7 @@
                     <ul class="nav navbar-nav">
                     	<!-- sign in -->
                     	<li>
-                            <a href="#">Sign in</a>
+                            <a href='<c:url value='/accounts/loginform'/>'>Sign in</a>
                         </li>
                         <!-- sign up -->
                         <li>
