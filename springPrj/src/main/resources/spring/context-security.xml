@@ -13,6 +13,7 @@
 		    
 		    <security:form-login
 		    	login-page="/accounts/loginform"
+		    	default-target-url="/"
 		    />
 		</security:http>
 		
