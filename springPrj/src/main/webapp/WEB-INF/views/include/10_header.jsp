@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
         <header class="main-header">
 
             <!-- Logo -->
@@ -20,6 +21,7 @@
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
+                    	<sec:authorize access="isAnonymous()">
                     	<!-- sign in -->
                     	<li>
                             <a href='<c:url value='/accounts/loginform'/>'>Sign in</a>
@@ -28,6 +30,16 @@
                         <li>
                             <a href='<c:url value='/join/terms'/>'>Sign up</a>
                         </li>
+                        </sec:authorize>
+                    	<sec:authorize access="isAuthenticated()">
+                        <!-- logout -->
+                        <li>
+                            <a href="#" onclick="document.getElementById('logout-form').submit();">Sign out</a>
+                            <form id="logout-form" action='<c:url value='/accounts/logout'/>' method="POST">
+                            	<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+                            </form>
+                        </li>
+                        </sec:authorize>
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->

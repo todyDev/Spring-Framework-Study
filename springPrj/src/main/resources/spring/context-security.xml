@@ -15,6 +15,11 @@
 		    	login-page="/accounts/loginform"
 		    	default-target-url="/"
 		    />
+		    
+		    <security:logout
+		    	logout-url="/accounts/logout"
+		    	logout-success-url="/"
+		    />
 		</security:http>
 		
 		<security:authentication-manager>
