@@ -30,6 +30,36 @@
                         <li>
                             <a href='<c:url value='/join/terms'/>'>Sign up</a>
                         </li>
+                        <!-- User Account Menu -->
+                        <li class="dropdown user user-menu">
+                            <!-- Menu Toggle Button -->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <!-- The user image in the navbar-->
+                                <img src='<c:url value="/dist/img/user2-160x160.jpg"/>' class="user-image" alt="User Image">
+                                <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                <span class="hidden-xs">Unkown</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- The user image in the menu -->
+                                <li class="user-header">
+                                    <img src='<c:url value="/dist/img/user2-160x160.jpg"/>' class="img-circle" alt="User Image">
+
+                                    <p>
+                                        Anonymous - sign up now!
+                                        <small>로그인이 필요합니다.</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href='<c:url value='/accounts/loginform'/>' class="btn btn-default btn-flat">Sign in</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href='<c:url value='/join/terms'/>'class="btn btn-default btn-flat">Sign up</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
                         </sec:authorize>
                     	<sec:authorize access="isAuthenticated()">
                         <!-- logout -->
@@ -39,7 +69,6 @@
                             	<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
                             </form>
                         </li>
-                        </sec:authorize>
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->
@@ -47,7 +76,7 @@
                                 <!-- The user image in the navbar-->
                                 <img src='<c:url value="/dist/img/user2-160x160.jpg"/>' class="user-image" alt="User Image">
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs">Alexander Pierce</span>
+                                <span class="hidden-xs"><sec:authentication property="principal.username"/></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
@@ -55,8 +84,8 @@
                                     <img src='<c:url value="/dist/img/user2-160x160.jpg"/>' class="img-circle" alt="User Image">
 
                                     <p>
-                                        Alexander Pierce - Web Developer
-                                        <small>Member since Nov. 2012</small>
+                                        <sec:authentication property="principal.username"/>님, 반갑습니다.
+                                        <small>email@email.com</small>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
@@ -65,11 +94,12 @@
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="#" onclick="document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
                         </li>
+                        </sec:authorize>
                     </ul>
                 </div>
             </nav>
