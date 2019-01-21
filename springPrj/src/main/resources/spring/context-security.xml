@@ -7,6 +7,8 @@
 							http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 							http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
+		<context:component-scan base-package="com.tody.user.persistence"/>
+		
 		<security:http pattern="/resources/**" security="none"/>
 		<security:http auto-config="true">
 			<security:intercept-url pattern="/**" access="permitAll"/>
@@ -26,9 +28,6 @@
 			<security:authentication-provider user-service-ref="userService"/>
 		</security:authentication-manager>
 		
-		<security:jdbc-user-service data-source-ref="dataSource" id="userService"
-			users-by-username-query=" select u.ID as username, u.PASSWORD as password, a.ENABLED from test_user u inner join test_auth a on u.ID=a.ID where u.ID=?"
-			authorities-by-username-query="select ID as username, AUTHORITY from test_auth where ID=?"
-		/>
+		<bean id="userService" class="com.tody.user.service.CustomUserDetailsService"/>
 		
 </beans>
