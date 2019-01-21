@@ -26,6 +26,11 @@
                     <input type="password" class="form-control" placeholder="Password" name="password">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
+                <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION }">
+                	<font color="red">
+                		<p>${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message }</p>
+                	</font>
+                </c:if>
                 <div class="row">
                     <div class="col-xs-8">
                         <div class="checkbox icheck">
