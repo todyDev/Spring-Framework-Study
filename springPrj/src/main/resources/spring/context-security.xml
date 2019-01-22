@@ -16,6 +16,7 @@
 		    <security:form-login
 		    	login-page="/accounts/loginform"
 		    	default-target-url="/"
+		    	authentication-failure-handler-ref="loginFailureHandler"
 		    />
 		    
 		    <security:logout
@@ -29,5 +30,12 @@
 		</security:authentication-manager>
 		
 		<bean id="userService" class="com.tody.user.service.CustomUserDetailsService"/>
+		
+		<bean id="loginFailureHandler" class="com.tody.user.handler.LoginFailureHandler">
+			<property name="usernamename" value="username"/>
+			<property name="passwordname" value="password"/>
+			<property name="errormsgname" value="errormsg"/>
+			<property name="defaultFailureUrl" value="/accounts/loginform?error"/>
+		</bean>
 		
 </beans>
