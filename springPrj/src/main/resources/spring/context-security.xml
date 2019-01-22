@@ -23,6 +23,10 @@
 		    	logout-url="/accounts/logout"
 		    	logout-success-url="/"
 		    />
+		    
+		    <security:access-denied-handler
+		    	ref="accessDeniedHandler"
+		    />
 		</security:http>
 		
 		<security:authentication-manager>
@@ -39,6 +43,10 @@
 		</bean>
 		<bean id="loginSuccessHandler" class="com.tody.user.handler.LoginSuccessHandler">
 			<property name="defaultUrl" value="/"/>
+		</bean>
+		
+		<bean id="accessDeniedHandler" class="com.tody.user.handler.CustomAccessDeniedHandler">
+			<property name="errorpage" value="/accounts/access_denied"/>
 		</bean>
 		
 </beans>
