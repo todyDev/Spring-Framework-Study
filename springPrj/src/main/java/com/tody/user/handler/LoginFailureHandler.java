@@ -22,9 +22,11 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 		
 		String username = request.getParameter(usernamename);
 		String password = request.getParameter(passwordname);
+		String errormsg = exception.getMessage();
 		
 		request.setAttribute(usernamename, username);
 		request.setAttribute(passwordname, password);
+		request.setAttribute(errormsgname, errormsg);
 		
 		request.getRequestDispatcher(defaultFailureUrl).forward(request, response);
 

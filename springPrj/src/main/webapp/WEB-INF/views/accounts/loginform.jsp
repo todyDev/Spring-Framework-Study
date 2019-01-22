@@ -19,16 +19,16 @@
 
             <form action='<c:url value="/login"/>' method="post">
                 <div class="form-group has-feedback">
-                    <input type="text" class="form-control" placeholder="ID" name="username">
+                    <input type="text" class="form-control" placeholder="ID" name="username" value="${username }">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" class="form-control" placeholder="Password" name="password">
+                    <input type="password" class="form-control" placeholder="Password" name="password" value="${password }">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
-                <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION }">
+                <c:if test="${not empty errormsg }">
                 	<font color="red">
-                		<p>${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message }</p>
+                		<p>${errormsg }</p>
                 	</font>
                 </c:if>
                 <div class="row">
