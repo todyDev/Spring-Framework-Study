@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
         <aside class="main-sidebar">
 
             <!-- sidebar: style can be found in sidebar.less -->
@@ -12,7 +13,12 @@
                         <img src='<c:url value="/dist/img/user2-160x160.jpg"/>' class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p>Alexander Pierce</p>
+                    	<sec:authorize access="isAnonymous()">
+                        <p>Unkown</p>
+                    	</sec:authorize>
+                    	<sec:authorize access="isAuthenticated()">
+                        <p><sec:authentication property="principal.username"/></p>
+                    	</sec:authorize>
                         <!-- Status -->
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>

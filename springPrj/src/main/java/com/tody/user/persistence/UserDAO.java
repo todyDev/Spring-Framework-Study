@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tody.common.common.CommandMap;
 import com.tody.common.dao.AbstractDAO;
+import com.tody.user.domain.CustomUserDetails;
 
 @Repository("userDAO")
 public class UserDAO extends AbstractDAO{
@@ -18,6 +19,10 @@ public class UserDAO extends AbstractDAO{
 
 	public void registerUser(CommandMap commandMap) {
 		insert("user.register", commandMap.getMap());
+	}
+
+	public CustomUserDetails getUserById(String username) {
+		return (CustomUserDetails) selectOne("secu.selectUserById", username);
 	}
 
 }
