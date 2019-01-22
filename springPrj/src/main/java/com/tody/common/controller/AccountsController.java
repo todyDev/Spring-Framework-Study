@@ -11,5 +11,10 @@ public class AccountsController {
 	public String loginform() throws Exception {
 		return "/accounts/loginform";
 	}
+	
+	@RequestMapping(value="/access_denied")
+	public String accessDenied() throws Exception {
+		return "/accounts/access_denied";
+	}
 
 }
