@@ -11,6 +11,10 @@
        <interceptor>
            <mapping path="/**"/>
            <exclude-mapping path="/resources/**"/>
+           <exclude-mapping path="/bower_components/**"/>
+           <exclude-mapping path="/dist/**"/>
+           <exclude-mapping path="/plugins/**"/>
+           <exclude-mapping path="/jquery-validation-1.19.0/**"/>
            <beans:bean id="commonInterceptor" class="com.tody.common.interceptor.CommonInterceptor"/>
        </interceptor>
     </interceptors>
