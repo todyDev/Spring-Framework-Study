@@ -49,6 +49,7 @@
                     <a href="#" style="color: #999"><i class="fa  fa-chevron-circle-left"> 이전으로</i></a>
                 </div>
                 <div class="col-xs-4">
+                	<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
                     <button type="submit" id="nextBtn" class="btn btn-primary btn-block btn-flat">다음 단계</button>
                 </div>
             </div>

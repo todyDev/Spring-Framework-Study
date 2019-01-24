@@ -50,6 +50,7 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-xs-4">
+                    	<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
                         <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
                     </div>
                     <!-- /.col -->
@@ -119,6 +120,9 @@
     				async: true,
     				type: 'POST',
     				data: id,
+    				beforeSend: function(xhr) {
+    					xhr.setRequestHeader("${_csrf.headerName}","${_csrf.token}")
+    				},
     				url: "${pageContext.request.contextPath}/join/chkidinfo",
     				dataType: "json",
     				contentType: "application/json; charset=UTF-8",
@@ -140,6 +144,9 @@
     				async: true,
     				type: 'POST',
     				data: email,
+    				beforeSend: function(xhr) {
+    					xhr.setRequestHeader("${_csrf.headerName}","${_csrf.token}")
+    				},
     				url: "${pageContext.request.contextPath}/join/chkemailinfo",
     				dataType: "json",
     				contentType: "application/json; charset=UTF-8",

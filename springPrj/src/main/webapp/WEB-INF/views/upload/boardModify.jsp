@@ -41,7 +41,7 @@
                         <h3 class="box-title">Board Modify</h3>
                     </div>
                     <!-- /.box-header -->
-                    <form action='<c:url value="/upload/boardModify"/>' method="POST" enctype="multipart/form-data">
+                    <form action='<c:url value="/upload/boardModify?${_csrf.parameterName}=${_csrf.token}"/>' method="POST" enctype="multipart/form-data">
 	                    <div class="box-body">
 	                        <div class="form-group">
 	                            <input class="form-control" placeholder="Writer:" name="CREA_ID" value="${detail.CREA_ID }" readonly>

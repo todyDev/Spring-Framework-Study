@@ -40,7 +40,7 @@
                         <h3 class="box-title">Board Write</h3>
                     </div>
                     <!-- /.box-header -->
-                    <form action='<c:url value="/upload/boardWrite"/>' method="POST" enctype="multipart/form-data">
+                    <form action='<c:url value="/upload/boardWrite?${_csrf.parameterName}=${_csrf.token}"/>' method="POST" enctype="multipart/form-data">
 	                    <div class="box-body">
 	                        <div class="form-group">
 	                            <input class="form-control" placeholder="Writer:" name="CREA_ID">
