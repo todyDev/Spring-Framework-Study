@@ -47,6 +47,10 @@
 		
 		<bean id="accessDeniedHandler" class="com.tody.user.handler.CustomAccessDeniedHandler">
 			<property name="errorpage" value="/accounts/access_denied"/>
+			<property name="usernamename" value="username"/>
+			<property name="authorizename" value="authorize"/>
+			<property name="errorcodename" value="errorcode"/>
+			<property name="errormsgname" value="errormsg"/>
 		</bean>
 		
 </beans>

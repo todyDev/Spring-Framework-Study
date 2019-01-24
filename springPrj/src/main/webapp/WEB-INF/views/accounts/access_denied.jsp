@@ -29,17 +29,17 @@
 
             <!-- Main content -->
             <section class="content">
+             	<c:if test="${errorcode eq 403 }">
                 <div class="error-page">
                     <h2 class="headline text-yellow"> 403</h2>
 
                     <div class="error-content">
                         <h3><i class="fa fa-warning text-yellow"></i> 앗! 접근 불가한 페이지입니다!</h3>
-
                         <p>
-                            현재 회원님의 등급은 ${auth } 이므로, 해당 페이지에 접근할 수 없습니다.
+                            현재 회원님의 등급은 ${authorize } 이므로, 해당 페이지에 접근할 수 없습니다.
                             등급을 올리시거나 <a href="#">회원 가입</a>을 해주세요. 감사합니다.
                         </p>
-
+                        
                         <form class="search-form">
                             <div class="input-group">
                                 <input type="text" name="search" class="form-control" placeholder="Search">
@@ -55,6 +55,33 @@
                     <!-- /.error-content -->
                 </div>
                 <!-- /.error-page -->
+                </c:if>
+            	<c:if test="${errorcode eq 500 }">
+                <div class="error-page">
+                    <h2 class="headline text-red">500</h2>
+
+                    <div class="error-content">
+                        <h3><i class="fa fa-warning text-red"></i> Oops! Something went wrong.</h3>
+
+                        <p>
+                            ${errormsg }
+                        </p>
+
+                        <form class="search-form">
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control" placeholder="Search">
+
+                                <div class="input-group-btn">
+                                    <button type="submit" name="submit" class="btn btn-danger btn-flat"><i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.input-group -->
+                        </form>
+                    </div>
+                </div>
+                <!-- /.error-page -->
+                </c:if>
             </section>
             <!-- /.content -->
         </div>
