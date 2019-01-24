@@ -30,7 +30,9 @@
 		</security:http>
 		
 		<security:authentication-manager>
-			<security:authentication-provider user-service-ref="userService"/>
+			<security:authentication-provider user-service-ref="userService">
+				<security:password-encoder ref="bcryptPasswordEncoder"/>
+			</security:authentication-provider>
 		</security:authentication-manager>
 		
 		<bean id="userService" class="com.tody.user.service.CustomUserDetailsService"/>
@@ -52,5 +54,7 @@
 			<property name="errorcodename" value="errorcode"/>
 			<property name="errormsgname" value="errormsg"/>
 		</bean>
+		
+		<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 		
 </beans>

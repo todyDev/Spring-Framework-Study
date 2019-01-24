@@ -3,6 +3,8 @@ package com.tody.user.controller;
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,9 @@ public class JoinController {
 	@Resource(name="userService")
 	private UserService userSer;
 	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
 	@RequestMapping(value="/terms")
 	public String joinTerms() throws Exception {
 		return "/join/terms";
@@ -38,7 +43,9 @@ public class JoinController {
 	
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
 	public String joinSignupPOST(CommandMap commandMap) throws Exception {
-
+		
+		commandMap.put("pw", passwordEncoder.encode((String)commandMap.getMap().get("pw")));
+		
 		userSer.register(commandMap);
 		
 		return "redirect:/";
