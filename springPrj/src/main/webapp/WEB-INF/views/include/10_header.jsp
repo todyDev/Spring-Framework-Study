@@ -84,8 +84,8 @@
                                     <img src='<c:url value="/dist/img/user2-160x160.jpg"/>' class="img-circle" alt="User Image">
 
                                     <p>
-                                        <sec:authentication property="principal.username"/>님, 반갑습니다.
-                                        <small>email@email.com</small>
+                                        <sec:authentication property="principal.NAME"/>님, 반갑습니다.
+                                        <small><sec:authentication property="principal.EMAIL"/></small>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
