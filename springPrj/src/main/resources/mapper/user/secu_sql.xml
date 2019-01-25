@@ -7,7 +7,7 @@
 			SELECT
 				*
 			FROM
-				test_user u, test_auth a
+				user u, auth a
 			WHERE
 				u.ID = a.ID
 			AND

@@ -18,11 +18,15 @@ public class UserDAO extends AbstractDAO{
 	}
 
 	public void registerUser(CommandMap commandMap) {
-		insert("user.register", commandMap.getMap());
+		insert("user.registerUser", commandMap.getMap());
 	}
 
 	public CustomUserDetails getUserById(String username) {
 		return (CustomUserDetails) selectOne("secu.selectUserById", username);
+	}
+
+	public void registerAuth(CommandMap commandMap) {
+		insert("user.registerAuth", commandMap.getMap());
 	}
 
 }

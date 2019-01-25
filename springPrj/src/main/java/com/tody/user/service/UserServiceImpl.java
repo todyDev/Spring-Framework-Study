@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
 	public void register(CommandMap commandMap) throws Exception{
 
 		userDAO.registerUser(commandMap);
-		
+		userDAO.registerAuth(commandMap);
 	}
 
 	@Override

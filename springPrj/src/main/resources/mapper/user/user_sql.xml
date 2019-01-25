@@ -28,7 +28,7 @@
         ]]>
     </select>
     
-    <insert id="register" parameterType="hashmap">
+    <insert id="registerUser" parameterType="hashmap">
     	<![CDATA[
     		INSERT INTO user
     		(
@@ -37,18 +37,32 @@
     			NAME,
     			EMAIL,
     			PHONE,
-    			REGDATE
+    			REGDATE,
+    			ACCDATE
     		)
     		VALUES
     		(
     			#{ id},
     			#{ pw},
     			#{ name},
-    			#{ email},
-    			#{ phone},
+    			#{ email, jdbcType=VARCHAR},
+    			#{ phone, jdbcType=VARCHAR},
+    			SYSDATE(),
     			SYSDATE()
     		)
-    			
+    	]]>
+    </insert>
+        
+    <insert id="registerAuth" parameterType="hashmap">
+    	<![CDATA[
+    		INSERT INTO auth
+    		(
+    			ID
+    		)
+    		VALUES
+    		(
+    			#{ id}
+    		)
     	]]>
     </insert>
 
