@@ -65,5 +65,35 @@
     		)
     	]]>
     </insert>
+    
+    <select id="selectAll" resultType="hashmap">
+        <![CDATA[
+			SELECT
+				u.IDX,
+				u.ID,
+				u.NAME,
+				u.EMAIL,
+				u.PHONE,
+				u.REGDATE,
+				a.AUTHORITY,
+				a.ENABLED,
+				a.CREDEXPI,
+				a.LOCKED,
+				a.NONEXPI
+			FROM
+				user u, auth a
+			WHERE
+				u.ID = a.ID;
+        ]]>
+    </select>
+    
+    <select id="countUserlist" resultType="Integer">
+        <![CDATA[
+			SELECT
+				count(*)
+			FROM
+				user u
+        ]]>
+    </select>
 
 </mapper>

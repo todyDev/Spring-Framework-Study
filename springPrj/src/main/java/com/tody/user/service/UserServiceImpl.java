@@ -1,5 +1,8 @@
 package com.tody.user.service;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -28,6 +31,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean selectByEmail(String email) {
 		return userDAO.selectByEmail(email);
+	}
+
+	@Override
+	public List<Map<Object, String>> selectAllUser() {
+		return userDAO.selectAllUser();
+	}
+
+	@Override
+	public int countUserlistTotal() {
+		return userDAO.countUserlistTotal();
 	}
 	
 }

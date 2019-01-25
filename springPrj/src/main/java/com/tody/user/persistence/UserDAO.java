@@ -1,5 +1,8 @@
 package com.tody.user.persistence;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Repository;
 
 import com.tody.common.common.CommandMap;
@@ -27,6 +30,15 @@ public class UserDAO extends AbstractDAO{
 
 	public void registerAuth(CommandMap commandMap) {
 		insert("user.registerAuth", commandMap.getMap());
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Map<Object, String>> selectAllUser() {
+		return selectList("user.selectAll");
+	}
+
+	public int countUserlistTotal() {
+		return (Integer) selectOne("user.countUserlist");
 	}
 
 }

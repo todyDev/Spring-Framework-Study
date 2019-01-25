@@ -1,5 +1,8 @@
 package com.tody.user.service;
 
+import java.util.List;
+import java.util.Map;
+
 import com.tody.common.common.CommandMap;
 
 public interface UserService {
@@ -9,5 +12,9 @@ public interface UserService {
 	boolean selectById(String id);
 
 	boolean selectByEmail(String email);
+
+	List<Map<Object, String>> selectAllUser();
+
+	int countUserlistTotal();
 	
 }
