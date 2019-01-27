@@ -7,7 +7,7 @@
 							http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 							http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-		<context:component-scan base-package="com.tody.user.persistence"/>
+		<context:component-scan base-package="com.tody.user"/>
 		
 		<security:http pattern="/resources/**" security="none"/>
 		<security:http auto-config="true">
@@ -30,12 +30,12 @@
 		</security:http>
 		
 		<security:authentication-manager>
-			<security:authentication-provider user-service-ref="userService">
+			<security:authentication-provider user-service-ref="customUserService">
 				<security:password-encoder ref="bcryptPasswordEncoder"/>
 			</security:authentication-provider>
 		</security:authentication-manager>
 		
-		<bean id="userService" class="com.tody.user.service.CustomUserDetailsService"/>
+		<bean id="customUserService" class="com.tody.user.service.CustomUserDetailsService"/>
 		
 		<bean id="loginFailureHandler" class="com.tody.user.handler.LoginFailureHandler">
 			<property name="usernamename" value="username"/>
@@ -45,6 +45,7 @@
 		</bean>
 		<bean id="loginSuccessHandler" class="com.tody.user.handler.LoginSuccessHandler">
 			<property name="defaultUrl" value="/"/>
+			<property name="usernamename" value="username"/>
 		</bean>
 		
 		<bean id="accessDeniedHandler" class="com.tody.user.handler.CustomAccessDeniedHandler">

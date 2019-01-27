@@ -41,4 +41,28 @@ public class UserDAO extends AbstractDAO{
 		return (Integer) selectOne("user.countUserlist");
 	}
 
+	public void updateCountFailure(String username) {
+		update("user.updateFailureCount", username);
+	}
+
+	public int checkFailureCount(String username) {
+		return (Integer) selectOne("user.countFailure", username);
+	}
+
+	public void updateDisabledUsername(String username) {
+		update("user.updateDisabled", username);
+	}
+
+	public void updateResetFailureCount(String username) {
+		update("user.updateResetFailureCount", username);
+	}
+
+	public void updateLoginCount(String username) {
+		update("user.updateLoginCount", username);
+	}
+
+	public void updateAccDate(String username) {
+		update("user.updateAccDate", username);
+	}
+
 }
