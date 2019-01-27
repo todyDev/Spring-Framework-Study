@@ -16,5 +16,11 @@ public interface UserService {
 	List<Map<Object, String>> selectAllUser();
 
 	int countUserlistTotal();
+
+	void countFailure(String username);
+
+	int checkFailureCount(String username);
+
+	void disabledUser(String username);
 	
 }

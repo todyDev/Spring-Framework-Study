@@ -95,5 +95,38 @@
 				user u
         ]]>
     </select>
+    
+    <update id="updateFailureCount">
+    	<![CDATA[
+			UPDATE
+				auth
+			SET
+				FAILCNT = FAILCNT + 1
+			WHERE
+				ID = #{ id}
+		]]>
+    </update>
+    
+    <select id="countFailure" resultType="Integer">
+		<![CDATA[
+			SELECT
+				FAILCNT
+			FROM
+				auth
+			WHERE
+				ID=#{ id}
+		]]>
+    </select>
+    
+	<update id="updateDisabled">
+		<![CDATA[
+			UPDATE
+				auth
+			SET
+				ENABLED = false
+			WHERE
+				ID = #{ id}
+		]]>
+	</update>
 
 </mapper>

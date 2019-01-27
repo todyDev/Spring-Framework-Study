@@ -42,5 +42,20 @@ public class UserServiceImpl implements UserService {
 	public int countUserlistTotal() {
 		return userDAO.countUserlistTotal();
 	}
+
+	@Override
+	public void countFailure(String username) {
+		userDAO.updateCountFailure(username);
+	}
+
+	@Override
+	public int checkFailureCount(String username) {
+		return userDAO.checkFailureCount(username);
+	}
+
+	@Override
+	public void disabledUser(String username) {
+		userDAO.updateDisabledUsername(username);
+	}
 	
 }
