@@ -45,6 +45,7 @@
 		</bean>
 		<bean id="loginSuccessHandler" class="com.tody.user.handler.LoginSuccessHandler">
 			<property name="defaultUrl" value="/"/>
+			<property name="usernamename" value="username"/>
 		</bean>
 		
 		<bean id="accessDeniedHandler" class="com.tody.user.handler.CustomAccessDeniedHandler">

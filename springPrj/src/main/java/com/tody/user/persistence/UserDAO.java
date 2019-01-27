@@ -53,4 +53,16 @@ public class UserDAO extends AbstractDAO{
 		update("user.updateDisabled", username);
 	}
 
+	public void updateResetFailureCount(String username) {
+		update("user.updateResetFailureCount", username);
+	}
+
+	public void updateLoginCount(String username) {
+		update("user.updateLoginCount", username);
+	}
+
+	public void updateAccDate(String username) {
+		update("user.updateAccDate", username);
+	}
+
 }

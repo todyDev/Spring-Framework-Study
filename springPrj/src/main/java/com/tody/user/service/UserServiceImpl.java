@@ -57,5 +57,16 @@ public class UserServiceImpl implements UserService {
 	public void disabledUser(String username) {
 		userDAO.updateDisabledUsername(username);
 	}
+
+	@Override
+	public void resetFailureCount(String username) {
+		userDAO.updateResetFailureCount(username);
+	}
+
+	@Override
+	public void updateLoginRecord(String username) {
+		userDAO.updateAccDate(username);
+		userDAO.updateLoginCount(username);
+	}
 	
 }

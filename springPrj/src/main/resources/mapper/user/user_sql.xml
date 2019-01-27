@@ -128,5 +128,38 @@
 				ID = #{ id}
 		]]>
 	</update>
+	
+	<update id="updateResetFailureCount">
+		<![CDATA[
+			UPDATE
+				auth
+			SET
+				FAILCNT = 0
+			WHERE
+				ID = #{ id}
+		]]>
+	</update>
+	
+	<update id="updateLoginCount">
+		<![CDATA[
+			UPDATE
+				user
+			SET
+				LOGINCNT = LOGINCNT + 1
+			WHERE
+				ID = #{ id}
+		]]>
+	</update>
+	
+	<update id="updateAccDate">
+		<![CDATA[
+			UPDATE
+				user
+			SET
+				ACCDATE = SYSDATE()
+			WHERE
+				ID = #{ id}
+		]]>
+	</update>
 
 </mapper>

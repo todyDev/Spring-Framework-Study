@@ -22,5 +22,9 @@ public interface UserService {
 	int checkFailureCount(String username);
 
 	void disabledUser(String username);
+
+	void resetFailureCount(String username);
+
+	void updateLoginRecord(String username);
 	
 }
