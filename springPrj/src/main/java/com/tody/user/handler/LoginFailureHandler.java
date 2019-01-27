@@ -6,8 +6,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.CredentialsExpiredException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.session.SessionAuthenticationException;
+
+import com.tody.common.util.MessageUtils;
 
 public class LoginFailureHandler implements AuthenticationFailureHandler {
 	
@@ -22,7 +29,19 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 		
 		String username = request.getParameter(usernamename);
 		String password = request.getParameter(passwordname);
-		String errormsg = exception.getMessage();
+		String errormsg = null;
+		
+		if(exception instanceof BadCredentialsException) {
+			errormsg = MessageUtils.getMessage("loginError.BadCredentials");
+		} else if(exception instanceof InternalAuthenticationServiceException) {
+			errormsg = MessageUtils.getMessage("loginError.BadCredentials");
+		} else if(exception instanceof DisabledException) {
+			errormsg = MessageUtils.getMessage("loginError.Disaled");
+		} else if(exception instanceof CredentialsExpiredException) {
+			errormsg = MessageUtils.getMessage("loginError.CredentialsExpired");
+		} else if(exception instanceof SessionAuthenticationException) {
+			errormsg = MessageUtils.getMessage("loginError.SessionAuthentication");
+		}
 		
 		request.setAttribute(usernamename, username);
 		request.setAttribute(passwordname, password);
