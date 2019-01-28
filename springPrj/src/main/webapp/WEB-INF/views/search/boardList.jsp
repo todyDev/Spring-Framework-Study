@@ -102,7 +102,9 @@
                         <div class="box-footer no-padding">
                             <div class="mailbox-controls">
                                 <!-- Check all button -->
+                                <sec:authorize access="isAuthenticated()">
                                 <a href='<c:url value="/search/boardWrite"/>' role="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-edit"> 글작성</i></a>
+                                </sec:authorize>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
                                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>

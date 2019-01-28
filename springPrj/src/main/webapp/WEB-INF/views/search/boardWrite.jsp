@@ -40,7 +40,7 @@
                     <form action='<c:url value="/search/boardWrite"/>' method="POST">
 	                    <div class="box-body">
 	                        <div class="form-group">
-	                            <input class="form-control" placeholder="Writer:" name="CREA_ID">
+	                            <input class="form-control" placeholder="Writer:" name="CREA_ID" value="<sec:authentication property="principal.username"/>" readonly>
 	                        </div>
 	                        <div class="form-group">
 	                            <input class="form-control" placeholder="Subject:" name="TITLE">

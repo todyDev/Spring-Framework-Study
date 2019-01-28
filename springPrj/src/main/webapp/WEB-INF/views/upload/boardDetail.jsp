@@ -75,10 +75,15 @@
                         </c:choose>
                         <div class="box-footer">
                         	<a href='<c:url value="/upload/boardList?page=${cri.page }&perPageNum=${cri.perPageNum }"/>' role="button" class="btn btn-default"><i class="fa fa-list"></i> 목록으로</a>
+                        	<sec:authorize access="isAuthenticated()">
+                        	<sec:authentication property="principal.username" var="crea_id"/>
+                        	<c:if test="${detail.CREA_ID eq crea_id }">
                             <div class="pull-right">
                                 <a href='<c:url value="/upload/boardModify?IDX=${detail.IDX }&page=${cri.page }&perPageNum=${cri.perPageNum }"/>' role="button" class="btn btn-default"><i class="fa fa-reply"></i> 수정</a>
                                 <a href='<c:url value="/upload/boardDelete?IDX=${detail.IDX }&page=${cri.page }&perPageNum=${cri.perPageNum }"/>' role="button" class="btn btn-default"><i class="fa fa-trash-o"></i> 삭제</a>
                             </div>
+                        	</c:if>
+                            </sec:authorize>
                         </div>
                         <!-- /.box-footer -->
                     </div>
