@@ -42,6 +42,7 @@
                     <!-- /.col -->
                     <div class="col-xs-4">
                     	<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+                    	<input type="hidden" value="${loginRedirect }" name="loginRedirect"/>
                         <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
                     </div>
                     <!-- /.col -->
