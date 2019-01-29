@@ -43,10 +43,12 @@
 			<property name="passwordname" value="password"/>
 			<property name="errormsgname" value="errormsg"/>
 			<property name="defaultFailureUrl" value="/accounts/loginform?error"/>
+			<property name="redirectUrl" value="loginRedirect"/>
 		</bean>
 		<bean id="loginSuccessHandler" class="com.tody.user.handler.LoginSuccessHandler">
 			<property name="defaultUrl" value="/"/>
 			<property name="usernamename" value="username"/>
+			<property name="redirectUrl" value="loginRedirect"/>
 		</bean>
 		
 		<bean id="accessDeniedHandler" class="com.tody.user.handler.CustomAccessDeniedHandler">
