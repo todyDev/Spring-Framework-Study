@@ -27,6 +27,7 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 	private String passwordname;
 	private String errormsgname;
 	private String defaultFailureUrl;
+	private String redirectUrl;
 
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
@@ -34,6 +35,7 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 		
 		String username = request.getParameter(usernamename);
 		String password = request.getParameter(passwordname);
+		String redirecturl = request.getParameter(redirectUrl);
 		String errormsg = null;
 		
 		if(exception instanceof BadCredentialsException) {
@@ -51,6 +53,7 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 		
 		request.setAttribute(usernamename, username);
 		request.setAttribute(passwordname, password);
+		request.setAttribute(redirectUrl, redirecturl);
 		request.setAttribute(errormsgname, errormsg);
 		
 		request.getRequestDispatcher(defaultFailureUrl).forward(request, response);
@@ -95,6 +98,14 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 
 	public void setDefaultFailureUrl(String defaultFailureUrl) {
 		this.defaultFailureUrl = defaultFailureUrl;
+	}
+
+	public String getRedirectUrl() {
+		return redirectUrl;
+	}
+
+	public void setRedirectUrl(String redirectUrl) {
+		this.redirectUrl = redirectUrl;
 	}
 
 }
