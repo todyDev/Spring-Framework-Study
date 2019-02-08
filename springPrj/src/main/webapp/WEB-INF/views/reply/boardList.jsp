@@ -77,8 +77,8 @@
                                             <c:when test="${fn:length(list) > 0 }">
                                                 <c:forEach items="${list }" var="bList">
                                                     <tr>
-                                                        <td class="mailbox-attachment">${bList.IDX }</td>
-                                                        <td class="mailbox-subject"><a href='<c:url value='/reply/boardDetail${pageMaker.makeSearch(pageMaker.cri.page) }&IDX=${bList.IDX }'/>'>${bList.TITLE }</a></td>
+                                                        <td class="mailbox-attachment">${bList.ARTICLE_NO }</td>
+                                                        <td class="mailbox-subject"><a href='<c:url value='/reply/boardDetail${pageMaker.makeSearch(pageMaker.cri.page) }&IDX=${bList.ARTICLE_NO }'/>'>${bList.TITLE }</a></td>
                                                         <td class="mailbox-name"><a href="#">${bList.CREA_ID }</a></td>
                                                         <td class="mailbox-attachment">${bList.HIT_CNT }</td>
                                                         <td class="mailbox-date">${bList.CREA_DATE }</td>

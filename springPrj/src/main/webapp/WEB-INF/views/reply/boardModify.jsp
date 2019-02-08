@@ -50,7 +50,7 @@
 	                        </div>
 	                    </div>
 	                    <!-- /.box-body -->
-	                    <input type="hidden" name="IDX" value="${detail.IDX }">
+	                    <input type="hidden" name="IDX" value="${detail.ARTICLE_NO }">
 	                    <input type="hidden" name="page" value="${cri.page }">
 	                    <input type="hidden" name="perPageNum" value="${cri.perPageNum }">
 	                    <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>

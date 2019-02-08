@@ -56,15 +56,14 @@
                         	<sec:authentication property="principal.username" var="crea_id"/>
                         	<c:if test="${detail.CREA_ID eq crea_id }">
                             <div class="pull-right">
-                                <a href='<c:url value="/reply/boardModify?IDX=${detail.IDX }&page=${cri.page }&perPageNum=${cri.perPageNum }"/>' role="button" class="btn btn-default"><i class="fa fa-reply"></i> 수정</a>
-                                <a href='<c:url value="/reply/boardDelete?IDX=${detail.IDX }&page=${cri.page }&perPageNum=${cri.perPageNum }"/>' role="button" class="btn btn-default"><i class="fa fa-trash-o"></i> 삭제</a>
+                                <a href='<c:url value="/reply/boardModify?IDX=${detail.ARTICLE_NO }&page=${cri.page }&perPageNum=${cri.perPageNum }"/>' role="button" class="btn btn-default"><i class="fa fa-reply"></i> 수정</a>
+                                <a href='<c:url value="/reply/boardDelete?IDX=${detail.ARTICLE_NO }&page=${cri.page }&perPageNum=${cri.perPageNum }"/>' role="button" class="btn btn-default"><i class="fa fa-trash-o"></i> 삭제</a>
                             </div>
                             </c:if>
                             </sec:authorize>
                         </div>
                         <!-- /.box-footer -->
                         <div class="box-footer box-comments">
-                            <c:forEach items="" var="">
                             <div class="box-comment">
                                 <!-- User image -->
                                 <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
@@ -80,7 +79,6 @@
                                 <!-- /.comment-text -->
                             </div>
                             <!-- /.box-comment -->
-                            </c:forEach>
                         </div>
                         <!-- /.box-footer -->
                         <div class="box-footer">
