@@ -63,22 +63,7 @@
                             </sec:authorize>
                         </div>
                         <!-- /.box-footer -->
-                        <div class="box-footer box-comments">
-                            <div class="box-comment">
-                                <!-- User image -->
-                                <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
-
-                                <div class="comment-text">
-                                    <span class="username">
-                                        Maria Gonzales
-                                        <span class="text-muted pull-right">8:03 PM Today</span>
-                                    </span><!-- /.username -->
-                                    It is a long established fact that a reader will be distracted
-                                    by the readable content of a page when looking at its layout.
-                                </div>
-                                <!-- /.comment-text -->
-                            </div>
-                            <!-- /.box-comment -->
+                        <div class="box-footer box-comments" id="comments">
                         </div>
                         <!-- /.box-footer -->
                         <div class="box-footer">
@@ -107,6 +92,36 @@
     <!-- ./wrapper -->
     
 	<%@ include file="/WEB-INF/views/include/01_plugins.jsp" %>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			replyList();
+		});
+		function replyList() {
+			var articleNo = ${detail.ARTICLE_NO}
+			$.ajax({
+				async: true,
+				type: 'GET',
+				url: "${pageContext.request.contextPath}/comment/list?articleNo=${detail.ARTICLE_NO }",
+				dataType: "JSON",
+				success: function(data) {
+					console.log(data);
+					var commentTable = "";
+					for(var i in data) {
+						commentTable +="<div class='box-comment'>"
+							+ "<img class='img-circle img-sm' src="+"'../dist/img/user3-128x128.jpg'"+"alt='User Image'>"
+							+ "<div class='comment-text'><span class='username'>" + data[i].WRITER
+							+ "<span class='text-muted pull-right'>" + data[i].REG_DATE
+							+ "</span></span>" + data[i].COMMENT + "</div></div>";
+					}
+					$("#comments").html(commentTable);
+					
+				},
+				error: function(request,status,error) {
+					alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
+				}
+			})
+		}
+	</script>
 
 </body>
 
