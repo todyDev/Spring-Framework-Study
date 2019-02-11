@@ -105,16 +105,21 @@
 				dataType: "JSON",
 				success: function(data) {
 					console.log(data);
+					console.log(data.length);
+					var ln = data.length;
 					var commentTable = "";
-					for(var i in data) {
-						commentTable +="<div class='box-comment'>"
-							+ "<img class='img-circle img-sm' src="+"'../dist/img/user3-128x128.jpg'"+"alt='User Image'>"
-							+ "<div class='comment-text'><span class='username'>" + data[i].WRITER
-							+ "<span class='text-muted pull-right'>" + data[i].REG_DATE
-							+ "</span></span>" + data[i].COMMENT + "</div></div>";
+					if(data.length != 0) {
+						for(var i in data) {
+							commentTable +="<div class='box-comment'>"
+								+ "<img class='img-circle img-sm' src="+"'../dist/img/user3-128x128.jpg'"+"alt='User Image'>"
+								+ "<div class='comment-text'><span class='username'>" + data[i].WRITER
+								+ "<span class='text-muted pull-right'>" + data[i].REG_DATE
+								+ "</span></span>" + data[i].COMMENT + "</div></div>";
+						}
+					} else {
+						commentTable += "<span>등록된 댓글이 없습니다.</span>";
 					}
 					$("#comments").html(commentTable);
-					
 				},
 				error: function(request,status,error) {
 					alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
