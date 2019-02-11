@@ -66,6 +66,19 @@
                         <div class="box-footer box-comments" id="comments-table">
                         </div>
                         <!-- /.box-footer -->
+                        <sec:authorize access="isAnonymous()">
+                        <div class="box-footer">
+                            <form action="#" method="post" id="commentForm" onsubmit="return false;">
+                                <img class="img-responsive img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="Alt Text">
+                                <!-- .img-push is used to add margin to elements next to floating images -->
+                                <div class="img-push">
+                                    <input type="text" class="form-control input-sm" placeholder="로그인 후 이용해주세요." disabled>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.box-footer -->
+                        </sec:authorize>
+                        <sec:authorize access="isAuthenticated()">
                         <div class="box-footer">
                             <form action="#" method="post" id="commentForm" onsubmit="return false;">
                                 <img class="img-responsive img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="Alt Text">
@@ -78,6 +91,7 @@
                             </form>
                         </div>
                         <!-- /.box-footer -->
+                        </sec:authorize>
                     </div>
                     <!-- /. box -->
                 </div>
