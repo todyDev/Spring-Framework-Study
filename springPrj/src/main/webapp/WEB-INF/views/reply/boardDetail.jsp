@@ -67,11 +67,11 @@
                         </div>
                         <!-- /.box-footer -->
                         <div class="box-footer">
-                            <form action="#" method="post">
+                            <form action="#" method="post" id="commentForm" onsubmit="return false;">
                                 <img class="img-responsive img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="Alt Text">
                                 <!-- .img-push is used to add margin to elements next to floating images -->
                                 <div class="img-push">
-                                    <input type="text" class="form-control input-sm" placeholder="Press enter to post comment">
+                                    <input type="text" name="comments" class="form-control input-sm" placeholder="Press enter to post comment" onkeypress="commentSubmit();">
                                 </div>
                             </form>
                         </div>
@@ -125,6 +125,15 @@
 					alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
 				}
 			})
+		}
+		function commentSubmit() {
+			if(event.keyCode==13) {
+				var commentForm = $("#commentForm");
+				var dataParams = commentForm.serialize();
+				alert(dataParams);
+			} else {
+				return false;
+			}
 		}
 	</script>
 
