@@ -131,6 +131,21 @@
 				var commentForm = $("#commentForm");
 				var dataParams = commentForm.serialize();
 				alert(dataParams);
+				$.ajax({
+					async: true,
+					url: "${pageContext.request.contextPath}/comment/register",
+					type: commentForm.attr('method'),
+					data: dataParams,
+    				beforeSend: function(xhr) {
+    					xhr.setRequestHeader("${_csrf.headerName}","${_csrf.token}")
+    				},
+					success: function(result) {
+						alert("성공");
+					},
+					error: function(request,status,error) {
+						alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
+					}
+				})
 			} else {
 				return false;
 			}
