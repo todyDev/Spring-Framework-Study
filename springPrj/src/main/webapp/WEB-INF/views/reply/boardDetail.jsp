@@ -65,6 +65,62 @@
                         <!-- /.box-footer -->
                         <div class="box-footer box-comments" id="comments-table">
                         </div>
+                        <div class="modal fade" id="modal-default">
+                              <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span></button>
+                                          <h4 class="modal-title">댓글 수정/삭제</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                          <div class="nav-tabs-custom">
+                                              <ul class="nav nav-tabs">
+                                                  <li class="active"><a href="#tab_1" data-toggle="tab">수정</a></li>
+                                                  <li><a href="#tab_2" data-toggle="tab">삭제</a></li>
+                                              </ul>
+                                              <div class="tab-content">
+                                                  <div class="tab-pane active" id="tab_1">
+                                                      <img class="img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="User Image">
+                                                      <span class="username" style="margin-left: 40px;display: block;font-weight: 600;">
+                                                          Username
+                                                      </span>
+                                                      <div style="margin-top: 30px">
+                                                          <form>
+                                                              <textarea rows="9" class="form-control input-sm editComment"></textarea>
+                                                          </form>
+                                                      </div>
+                                                      <div style="margin-top: 30px; text-align: center">
+                                                          <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+                                                          <button type="button" class="btn btn-primary">수정</button>
+                                                      </div>
+                                                  </div>
+                                                  <!-- /.tab-pane -->
+                                                  <div class="tab-pane" id="tab_2">
+
+                                                      <img class="img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="User Image">
+                                                      <span class="username" style="margin-left: 40px;display: block;font-weight: 600;">
+                                                          Username
+                                                      </span>
+                                                      <div style="margin-top: 30px">
+                                                          댓글을 삭제합니다.
+                                                      </div>
+                                                      <div style="margin-top: 30px; text-align: center">
+                                                          <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+                                                          <button type="button" class="btn btn-primary">삭제</button>
+                                                      </div>
+                                                  </div>
+                                                  <!-- /.tab-pane -->
+                                              </div>
+                                              <!-- /.tab-content -->
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <!-- /.modal-content -->
+                              </div>
+                              <!-- /.modal-dialog -->
+                          </div>
+                          <!-- /.modal -->
                         <!-- /.box-footer -->
                         <sec:authorize access="isAnonymous()">
                         <div class="box-footer">
@@ -111,6 +167,15 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			replyList();
+			
+            $('#modal-default').on('show.bs.modal', function(event) {
+                var button = $(event.relatedTarget);
+                var username = button.data('writer');
+                var comment = button.data('comment');
+                var modal = $(this);
+                modal.find('.username').text(username);
+                modal.find('.editComment').text(comment);
+            });
 		});
 		function replyList() {
 			var articleNo = ${detail.ARTICLE_NO}
@@ -130,6 +195,9 @@
 								+ "<img class='img-circle img-sm' src="+"'../dist/img/user3-128x128.jpg'"+"alt='User Image'>"
 								+ "<div class='comment-text'><span class='username'>" + data[i].WRITER
 								+ "<span class='text-muted pull-right'>" + data[i].REG_DATE
+								+ "<span data-toggle='modal' data-target='#modal-default' data-writer='" + data[i].WRITER
+								+ "' data-comment='" + data[i].COMMENT
+								+ "'><a href='#this'><i class='fa fa-fw fa-ellipsis-v'></i></a></span>"
 								+ "</span></span>" + data[i].COMMENT + "</div></div>";
 						}
 					} else {
