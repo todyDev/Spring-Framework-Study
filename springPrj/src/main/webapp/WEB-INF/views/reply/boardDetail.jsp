@@ -74,13 +74,15 @@
                                           <h4 class="modal-title">댓글 수정/삭제</h4>
                                       </div>
                                       <div class="modal-body">
-                                          <div class="nav-tabs-custom">
-                                              <ul class="nav nav-tabs">
-                                                  <li class="active"><a href="#tab_1" data-toggle="tab">수정</a></li>
-                                                  <li><a href="#tab_2" data-toggle="tab">삭제</a></li>
-                                              </ul>
                                               <div class="tab-content">
-                                                  <div class="tab-pane active" id="tab_1">
+                                                  <sec:authorize access="isAnonymous()">
+                                                  	<span>권한이 없습니다.</span>
+                                                    <div style="margin-top: 30px; text-align: center">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+                                                    </div>
+                                                  </sec:authorize>
+                                                  <sec:authorize access="isAuthenticated()">
+                                                  <sec:authentication property="principal.username" var="username"/>
                                                       <img class="img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="User Image">
                                                       <span class="username" style="margin-left: 40px;display: block;font-weight: 600;">
                                                           Username
@@ -91,29 +93,14 @@
                                                           </form>
                                                       </div>
                                                       <div style="margin-top: 30px; text-align: center">
+                                                      	<input type="hidden" id="replyId" class="replyId" value="">
                                                           <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
                                                           <button type="button" class="btn btn-primary">수정</button>
+                                                          <button type="button" class="btn btn-danger pull-right">삭제</button>
                                                       </div>
-                                                  </div>
-                                                  <!-- /.tab-pane -->
-                                                  <div class="tab-pane" id="tab_2">
-
-                                                      <img class="img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="User Image">
-                                                      <span class="username" style="margin-left: 40px;display: block;font-weight: 600;">
-                                                          Username
-                                                      </span>
-                                                      <div style="margin-top: 30px">
-                                                          댓글을 삭제합니다.
-                                                      </div>
-                                                      <div style="margin-top: 30px; text-align: center">
-                                                          <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-                                                          <button type="button" class="btn btn-primary">삭제</button>
-                                                      </div>
-                                                  </div>
-                                                  <!-- /.tab-pane -->
+                                                   </sec:authorize>
                                               </div>
                                               <!-- /.tab-content -->
-                                          </div>
                                       </div>
                                   </div>
                                   <!-- /.modal-content -->
@@ -174,6 +161,7 @@
                 var comment = button.data('comment');
                 var modal = $(this);
                 modal.find('.username').text(username);
+                modal.find('.replyId').val(username);
                 modal.find('.editComment').text(comment);
             });
 		});
