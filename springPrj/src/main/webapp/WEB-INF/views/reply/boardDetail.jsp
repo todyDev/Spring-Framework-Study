@@ -63,7 +63,7 @@
                             </sec:authorize>
                         </div>
                         <!-- /.box-footer -->
-                        <div class="box-footer box-comments" id="comments">
+                        <div class="box-footer box-comments" id="comments-table">
                         </div>
                         <!-- /.box-footer -->
                         <div class="box-footer">
@@ -73,7 +73,7 @@
                                 <div class="img-push">
                                 	<input type="hidden" name="writer" value="commentTester">
                                 	<input type="hidden" name="articleNo" value="${detail.ARTICLE_NO }">
-                                    <input type="text" name="comments" class="form-control input-sm" placeholder="Press enter to post comment" onkeypress="commentSubmit();">
+                                    <input type="text" name="comments" id="comments" class="form-control input-sm" placeholder="Press enter to post comment" onkeypress="commentSubmit();">
                                 </div>
                             </form>
                         </div>
@@ -121,7 +121,7 @@
 					} else {
 						commentTable += "<span>등록된 댓글이 없습니다.</span>";
 					}
-					$("#comments").html(commentTable);
+					$("#comments-table").html(commentTable);
 				},
 				error: function(request,status,error) {
 					alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
@@ -131,6 +131,7 @@
 		function commentSubmit() {
 			if(event.keyCode==13) {
 				var commentForm = $("#commentForm");
+				var commentsId = $("#comments");
 				var dataParams = commentForm.serialize();
 				alert(dataParams);
 				$.ajax({
@@ -143,6 +144,8 @@
     				},
 					success: function(result) {
 						alert("성공");
+						commentsId.val('');
+						replyList();
 					},
 					error: function(request,status,error) {
 						alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
