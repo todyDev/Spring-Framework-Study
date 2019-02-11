@@ -7,4 +7,6 @@ public interface CommentService {
 
 	List<Map<String, Object>> list(int articleNo);
 
+	void register(Map<String, Object> map);
+
 }

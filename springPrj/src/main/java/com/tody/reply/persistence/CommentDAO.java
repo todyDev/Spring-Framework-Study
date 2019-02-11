@@ -15,4 +15,8 @@ public class CommentDAO extends AbstractDAO {
 		return selectList("comment.replyList", articleNo);
 	}
 
+	public void insertByComments(Map<String, Object> map) {
+		insert("comment.registerComment", map);
+	}
+
 }

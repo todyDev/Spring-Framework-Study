@@ -20,4 +20,9 @@ public class CommentServiceImpl implements CommentService {
 		return (List<Map<String, Object>>) commentDAO.selectByArticleno(articleNo);
 	}
 
+	@Override
+	public void register(Map<String, Object> map) {
+		commentDAO.insertByComments(map);
+	}
+
 }

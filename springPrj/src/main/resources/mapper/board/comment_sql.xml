@@ -22,5 +22,22 @@
 				REPLY_NO
 		]]>
 	</select>
+	
+	<insert id="registerComment" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO tbl_reply
+            (
+				ARTICLE_NO,
+				COMMENT,
+				WRITER
+            )
+            VALUES
+            (
+                #{ articleNo},
+                #{ comments},
+                #{ writer}
+            )
+		]]>
+	</insert>
 
 </mapper>

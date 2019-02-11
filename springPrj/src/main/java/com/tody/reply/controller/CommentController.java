@@ -35,7 +35,7 @@ public class CommentController {
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public void register(CommandMap commandMap) {
 		
-		log.debug("gg"+commandMap.get("comments"));
+		commentService.register(commandMap.getMap());
 		
 	}
 
