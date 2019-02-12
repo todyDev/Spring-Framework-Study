@@ -79,12 +79,13 @@
                         <!-- /.box-footer -->
                         </sec:authorize>
                         <sec:authorize access="isAuthenticated()">
+                        <sec:authentication property="principal.username" var="username"/>
                         <div class="box-footer">
                             <form action="#" method="post" id="commentForm" onsubmit="return false;">
                                 <img class="img-responsive img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="Alt Text">
                                 <!-- .img-push is used to add margin to elements next to floating images -->
                                 <div class="img-push">
-                                	<input type="hidden" name="writer" value="commentTester">
+                                	<input type="hidden" name="writer" value="${username }">
                                 	<input type="hidden" name="articleNo" value="${detail.ARTICLE_NO }">
                                     <input type="text" name="comments" id="comments" class="form-control input-sm" placeholder="Press enter to post comment" onkeypress="commentSubmit();">
                                 </div>
