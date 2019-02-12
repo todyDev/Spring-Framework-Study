@@ -52,9 +52,9 @@
                                                     </div>
                                                     <div style="margin-top: 30px; text-align: center">
                                                         <input type="hidden" name="replyno" value="${comments.REPLY_NO }">
-                                                        <a href="#" class="btn btn-default" data-dismiss="modal">취소</a>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
                                                         <button type="button" class="btn btn-primary" id="commentedit">수정</button>
-                                                        <a href="#" class="btn btn-danger pull-right">삭제</a>
+                                                        <button type="button" class="btn btn-danger pull-right" id="commentdel">삭제</button>
                                                     </div>
                                                 </form>
                                             </c:when>
@@ -94,6 +94,10 @@ $(document).ready(function(){
 	$("#commentedit").click(function () {
 		commentEditSubmit();
 	})
+	
+	$("#commentdel").click(function(){
+		commentDeleteSubmit();
+	})
 });
 function commentEditSubmit() {
 	var commentForm = $("#commentEditForm");
@@ -108,6 +112,28 @@ function commentEditSubmit() {
 		},
 		success: function(result) {
 			alert("수정되었습니다.");
+			modaltest.modal('hide');
+			setTimeout(function(){replyList()},1000);
+			
+		},
+		error: function(request,status,error) {
+			alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);
+		}
+	})
+}
+function commentDeleteSubmit(){
+	var commentForm = $("#commentEditForm");
+	var modaltest = $(".modal-dialog").parents("div")
+	$.ajax({
+		async: true,
+		url: "${pageContext.request.contextPath}/comment/delete",
+		type: commentForm.attr('method'),
+		data: commentForm.serialize(),
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader("${_csrf.headerName}","${_csrf.token}")
+		},
+		success: function(result) {
+			alert("삭제되었습니다.");
 			modaltest.modal('hide');
 			setTimeout(function(){replyList()},1000);
 			
