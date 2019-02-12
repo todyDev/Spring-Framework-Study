@@ -19,4 +19,8 @@ public class CommentDAO extends AbstractDAO {
 		insert("comment.registerComment", map);
 	}
 
+	public void updateByComments(Map<String, Object> map) {
+		update("comment.editComment", map);
+	}
+
 }

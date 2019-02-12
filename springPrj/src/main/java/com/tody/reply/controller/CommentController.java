@@ -41,5 +41,10 @@ public class CommentController {
 		commentService.register(commandMap.getMap());
 		
 	}
+	
+	@RequestMapping(value="/edit", method=RequestMethod.POST)
+	public void edit(CommandMap commandMap) {
+		commentService.edit(commandMap.getMap());
+	}
 
 }

@@ -39,5 +39,16 @@
             )
 		]]>
 	</insert>
+	
+	<update id="editComment" parameterType="hashmap">
+	    <![CDATA[
+            UPDATE
+                tbl_reply
+            SET
+                COMMENT = #{ comment}
+            WHERE
+                REPLY_NO = #{ replyno}
+        ]]>
+	</update>
 
 </mapper>

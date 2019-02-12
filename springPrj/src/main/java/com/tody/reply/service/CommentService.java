@@ -9,4 +9,6 @@ public interface CommentService {
 
 	void register(Map<String, Object> map);
 
+	void edit(Map<String, Object> map);
+
 }

@@ -25,4 +25,9 @@ public class CommentServiceImpl implements CommentService {
 		commentDAO.insertByComments(map);
 	}
 
+	@Override
+	public void edit(Map<String, Object> map) {
+		commentDAO.updateByComments(map);
+	}
+
 }
