@@ -30,4 +30,9 @@ public class CommentServiceImpl implements CommentService {
 		commentDAO.updateByComments(map);
 	}
 
+	@Override
+	public void delete(Map<String, Object> map) {
+		commentDAO.deleteByComments(map);
+	}
+
 }

@@ -11,4 +11,6 @@ public interface CommentService {
 
 	void edit(Map<String, Object> map);
 
+	void delete(Map<String, Object> map);
+
 }

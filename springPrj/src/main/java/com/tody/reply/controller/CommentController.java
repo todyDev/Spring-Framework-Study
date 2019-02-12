@@ -45,6 +45,11 @@ public class CommentController {
 	@RequestMapping(value="/edit", method=RequestMethod.POST)
 	public void edit(CommandMap commandMap) {
 		commentService.edit(commandMap.getMap());
+	}	
+	
+	@RequestMapping(value="/delete", method=RequestMethod.POST)
+	public void delete(CommandMap commandMap) {
+		commentService.delete(commandMap.getMap());
 	}
 
 }

@@ -23,4 +23,8 @@ public class CommentDAO extends AbstractDAO {
 		update("comment.editComment", map);
 	}
 
+	public void deleteByComments(Map<String, Object> map) {
+		delete("comment.deleteComment", map);
+	}
+
 }

@@ -50,5 +50,14 @@
                 REPLY_NO = #{ replyno}
         ]]>
 	</update>
+	
+	<delete id="deleteComment" parameterType="hashmap">
+	    <![CDATA[
+            DELETE
+            	FROM tbl_reply
+            WHERE
+                REPLY_NO = #{ replyno}
+        ]]>	
+	</delete>
 
 </mapper>
