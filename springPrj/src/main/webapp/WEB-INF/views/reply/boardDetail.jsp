@@ -63,51 +63,8 @@
                             </sec:authorize>
                         </div>
                         <!-- /.box-footer -->
-                        <div class="box-footer box-comments" id="comments-table">
+                        <div id="comments-table">
                         </div>
-                        <div class="modal fade" id="modal-default">
-                              <div class="modal-dialog">
-                                  <div class="modal-content">
-                                      <div class="modal-header">
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                              <span aria-hidden="true">&times;</span></button>
-                                          <h4 class="modal-title">댓글 수정/삭제</h4>
-                                      </div>
-                                      <div class="modal-body">
-                                              <div class="tab-content">
-                                                  <sec:authorize access="isAnonymous()">
-                                                  	<span>권한이 없습니다.</span>
-                                                    <div style="margin-top: 30px; text-align: center">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-                                                    </div>
-                                                  </sec:authorize>
-                                                  <sec:authorize access="isAuthenticated()">
-                                                  <sec:authentication property="principal.username" var="username"/>
-                                                      <img class="img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="User Image">
-                                                      <span class="username" style="margin-left: 40px;display: block;font-weight: 600;">
-                                                          Username
-                                                      </span>
-                                                      <div style="margin-top: 30px">
-                                                          <form>
-                                                              <textarea rows="9" class="form-control input-sm editComment"></textarea>
-                                                          </form>
-                                                      </div>
-                                                      <div style="margin-top: 30px; text-align: center">
-                                                      	<input type="hidden" id="replyId" class="replyId" value="">
-                                                          <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-                                                          <button type="button" class="btn btn-primary">수정</button>
-                                                          <button type="button" class="btn btn-danger pull-right">삭제</button>
-                                                      </div>
-                                                   </sec:authorize>
-                                              </div>
-                                              <!-- /.tab-content -->
-                                      </div>
-                                  </div>
-                                  <!-- /.modal-content -->
-                              </div>
-                              <!-- /.modal-dialog -->
-                          </div>
-                          <!-- /.modal -->
                         <!-- /.box-footer -->
                         <sec:authorize access="isAnonymous()">
                         <div class="box-footer">
@@ -154,44 +111,15 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			replyList();
-			
-            $('#modal-default').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget);
-                var username = button.data('writer');
-                var comment = button.data('comment');
-                var modal = $(this);
-                modal.find('.username').text(username);
-                modal.find('.replyId').val(username);
-                modal.find('.editComment').text(comment);
-            });
+
 		});
 		function replyList() {
-			var articleNo = ${detail.ARTICLE_NO}
 			$.ajax({
-				async: true,
 				type: 'GET',
 				url: "${pageContext.request.contextPath}/comment/list?articleNo=${detail.ARTICLE_NO }",
-				dataType: "JSON",
 				success: function(data) {
 					console.log(data);
-					console.log(data.length);
-					var ln = data.length;
-					var commentTable = "";
-					if(data.length != 0) {
-						for(var i in data) {
-							commentTable +="<div class='box-comment'>"
-								+ "<img class='img-circle img-sm' src="+"'../dist/img/user3-128x128.jpg'"+"alt='User Image'>"
-								+ "<div class='comment-text'><span class='username'>" + data[i].WRITER
-								+ "<span class='text-muted pull-right'>" + data[i].REG_DATE
-								+ "<span data-toggle='modal' data-target='#modal-default' data-writer='" + data[i].WRITER
-								+ "' data-comment='" + data[i].COMMENT
-								+ "'><a href='#this'><i class='fa fa-fw fa-ellipsis-v'></i></a></span>"
-								+ "</span></span>" + data[i].COMMENT + "</div></div>";
-						}
-					} else {
-						commentTable += "<span>등록된 댓글이 없습니다.</span>";
-					}
-					$("#comments-table").html(commentTable);
+					$("#comments-table").html(data);
 				},
 				error: function(request,status,error) {
 					alert('code:'+request.status+'\n'+'message:'+request.responseText+'\n'+'error:'+error);

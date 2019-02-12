@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.tody.common.common.CommandMap;
 import com.tody.reply.service.CommentService;
@@ -24,12 +25,14 @@ public class CommentController {
 	private CommentService commentService;
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public List<Map<String,Object>> list(@RequestParam int articleNo) {
+	public ModelAndView list(@RequestParam int articleNo) {
 		
 		List<Map<String,Object>> list = commentService.list(articleNo);
 		
-		return list;
+		ModelAndView mv = new ModelAndView("reply/replyList");
+		mv.addObject("list", list);
 		
+		return mv;
 	}
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
