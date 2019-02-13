@@ -7,8 +7,9 @@
 
 <c:choose>
     <c:when test="${fn:length(list) > 0 }">
-        <c:forEach items="${list }" var="comments">
-            <div class="box-footer box-comments">
+        <div class="box-footer box-comments">
+
+            <c:forEach items="${list }" var="comments">
                 <div class='box-comment'>
                     <img class='img-circle img-sm' src='../dist/img/user3-128x128.jpg' alt='User Image'>
                     <div class='comment-text'>
@@ -66,27 +67,32 @@
                                             </c:choose>
                                         </sec:authorize>
                                     </div>
-                                    <!-- /.tab-content -->
                                 </div>
                             </div>
-                            <!-- /.modal-content -->
                         </div>
-                        <!-- /.modal-dialog -->
-
                     </div>
-                    <!-- /.modal -->
                 </div>
-            </div>
-        </c:forEach>
+            </c:forEach>
+            
+            
+            <!-- more comments -->
+            <c:if test="${moreMaker.next }">
+                <div class="" style="font-size: 13px;text-align: center; padding-top: 8px">
+                    <a href="#this" onclick="morecomments()"><i class="fa fa-fw fa-plus-square-o"></i> 댓글 더 보기</a>
+                </div>
+            </c:if>
+
+        </div>
+
     </c:when>
     <c:otherwise>
+
         <div class="box-footer box-comments">
             <span>등록된 댓글이 없습니다.</span>
         </div>
+
     </c:otherwise>
 </c:choose>
-
-<!-- /.box-footer -->
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -143,6 +149,20 @@
                     replyList()
                 }, 1000);
 
+            },
+            error: function(request, status, error) {
+                alert('code:' + request.status + '\n' + 'message:' + request.responseText + '\n' + 'error:' + error);
+            }
+        })
+    }
+
+    function morecomments() {
+        $.ajax({
+            type: 'GET',
+            url: "${pageContext.request.contextPath}/comment/list${moreMaker.makeMore(moreMaker.page+1) }",
+            success: function(data) {
+                console.log(data);
+                $("#comments-table").html(data);
             },
             error: function(request, status, error) {
                 alert('code:' + request.status + '\n' + 'message:' + request.responseText + '\n' + 'error:' + error);
