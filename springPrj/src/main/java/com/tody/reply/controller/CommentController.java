@@ -8,11 +8,11 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tody.common.common.CommandMap;
+import com.tody.common.domain.MoreMaker;
 import com.tody.reply.service.CommentService;
 
 @RestController
@@ -25,12 +25,15 @@ public class CommentController {
 	private CommentService commentService;
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public ModelAndView list(@RequestParam int articleNo) {
+	public ModelAndView list(MoreMaker moreMaker) {
 		
-		List<Map<String,Object>> list = commentService.list(articleNo);
+        moreMaker.setPageTotal(commentService.countCommentTotal(moreMaker.getArticleNo()));
+		
+		List<Map<String,Object>> list = commentService.list(moreMaker);
 		
 		ModelAndView mv = new ModelAndView("reply/replyList");
 		mv.addObject("list", list);
+		mv.addObject("moreMaker", moreMaker);
 		
 		return mv;
 	}

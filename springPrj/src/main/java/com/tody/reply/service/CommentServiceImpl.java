@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.tody.common.domain.MoreMaker;
 import com.tody.reply.persistence.CommentDAO;
 
 @Service("commentService")
@@ -16,8 +17,8 @@ public class CommentServiceImpl implements CommentService {
 	private CommentDAO commentDAO;
 
 	@Override
-	public List<Map<String,Object>> list(int articleNo) {
-		return (List<Map<String, Object>>) commentDAO.selectByArticleno(articleNo);
+	public List<Map<String,Object>> list(MoreMaker cri) {
+		return (List<Map<String, Object>>) commentDAO.selectByArticleno(cri);
 	}
 
 	@Override
@@ -33,6 +34,11 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public void delete(Map<String, Object> map) {
 		commentDAO.deleteByComments(map);
+	}
+
+	@Override
+	public int countCommentTotal(int articleNo) {
+		return commentDAO.countCommentTotal(articleNo);
 	}
 
 }

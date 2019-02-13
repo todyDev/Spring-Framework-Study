@@ -6,13 +6,14 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.tody.common.dao.AbstractDAO;
+import com.tody.common.domain.MoreMaker;
 
 @Repository(value="commentDAO")
 public class CommentDAO extends AbstractDAO {
 
 	@SuppressWarnings("unchecked")
-	public List<Map<String,Object>> selectByArticleno(int articleNo) {
-		return selectList("comment.replyList", articleNo);
+	public List<Map<String,Object>> selectByArticleno(MoreMaker cri) {
+		return selectList("comment.replyList", cri);
 	}
 
 	public void insertByComments(Map<String, Object> map) {
@@ -25,6 +26,10 @@ public class CommentDAO extends AbstractDAO {
 
 	public void deleteByComments(Map<String, Object> map) {
 		delete("comment.deleteComment", map);
+	}
+
+	public int countCommentTotal(int articleNo) {
+		return (Integer) selectOne("comment.totalComment", articleNo);
 	}
 
 }
