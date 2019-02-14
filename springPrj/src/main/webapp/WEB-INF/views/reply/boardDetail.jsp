@@ -5,6 +5,19 @@
 
 <head>
     <%@ include file="/WEB-INF/views/include/00_head.jsp" %>
+    <style>
+        .form-edit {
+            float: left;
+            width: 97%;
+        }
+
+        .secret {
+            border-radius: 3px;
+            position: relative;
+            top: 5px;
+            padding-left: 8px;
+        }
+    </style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -88,7 +101,9 @@
                                     <div class="img-push">
                                         <input type="hidden" name="writer" value="${username }">
                                         <input type="hidden" name="articleNo" value="${detail.ARTICLE_NO }">
-                                        <input type="text" name="comments" id="comments" class="form-control input-sm" placeholder="Press enter to post comment" onkeypress="commentSubmit();">
+                                        <input type="text" name="comments" id="comments" class="form-control input-sm form-edit" placeholder="Press enter to post comment" onkeypress="commentSubmit();">
+                                    <a href="#this" class="secret" onclick="setSecretComment()"><i id="secret-fa" class="fa fa-fw fa-unlock"></i></a>
+                                    <input type="hidden" name="secret" id="secretComment" value="0">
                                     </div>
                                 </form>
                             </div>
@@ -144,6 +159,7 @@
                     },
                     success: function(result) {
                         commentsId.val('');
+                        setSecretComment();
                         replyList();
                     },
                     error: function(request, status, error) {
@@ -152,6 +168,20 @@
                 })
             } else {
                 return false;
+            }
+        }
+        
+        function setSecretComment() {
+            var chg_fa = $("#secret-fa");
+            var org_fa = chg_fa.attr("class");
+            if (org_fa == 'fa fa-fw fa-lock') {
+                chg_fa.attr("class", "fa fa-fw fa-unlock");
+                $("#secretComment").val("0");
+                $(".secret").css('color', '');
+            } else {
+                chg_fa.attr("class", "fa fa-fw fa-lock");
+                $("#secretComment").val("1");
+                $(".secret").css('color', 'red');
             }
         }
 
