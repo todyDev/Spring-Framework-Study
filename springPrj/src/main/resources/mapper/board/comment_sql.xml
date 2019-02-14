@@ -53,7 +53,8 @@
             UPDATE
                 tbl_reply
             SET
-                COMMENT = #{ comment}
+                COMMENT = #{ comment},
+                SECRET = #{ secret}
             WHERE
                 REPLY_NO = #{ replyno}
         ]]>
