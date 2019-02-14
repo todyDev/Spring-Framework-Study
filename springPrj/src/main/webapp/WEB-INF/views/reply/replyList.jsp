@@ -11,7 +11,60 @@
 
             <c:forEach items="${list }" var="comments">
                 <div class='box-comment'>
-                    <img class='img-circle img-sm' src='../dist/img/user3-128x128.jpg' alt='User Image'>
+                
+                	<c:choose>
+                    <c:when test="${comments.SECRET eq 1 }">
+                    	
+                    	<sec:authorize access="isAnonymous()">
+                    	<img class='img-circle img-sm' src='../dist/img/user3-128x128.jpg' alt='User Image'>
+	                    <div class='comment-text'>
+	                        <span class='username'>익명
+	                            <span class='text-muted pull-right'>${comments.REG_DATE }
+	                                <span data-toggle='modal' data-target='#modal-default-${comments.REPLY_NO }'>
+	                                    <a href='#this'><i class='fa fa-fw fa-ellipsis-v'></i></a>
+	                                </span></span>
+	                        </span>
+	                        비밀 댓글입니다.
+	                    </div>
+                    	</sec:authorize>
+                    	
+                    	<sec:authorize access="isAuthenticated()">
+                    	<sec:authentication property="principal.username" var="username" />
+                    	
+                    	<c:choose>
+                    		<c:when test="${comments.WRITER eq username || comments.CREA_ID eq username }">
+                    	                    <img class='img-circle img-sm' src='../dist/img/user3-128x128.jpg' alt='User Image'>
+                    <div class='comment-text'>
+                        <span class='username'>${comments.WRITER }
+                            <span class='text-muted pull-right'>${comments.REG_DATE }
+                                <span data-toggle='modal' data-target='#modal-default-${comments.REPLY_NO }'>
+                                    <a href='#this'><i class='fa fa-fw fa-ellipsis-v'></i></a>
+                                </span></span>
+                        </span>
+                        ${comments.COMMENT }
+                    </div>	
+                    		
+                    		</c:when>
+                    		<c:otherwise>
+                    		                    	<img class='img-circle img-sm' src='../dist/img/user3-128x128.jpg' alt='User Image'>
+	                    <div class='comment-text'>
+	                        <span class='username'>익명 <i class="fa fa-fw fa-lock" style="color:red"></i>
+	                            <span class='text-muted pull-right'>${comments.REG_DATE }
+	                                <span data-toggle='modal' data-target='#modal-default-${comments.REPLY_NO }'>
+	                                    <a href='#this'><i class='fa fa-fw fa-ellipsis-v'></i></a>
+	                                </span></span>
+	                        </span>
+	                        비밀 댓글입니다.
+	                    </div>
+                    		</c:otherwise>
+                    	</c:choose>
+                    	
+                    	</sec:authorize>
+                    
+                    </c:when>
+                    <c:otherwise>
+                    
+                                        <img class='img-circle img-sm' src='../dist/img/user3-128x128.jpg' alt='User Image'>
                     <div class='comment-text'>
                         <span class='username'>${comments.WRITER }
                             <span class='text-muted pull-right'>${comments.REG_DATE }
@@ -21,6 +74,10 @@
                         </span>
                         ${comments.COMMENT }
                     </div>
+                    
+                    </c:otherwise>
+                    </c:choose>
+
                     <div class="modal fade" id="modal-default-${comments.REPLY_NO }">
                         <div class="modal-dialog">
                             <div class="modal-content">
