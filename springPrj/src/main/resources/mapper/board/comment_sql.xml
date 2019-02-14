@@ -5,21 +5,26 @@
 	<select id="replyList" resultType="hashmap">
 		<![CDATA[
 			SELECT
-				REPLY_NO,
-				ARTICLE_NO,
-				COMMENT,
-				WRITER,
+				r.REPLY_NO,
+				r.ARTICLE_NO,
+				r.COMMENT,
+				r.WRITER,
 				IF(
-					DATE_FORMAT(REG_DATE, '%Y%m%d') < DATE_FORMAT(now(),'%Y%m%d'),
-					DATE_FORMAT(REG_DATE, '%Y.%m.%d'),
-					DATE_FORMAT(REG_DATE, '%H:%i')
-				) as REG_DATE
+					DATE_FORMAT(r.REG_DATE, '%Y%m%d') < DATE_FORMAT(now(),'%Y%m%d'),
+					DATE_FORMAT(r.REG_DATE, '%Y.%m.%d'),
+					DATE_FORMAT(r.REG_DATE, '%H:%i')
+				) as REG_DATE,
+				r.SECRET,
+				a.CREA_ID
 			FROM
-				tbl_reply
+				tbl_reply r,
+				tbl_article a
 			WHERE
-				ARTICLE_NO = #{ articleNo}
+				r.ARTICLE_NO = #{ articleNo}
+			AND
+				a.ARTICLE_NO = r.ARTICLE_NO
 			ORDER BY
-				REPLY_NO
+				r.REPLY_NO
 			LIMIT 0, #{limitEnd}
 		]]>
 	</select>
@@ -30,13 +35,15 @@
             (
 				ARTICLE_NO,
 				COMMENT,
-				WRITER
+				WRITER,
+				SECRET
             )
             VALUES
             (
                 #{ articleNo},
                 #{ comments},
-                #{ writer}
+                #{ writer},
+                #{ secret}
             )
 		]]>
 	</insert>
