@@ -103,14 +103,14 @@
                                                         ${comments.WRITER }
                                                     </span>
 
-                                                    <form method="post" id="commentEditForm">
+                                                    <form method="post" id="commentEditForm-${comments.REPLY_NO }">
                                                         <div style="margin-top: 30px">
                                                             <textarea name="comment" rows="9" class="form-control input-sm">${comments.COMMENT }</textarea>
                                                         </div>
                                                         <div style="margin-top: 30px; text-align: center">
                                                             <input type="hidden" name="replyno" value="${comments.REPLY_NO }">
                                                             <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-                                                            <button type="button" class="btn btn-primary" id="commentedit">수정</button>
+                                                            <button type="button" class="btn btn-primary" onclick="commentEditSubmit(${comments.REPLY_NO })">수정</button>
                                                             <button type="button" class="btn btn-danger pull-right" id="commentdel">삭제</button>
                                                         </div>
                                                     </form>
@@ -154,38 +154,36 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        $("#commentedit").click(function() {
-            commentEditSubmit();
-        })
-
         $("#commentdel").click(function() {
             commentDeleteSubmit();
         })
     });
 
-    function commentEditSubmit() {
-        var commentForm = $("#commentEditForm");
-        var modaltest = $(".modal-dialog").parents("div")
-        $.ajax({
-            async: true,
-            url: "${pageContext.request.contextPath}/comment/edit",
-            type: commentForm.attr('method'),
-            data: commentForm.serialize(),
-            beforeSend: function(xhr) {
+    function commentEditSubmit(num) {
+    	var commentForm = $("#commentEditForm-"+num);
+    	var formMethod = commentForm.attr('method');
+    	var formData = commentForm.serialize();
+    	var modalId = $("#modal-default-"+num);
+    	$.ajax({
+    		async: true,
+    		url: "${pageContext.request.contextPath}/comment/edit",
+    		type: formMethod,
+    		data: formData,
+    		beforeSend: function(xhr) {
                 xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}")
             },
             success: function(result) {
                 alert("수정되었습니다.");
-                modaltest.modal('hide');
+                modalId.modal('hide');
                 setTimeout(function() {
                     replyList()
-                }, 1000);
+                }, 500);
 
             },
             error: function(request, status, error) {
                 alert('code:' + request.status + '\n' + 'message:' + request.responseText + '\n' + 'error:' + error);
             }
-        })
+    	})
     }
 
     function commentDeleteSubmit() {
