@@ -111,7 +111,7 @@
                                                             <input type="hidden" name="replyno" value="${comments.REPLY_NO }">
                                                             <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
                                                             <button type="button" class="btn btn-primary" onclick="commentEditSubmit(${comments.REPLY_NO })">수정</button>
-                                                            <button type="button" class="btn btn-danger pull-right" id="commentdel">삭제</button>
+                                                            <button type="button" class="btn btn-danger pull-right" onclick="commentDeleteSubmit(${comments.REPLY_NO })">삭제</button>
                                                         </div>
                                                     </form>
                                                 </c:when>
@@ -186,9 +186,9 @@
     	})
     }
 
-    function commentDeleteSubmit() {
-        var commentForm = $("#commentEditForm");
-        var modaltest = $(".modal-dialog").parents("div")
+    function commentDeleteSubmit(num) {
+        var commentForm = $("#commentEditForm-"+num);
+        var modalId = $("#modal-default-"+num);
         $.ajax({
             async: true,
             url: "${pageContext.request.contextPath}/comment/delete",
@@ -199,7 +199,7 @@
             },
             success: function(result) {
                 alert("삭제되었습니다.");
-                modaltest.modal('hide');
+                modalId.modal('hide');
                 setTimeout(function() {
                     replyList()
                 }, 1000);
