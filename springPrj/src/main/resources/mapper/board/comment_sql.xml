@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="comment">
+
+	<select id="replyList" resultType="hashmap">
+		<![CDATA[
+			SELECT
+				r.REPLY_NO,
+				r.ARTICLE_NO,
+				r.COMMENT,
+				r.WRITER,
+				IF(
+					DATE_FORMAT(r.REG_DATE, '%Y%m%d') < DATE_FORMAT(now(),'%Y%m%d'),
+					DATE_FORMAT(r.REG_DATE, '%Y.%m.%d'),
+					DATE_FORMAT(r.REG_DATE, '%H:%i')
+				) as REG_DATE,
+				r.SECRET,
+				a.CREA_ID
+			FROM
+				tbl_reply r,
+				tbl_article a
+			WHERE
+				r.ARTICLE_NO = #{ articleNo}
+			AND
+				a.ARTICLE_NO = r.ARTICLE_NO
+			ORDER BY
+				r.REPLY_NO
+			LIMIT 0, #{limitEnd}
+		]]>
+	</select>
+	
+	<insert id="registerComment" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO tbl_reply
+            (
+				ARTICLE_NO,
+				COMMENT,
+				WRITER,
+				SECRET
+            )
+            VALUES
+            (
+                #{ articleNo},
+                #{ comments},
+                #{ writer},
+                #{ secret}
+            )
+		]]>
+	</insert>
+	
+	<update id="editComment" parameterType="hashmap">
+	    <![CDATA[
+            UPDATE
+                tbl_reply
+            SET
+                COMMENT = #{ comment},
+                SECRET = #{ secret}
+            WHERE
+                REPLY_NO = #{ replyno}
+        ]]>
+	</update>
+	
+	<delete id="deleteComment" parameterType="hashmap">
+	    <![CDATA[
+            DELETE
+            	FROM tbl_reply
+            WHERE
+                REPLY_NO = #{ replyno}
+        ]]>	
+	</delete>
+	
+	<select id="totalComment" resultType="Integer">
+    	<![CDATA[
+    		SELECT
+    			count(*)
+    		FROM
+    			tbl_reply
+    		WHERE
+    		    ARTICLE_NO = #{ articleNo}
+    	]]>
+	</select>
+
+</mapper>

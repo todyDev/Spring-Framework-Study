@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reply">
+
+    <select id="selectBoardList" resultType="hashmap" parameterType="hashmap">
+        <![CDATA[
+			SELECT
+				ARTICLE_NO,
+				TITLE,
+				HIT_CNT,
+				IF(
+					DATE_FORMAT(CREA_DATE, '%Y%m%d') < DATE_FORMAT(now(),'%Y%m%d'),
+					DATE_FORMAT(CREA_DATE, '%Y.%m.%d'),
+					DATE_FORMAT(CREA_DATE, '%H:%i')
+				) as CREA_DATE,
+				CREA_ID
+			FROM
+				tbl_article
+			WHERE
+				DEL_CHK = 'N'
+		]]>
+		<include refid="search"/>
+		<![CDATA[
+			ORDER BY ARTICLE_NO DESC
+			LIMIT #{pageStart}, #{perPageNum}
+        ]]>
+    </select>
+    
+    <select id="countBoardList" resultType="Integer">
+    	<![CDATA[
+    		SELECT
+    			count(*)
+    		FROM
+    			tbl_article
+    		WHERE
+    			DEL_CHK='N'
+    	]]>
+    	<include refid="search"/>
+    </select>
+    
+    <sql id="search">
+    	<if test="searchType != null">
+    		<if test="searchType == 't'.toString()">
+    			AND TITLE LIKE CONCAT('%', #{keyword}, '%')
+    		</if>
+    		<if test="searchType == 'c'.toString()">
+    			AND CONTENTS LIKE CONCAT('%', #{keyword}, '%')
+    		</if>
+    		<if test="searchType == 'w'.toString()">
+    			AND CREA_ID LIKE CONCAT('%', #{keyword}, '%')
+    		</if>
+    		<if test="searchType == 'tc'.toString()">
+    			AND (
+    				TITLE LIKE CONCAT('%', #{keyword}, '%')
+    				OR AND CONTENTS LIKE CONCAT('%', #{keyword}, '%')
+    			)
+    		</if>
+    		<if test="searchType == 'cw'.toString()">
+    			AND (
+    				CONTENTS LIKE CONCAT('%', #{keyword}, '%')
+    				OR AND CREA_ID LIKE CONCAT('%', #{keyword}, '%')
+    			)
+    		</if>
+    		<if test="searchType == 'tcw'.toString()">
+    			AND (
+    				TITLE LIKE CONCAT('%', #{keyword}, '%')
+    				OR CONTENTS LIKE CONCAT('%', #{keyword}, '%')
+    				OR AND CREA_ID LIKE CONCAT('%', #{keyword}, '%')
+    			)
+    		</if>
+    	</if>
+    </sql>
+    
+    <insert id="insertBoard" parameterType="hashmap">
+        <![CDATA[
+            INSERT INTO tbl_article
+            (
+                TITLE,
+                CONTENTS,
+                HIT_CNT,
+                DEL_CHK,
+                CREA_DATE,
+                CREA_ID
+            )
+            VALUES
+            (
+                #{ TITLE},
+                #{ CONTENTS},
+                0,
+                'N',
+                SYSDATE(),
+                #{ CREA_ID}
+            )
+        ]]>
+    </insert>
+    
+    <select id="detailBoard" resultType="hashmap">
+        <![CDATA[
+            SELECT
+                ARTICLE_NO,
+                TITLE,
+                CONTENTS,
+                HIT_CNT,
+                CREA_ID,
+                IF(
+                    DATE_FORMAT(CREA_DATE, '%Y%m%d') < DATE_FORMAT(now(),'%Y%m%d'),
+                    DATE_FORMAT(CREA_DATE, '%Y.%m.%d'),
+                    DATE_FORMAT(CREA_DATE, '%H:%i')
+                ) as CREA_DATE
+            FROM
+                tbl_article
+            WHERE
+                ARTICLE_NO = #{ IDX}
+        ]]>
+    </select>
+    
+    <update id="updateHitBoard">
+        <![CDATA[
+            UPDATE
+                tbl_article
+            SET
+                HIT_CNT = HIT_CNT + 1
+            WHERE
+                ARTICLE_NO = #{ IDX}
+        ]]>
+    </update>
+    
+    <update id="updateBoard" parameterType="hashmap">
+        <![CDATA[
+            UPDATE
+                tbl_article
+            SET
+                TITLE = #{ TITLE},
+                CONTENTS = #{ CONTENTS}
+            WHERE
+                ARTICLE_NO = #{ IDX}
+                and
+                CREA_ID = #{ CREA_ID}
+        ]]>
+    </update>
+    
+    <update id="deleteBoard">
+        <![CDATA[
+            UPDATE
+                tbl_article
+            SET
+                DEL_CHK = 'Y'
+            WHERE
+                ARTICLE_NO = #{ IDX}
+        ]]>
+    </update>
+
+</mapper>
