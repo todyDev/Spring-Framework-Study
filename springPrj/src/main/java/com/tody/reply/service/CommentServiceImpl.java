@@ -28,6 +28,12 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public void edit(Map<String, Object> map) {
+		
+		String secret = (String) map.get("secret");
+		if(secret==null) {
+			map.put("secret", 0);
+		}
+		
 		commentDAO.updateByComments(map);
 	}
 
