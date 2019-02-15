@@ -107,6 +107,22 @@
                                                         <div style="margin-top: 30px">
                                                             <textarea name="comment" rows="9" class="form-control input-sm">${comments.COMMENT }</textarea>
                                                         </div>
+                                                        <c:if test="${comments.SECRET eq 1 }">
+                                                            <div style="margin-top: 10px;">
+                                                                <label>
+                                                                    <input type="checkbox" class="minimal" id="secret" name="secret" value="1" checked>
+                                                                    비밀 댓글
+                                                                </label>
+                                                            </div>
+                                                        </c:if>
+                                                        <c:if test="${comments.SECRET eq 0 }">
+                                                            <div style="margin-top: 10px;">
+                                                                <label>
+                                                                    <input type="checkbox" class="minimal" id="secret" name="secret" value="1">
+                                                                    비밀 댓글
+                                                                </label>
+                                                            </div>
+                                                        </c:if>
                                                         <div style="margin-top: 30px; text-align: center">
                                                             <input type="hidden" name="replyno" value="${comments.REPLY_NO }">
                                                             <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
@@ -157,6 +173,11 @@
         $("#commentdel").click(function() {
             commentDeleteSubmit();
         })
+        
+        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
+        });
     });
 
     function commentEditSubmit(num) {
