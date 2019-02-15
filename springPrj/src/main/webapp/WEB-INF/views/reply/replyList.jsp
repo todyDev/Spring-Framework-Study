@@ -18,7 +18,7 @@
                     	<sec:authorize access="isAnonymous()">
                     	<img class='img-circle img-sm' src='../dist/img/user3-128x128.jpg' alt='User Image'>
 	                    <div class='comment-text'>
-	                        <span class='username'>익명
+	                        <span class='username'>익명 <i class="fa fa-fw fa-lock" style="color:red"></i>
 	                            <span class='text-muted pull-right'>${comments.REG_DATE }
 	                                <span data-toggle='modal' data-target='#modal-default-${comments.REPLY_NO }'>
 	                                    <a href='#this'><i class='fa fa-fw fa-ellipsis-v'></i></a>
