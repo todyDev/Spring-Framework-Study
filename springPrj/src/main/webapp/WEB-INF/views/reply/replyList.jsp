@@ -64,6 +64,7 @@
                     </c:when>
                     <c:otherwise>
                     
+                    <c:if test="${comments.GROUP_DEP eq 1 }">
                                         <img class='img-circle img-sm' src='../dist/img/user3-128x128.jpg' alt='User Image'>
                     <div class='comment-text'>
                         <span class='username'>${comments.WRITER }
@@ -74,6 +75,25 @@
                         </span>
                         ${comments.COMMENT }
                     </div>
+                        </c:if>
+                        <c:if test="${comments.GROUP_DEP eq 2 }">
+                                                            <div class="comment-text no-padding" style="padding: 8px">
+
+                                        <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
+
+                                        <div class="comment-text">
+                                            <span class="username">
+                                                ${comments.WRITER }
+                                                <span class="text-muted pull-right">${comments.REG_DATE }
+                                                    <span data-toggle="modal" data-target="#modal-default-${comments.REPLY_NO }">
+                                                        <a href="#this"><i class="fa fa-fw fa-ellipsis-v"></i></a>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            ${comments.COMMENT }
+                                        </div>
+                                    </div>
+                                    </c:if>
                     
                     </c:otherwise>
                     </c:choose>
