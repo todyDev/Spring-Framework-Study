@@ -15,18 +15,32 @@
 					DATE_FORMAT(r.REG_DATE, '%H:%i')
 				) as REG_DATE,
 				r.SECRET,
-				a.CREA_ID
+				a.CREA_ID,
+				r.GROUP_NO,
+				r.GROUP_DEP
 			FROM
-				tbl_reply r,
+				tbl_reply2 r,
 				tbl_article a
 			WHERE
 				r.ARTICLE_NO = #{ articleNo}
 			AND
 				a.ARTICLE_NO = r.ARTICLE_NO
 			ORDER BY
+				r.GROUP_NO,
 				r.REPLY_NO
 			LIMIT 0, #{limitEnd}
 		]]>
+	</select>
+	
+	<select id="totalComment" resultType="Integer">
+    	<![CDATA[
+    		SELECT
+    			count(*)
+    		FROM
+    			tbl_reply2
+    		WHERE
+    		    ARTICLE_NO = #{ articleNo}
+    	]]>
 	</select>
 	
 	<insert id="registerComment" parameterType="hashmap">
@@ -68,16 +82,5 @@
                 REPLY_NO = #{ replyno}
         ]]>	
 	</delete>
-	
-	<select id="totalComment" resultType="Integer">
-    	<![CDATA[
-    		SELECT
-    			count(*)
-    		FROM
-    			tbl_reply
-    		WHERE
-    		    ARTICLE_NO = #{ articleNo}
-    	]]>
-	</select>
 
 </mapper>
