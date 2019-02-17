@@ -27,6 +27,11 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
+	public void registerRe(Map<String, Object> map) {
+		commentDAO.insertByReComments(map);
+	}
+
+	@Override
 	public void edit(Map<String, Object> map) {
 		
 		String secret = (String) map.get("secret");

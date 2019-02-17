@@ -11,6 +11,8 @@ public interface CommentService {
 
 	void register(Map<String, Object> map);
 
+	void registerRe(Map<String, Object> map);
+
 	void edit(Map<String, Object> map);
 
 	void delete(Map<String, Object> map);
