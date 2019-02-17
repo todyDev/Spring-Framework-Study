@@ -45,19 +45,53 @@
 	
 	<insert id="registerComment" parameterType="hashmap">
 		<![CDATA[
-			INSERT INTO tbl_reply
+			INSERT INTO tbl_reply2
             (
 				ARTICLE_NO,
 				COMMENT,
 				WRITER,
-				SECRET
+				SECRET,
+				GROUP_NO,
+				GROUP_DEP
             )
             VALUES
             (
                 #{ articleNo},
                 #{ comments},
                 #{ writer},
-                #{ secret}
+                #{ secret},
+                (
+                	SELECT MAX(b.REPLY_NO) + 1
+                	FROM tbl_reply2 as b
+                ),
+                1
+            )
+		]]>
+	</insert>
+	
+	<insert id="registerReComment" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO tbl_reply2
+            (
+				ARTICLE_NO,
+				COMMENT,
+				WRITER,
+				SECRET,
+				GROUP_NO,
+				GROUP_DEP
+            )
+            VALUES
+            (
+                #{ articleNo},
+                #{ comments},
+                #{ writer},
+                #{ secret},
+                #{ replyNo},
+                (
+                	SELECT MAX(b.GROUP_DEP) + 1
+                	FROM tbl_reply2 as b
+                	WHERE b.REPLY_NO = #{ replyNo}
+                )
             )
 		]]>
 	</insert>
@@ -65,7 +99,7 @@
 	<update id="editComment" parameterType="hashmap">
 	    <![CDATA[
             UPDATE
-                tbl_reply
+                tbl_reply2
             SET
                 COMMENT = #{ comment},
                 SECRET = #{ secret}
@@ -77,7 +111,7 @@
 	<delete id="deleteComment" parameterType="hashmap">
 	    <![CDATA[
             DELETE
-            	FROM tbl_reply
+            	FROM tbl_reply2
             WHERE
                 REPLY_NO = #{ replyno}
         ]]>	
