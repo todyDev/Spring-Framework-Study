@@ -15,14 +15,14 @@
 
                     <c:choose>
                         <c:when test="${comments.SECRET eq 1 }">
-                        <!-- 비밀 댓글 -->
+                            <!-- 비밀 댓글 -->
 
                             <!-- 로그인 안한 경우 -->
                             <sec:authorize access="isAnonymous()">
 
                                 <!-- 댓글 -->
                                 <c:if test="${comments.GROUP_DEP eq 1 }">
-                                    <img class="img-circle img-sm" src="../dist/img/user5-128x128.jpg" alt="User Image">
+                                    <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
 
                                     <!-- comment -->
                                     <div class="comment-text">
@@ -68,12 +68,12 @@
                                 <sec:authentication property="principal.username" var="username" />
 
                                 <c:choose>
-                                    <%-- 댓글 작성자 이거나 글 작성자일때 --%>
-                                    <c:when test="${comments.WRITER eq username || comments.CREA_ID eq username }"> 
+                                    <c:when test="${comments.WRITER eq username || comments.CREA_ID eq username }">
+                                        <!-- 댓글 작성자 이거나 글 작성자일때 -->
 
                                         <!-- 댓글 -->
                                         <c:if test="${comments.GROUP_DEP eq 1 }">
-                                            <img class="img-circle img-sm" src="../dist/img/user5-128x128.jpg" alt="User Image">
+                                            <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
 
                                             <div class="comment-text">
 
@@ -89,7 +89,6 @@
                                                 ${comments.COMMENT }
 
 
-
                                                 <!-- want recomment -->
                                                 <div class="" style="padding-top: 5px; font-size: 13px">
                                                     <span><a href="#this" onclick="addReComment(${comments.REPLY_NO })">
@@ -100,7 +99,7 @@
                                                 <!-- write comment -->
                                                 <div class="" id="recomment-${comments.REPLY_NO }" style="display: none;padding: 8px">
                                                     <form action="#" method="post" id="commentForm-${comments.REPLY_NO }" onsubmit="return false;">
-                                                        <img class="img-responsive img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="Alt Text">
+                                                        <img class="img-responsive img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="Alt Text">
 
                                                         <sec:authorize access="isAnonymous()">
                                                             <div class="img-push">
@@ -128,7 +127,7 @@
                                         <!-- 답글-->
                                         <c:if test="${comments.GROUP_DEP eq 2 }">
                                             <div class="comment-text no-padding" style="padding: 8px">
-                                                <img class="img-circle img-sm" src="../dist/img/user5-128x128.jpg" alt="User Image">
+                                                <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
 
                                                 <!-- comment -->
                                                 <div class="comment-text">
@@ -147,14 +146,14 @@
                                         </c:if>
 
                                     </c:when>
-                                    
-                                    
+
+
                                     <c:otherwise>
-                                    <!-- 댓글 작성자도 글 작성자도 아닐 경우 -->
+                                        <!-- 댓글 작성자도 글 작성자도 아닐 경우 -->
 
                                         <!-- 댓글 -->
                                         <c:if test="${comments.GROUP_DEP eq 1 }">
-                                            <img class="img-circle img-sm" src="../dist/img/user5-128x128.jpg" alt="User Image">
+                                            <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
 
                                             <!-- comment -->
                                             <div class="comment-text">
@@ -193,19 +192,18 @@
                                         </c:if>
 
                                     </c:otherwise>
-
                                 </c:choose>
                             </sec:authorize>
 
                         </c:when>
-                        
-                        
+
+
                         <c:otherwise>
-                        <!-- 공개 댓글 -->
+                            <!-- 공개 댓글 -->
 
                             <!-- 댓글 -->
                             <c:if test="${comments.GROUP_DEP eq 1 }">
-                                <img class="img-circle img-sm" src="../dist/img/user5-128x128.jpg" alt="User Image">
+                                <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
 
                                 <div class="comment-text">
 
@@ -231,7 +229,7 @@
                                     <!-- write comment -->
                                     <div class="" id="recomment-${comments.REPLY_NO }" style="display: none;padding: 8px">
                                         <form action="#" method="post" id="commentForm-${comments.REPLY_NO }" onsubmit="return false;">
-                                            <img class="img-responsive img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="Alt Text">
+                                            <img class="img-responsive img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="Alt Text">
 
                                             <sec:authorize access="isAnonymous()">
                                                 <div class="img-push">
@@ -277,10 +275,7 @@
                             </c:if>
 
                         </c:otherwise>
-
                     </c:choose>
-
-
 
 
                     <!-- modify/delete MODAL -->
@@ -308,7 +303,7 @@
                                             <sec:authentication property="principal.username" var="username" />
                                             <c:choose>
                                                 <c:when test="${username eq comments.WRITER }">
-                                                    <img class="img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="User Image">
+                                                    <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
                                                     <span style="margin-left: 40px;display: block;font-weight: 600;">
                                                         ${comments.WRITER }
                                                     </span>
