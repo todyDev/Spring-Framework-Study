@@ -385,7 +385,6 @@
         if (event.keyCode == 13) {
             var commentForm = $("#commentForm-" + num);
             var commentsId = $("#comments-" + num);
-            alert(commentForm.serialize())
             $.ajax({
                 async: true,
                 url: "${pageContext.request.contextPath}/comment/registerRe",
@@ -395,8 +394,6 @@
                     xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}")
                 },
                 success: function(result) {
-                    commentsId.val('');
-                    setSecretComment();
                     replyList();
                 },
                 error: function(request, status, error) {

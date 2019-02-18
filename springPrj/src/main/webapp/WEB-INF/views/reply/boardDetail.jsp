@@ -159,7 +159,7 @@
                     },
                     success: function(result) {
                         commentsId.val('');
-                        setSecretComment();
+                        resetSecretComment();
                         replyList();
                     },
                     error: function(request, status, error) {
@@ -185,6 +185,13 @@
                 secretComment.val("1");
                 secretColor.css('color', 'red');
             }
+        }
+        
+        function resetSecretComment() {
+            $("#secret-fa-0").attr("class", "fa fa-fw fa-unlock");
+            $("#secretComment-0").val("0");
+            $(".secret-0").css('color', '');
+            
         }
 
     </script>
