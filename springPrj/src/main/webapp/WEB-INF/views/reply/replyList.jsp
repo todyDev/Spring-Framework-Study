@@ -64,6 +64,7 @@
                     </c:when>
                     <c:otherwise>
                     
+                    <c:if test="${comments.GROUP_DEP eq 1 }">
                                         <img class='img-circle img-sm' src='../dist/img/user3-128x128.jpg' alt='User Image'>
                     <div class='comment-text'>
                         <span class='username'>${comments.WRITER }
@@ -73,7 +74,60 @@
                                 </span></span>
                         </span>
                         ${comments.COMMENT }
+                        
+                                <!-- want recomment -->
+                                <div class="" style="padding-top: 5px; font-size: 13px">
+                                    <span><a href="#this" onclick="addReComment(${comments.REPLY_NO })">
+                                            <i class="fa fa-fw fa-commenting-o"></i> 답글달기</a>
+                                    </span>
+                                </div>
+                                
+                                <!-- write comment -->
+                                <div class="" id="recomment-${comments.REPLY_NO }" style="display: none;padding: 8px">
+                                    <form action="#" method="post" id="commentForm-${comments.REPLY_NO }" onsubmit="return false;">
+                                        <img class="img-responsive img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="Alt Text">
+
+                                        <sec:authorize access="isAnonymous()">
+                                            <div class="img-push">
+                                                <input type="text" class="form-control input-sm" placeholder="로그인 후 이용해주세요." disabled>
+                                            </div>
+                                        </sec:authorize>
+
+                                        <sec:authorize access="isAuthenticated()">
+                                            <sec:authentication property="principal.username" var="username" />
+                                            <div class="img-push">
+                                                <input type="hidden" name="writer" value="${username }">
+                                                <input type="hidden" name="articleNo" value="${comments.ARTICLE_NO }">
+                                                <input type="hidden" name="replyNo" value="${comments.REPLY_NO }">
+                                                <input type="text" name="comments" id="comments-${comments.REPLY_NO }" class="form-control input-sm form-edit" placeholder="Press enter to post comment" onkeypress="reCommentSubmit(${comments.REPLY_NO });">
+                                                <a href="#this" class="secret" onclick="setSecretComment()"><i id="secret-fa" class="fa fa-fw fa-unlock"></i></a>
+                                                <input type="hidden" name="secret" id="secretComment" value="0">
+                                            </div>
+                                        </sec:authorize>
+                                    </form>
+                                </div>
+                                
+                                
                     </div>
+                        </c:if>
+                        <c:if test="${comments.GROUP_DEP eq 2 }">
+                                                            <div class="comment-text no-padding" style="padding: 8px">
+
+                                        <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
+
+                                        <div class="comment-text">
+                                            <span class="username">
+                                                ${comments.WRITER }
+                                                <span class="text-muted pull-right">${comments.REG_DATE }
+                                                    <span data-toggle="modal" data-target="#modal-default-${comments.REPLY_NO }">
+                                                        <a href="#this"><i class="fa fa-fw fa-ellipsis-v"></i></a>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            ${comments.COMMENT }
+                                        </div>
+                                    </div>
+                                    </c:if>
                     
                     </c:otherwise>
                     </c:choose>
@@ -179,6 +233,33 @@
             radioClass: 'iradio_minimal-blue'
         });
     });
+    
+    function reCommentSubmit(num) {
+        if (event.keyCode == 13) {
+            var commentForm = $("#commentForm-"+num);
+            var commentsId = $("#comments-"+num);
+            alert(commentForm.serialize())
+            $.ajax({
+                async: true,
+                url: "${pageContext.request.contextPath}/comment/registerRe",
+                type: commentForm.attr('method'),
+                data: commentForm.serialize(),
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}")
+                },
+                success: function(result) {
+                    commentsId.val('');
+                    setSecretComment();
+                    replyList();
+                },
+                error: function(request, status, error) {
+                    alert('code:' + request.status + '\n' + 'message:' + request.responseText + '\n' + 'error:' + error);
+                }
+            })
+        } else {
+            return false;
+        }
+    }
 
     function commentEditSubmit(num) {
     	var commentForm = $("#commentEditForm-"+num);
@@ -244,6 +325,15 @@
                 alert('code:' + request.status + '\n' + 'message:' + request.responseText + '\n' + 'error:' + error);
             }
         })
+    }
+    
+    function addReComment(num) {
+        var recomment = $("#recomment-"+num);
+        if(recomment.css('display')=='none') {
+            recomment.show();
+        } else {
+            recomment.hide();
+        }
     }
 
 </script>

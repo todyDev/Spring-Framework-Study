@@ -20,6 +20,10 @@ public class CommentDAO extends AbstractDAO {
 		insert("comment.registerComment", map);
 	}
 
+	public void insertByReComments(Map<String, Object> map) {
+		insert("comment.registerReComment", map);
+	}
+
 	public void updateByComments(Map<String, Object> map) {
 		update("comment.editComment", map);
 	}
