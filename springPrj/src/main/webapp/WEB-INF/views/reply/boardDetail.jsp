@@ -11,7 +11,7 @@
             width: 97%;
         }
 
-        .secret {
+        .secretColor {
             border-radius: 3px;
             position: relative;
             top: 5px;
@@ -102,8 +102,8 @@
                                         <input type="hidden" name="writer" value="${username }">
                                         <input type="hidden" name="articleNo" value="${detail.ARTICLE_NO }">
                                         <input type="text" name="comments" id="comments" class="form-control input-sm form-edit" placeholder="Press enter to post comment" onkeypress="commentSubmit();">
-                                    <a href="#this" class="secret" onclick="setSecretComment()"><i id="secret-fa" class="fa fa-fw fa-unlock"></i></a>
-                                    <input type="hidden" name="secret" id="secretComment" value="0">
+                                        <a href="#this" class="secretColor secret-0" onclick="setSecretComment(0)"><i id="secret-fa-0" class="fa fa-fw fa-unlock"></i></a>
+                                        <input type="hidden" name="secret" id="secretComment-0" value="0">
                                     </div>
                                 </form>
                             </div>
@@ -171,17 +171,19 @@
             }
         }
         
-        function setSecretComment() {
-            var chg_fa = $("#secret-fa");
+        function setSecretComment(num) {
+            var secretComment = $("#secretComment-" + num);
+            var secretColor = $(".secret-" + num);
+            var chg_fa = $("#secret-fa-" + num);
             var org_fa = chg_fa.attr("class");
             if (org_fa == 'fa fa-fw fa-lock') {
                 chg_fa.attr("class", "fa fa-fw fa-unlock");
-                $("#secretComment").val("0");
-                $(".secret").css('color', '');
+                secretComment.val("0");
+                secretColor.css('color', '');
             } else {
                 chg_fa.attr("class", "fa fa-fw fa-lock");
-                $("#secretComment").val("1");
-                $(".secret").css('color', 'red');
+                secretComment.val("1");
+                secretColor.css('color', 'red');
             }
         }
 

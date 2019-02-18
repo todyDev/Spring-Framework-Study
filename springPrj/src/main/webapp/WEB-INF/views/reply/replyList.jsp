@@ -99,9 +99,9 @@
                                                 <input type="hidden" name="writer" value="${username }">
                                                 <input type="hidden" name="articleNo" value="${comments.ARTICLE_NO }">
                                                 <input type="hidden" name="replyNo" value="${comments.REPLY_NO }">
-                                                <input type="text" name="comments" id="comments-${comments.REPLY_NO }" class="form-control input-sm form-edit" placeholder="Press enter to post comment" onkeypress="reCommentSubmit(${comments.REPLY_NO });">
-                                                <a href="#this" class="secret" onclick="setSecretComment()"><i id="secret-fa" class="fa fa-fw fa-unlock"></i></a>
-                                                <input type="hidden" name="secret" id="secretComment" value="0">
+                                                    <input type="text" name="comments" id="comments-${comments.REPLY_NO }" class="form-control input-sm form-edit" placeholder="Press enter to post comment" onkeypress="reCommentSubmit(${comments.REPLY_NO });">
+                                                    <a href="#this" class="secretColor secret-${comments.REPLY_NO }" onclick="setSecretComment(${comments.REPLY_NO })"><i id="secret-fa-${comments.REPLY_NO }" class="fa fa-fw fa-unlock"></i></a>
+                                                    <input type="hidden" name="secret" id="secretComment-${comments.REPLY_NO }" value="0">
                                             </div>
                                         </sec:authorize>
                                     </form>
