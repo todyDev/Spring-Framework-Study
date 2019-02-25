@@ -394,7 +394,7 @@
                     xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}")
                 },
                 success: function(result) {
-                    replyList();
+                	morecomments();
                 },
                 error: function(request, status, error) {
                     alert('code:' + request.status + '\n' + 'message:' + request.responseText + '\n' + 'error:' + error);
@@ -422,7 +422,7 @@
                 alert("수정되었습니다.");
                 modalId.modal('hide');
                 setTimeout(function() {
-                    replyList()
+                	morecomments()
                 }, 500);
 
             },
@@ -447,7 +447,7 @@
                 alert("삭제되었습니다.");
                 modalId.modal('hide');
                 setTimeout(function() {
-                    replyList()
+                	morecomments()
                 }, 1000);
 
             },
