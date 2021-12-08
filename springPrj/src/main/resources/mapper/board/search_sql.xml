@@ -52,20 +52,20 @@
     		<if test="searchType == 'tc'.toString()">
     			AND (
     				TITLE LIKE CONCAT('%', #{keyword}, '%')
-    				OR AND CONTENTS LIKE CONCAT('%', #{keyword}, '%')
+    				OR CONTENTS LIKE CONCAT('%', #{keyword}, '%')
     			)
     		</if>
     		<if test="searchType == 'cw'.toString()">
     			AND (
     				CONTENTS LIKE CONCAT('%', #{keyword}, '%')
-    				OR AND CREA_ID LIKE CONCAT('%', #{keyword}, '%')
+    				OR CREA_ID LIKE CONCAT('%', #{keyword}, '%')
     			)
     		</if>
     		<if test="searchType == 'tcw'.toString()">
     			AND (
     				TITLE LIKE CONCAT('%', #{keyword}, '%')
     				OR CONTENTS LIKE CONCAT('%', #{keyword}, '%')
-    				OR AND CREA_ID LIKE CONCAT('%', #{keyword}, '%')
+    				OR CREA_ID LIKE CONCAT('%', #{keyword}, '%')
     			)
     		</if>
     	</if>
