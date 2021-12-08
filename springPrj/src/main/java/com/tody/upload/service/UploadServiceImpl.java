@@ -67,14 +67,17 @@ public class UploadServiceImpl implements UploadService {
 	@Override
 	public void updateBoard(Map<String, Object> map, MultipartFile[] file) throws Exception {
 		uploadDAO.updateBoard(map);
-		uploadDAO.virtualDeleteFile(map);
+		List<Map<String, Object>> fileDetail = uploadDAO.detailFile(map);
+		for(int i=0; i<fileDetail.size(); i++) {
+			String idx = "FILE_" + fileDetail.get(i).get("IDX");
+			if(!map.containsKey(idx)) {
+				Map<String, Object> list = fileDetail.get(i);
+				uploadDAO.deleteFile(list);
+			}
+		}
 		List<Map<String, Object>> list = fileUtils.parseFileInfo(map, file);
 		for(int i=0; i<list.size(); i++) {
-			if(list.get(i).get("NEW_YN").equals("Y")) {
-				uploadDAO.insertFile(list.get(i));
-			} else {
-				uploadDAO.updateOrgFile(list.get(i));
-			}
+			uploadDAO.insertFile(list.get(i));
 		}
 	}
 

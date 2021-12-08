@@ -55,8 +55,8 @@ public class UploadDAO extends AbstractDAO {
 		update("upload.updateOrgFile", map);
 	}
 	
-	public void virtualDeleteFile(Map<String, Object> map) {
-		update("upload.virtualDeleteFile", map);
+	public void deleteFile(Map<String, Object> map) {
+		update("upload.deleteFile", map);
 	}
 
 }

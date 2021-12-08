@@ -54,11 +54,11 @@
 	                        </div>
 	                        <div class="box-footer" id="fileDiv">
 	                            <a href="#this" class="btn btn-default file_add" onclick="addFile()">파일추가</a><br/><br/>
-	                            <c:forEach items="${list }" var="bList" varStatus="var">
+	                            <c:forEach items="${list }" var="bList">
 	                            	<p>
-	                            	<input type="hidden" name="IDX_${var.index }" value="${bList.IDX }"/>
-	                            	<a href="#this" class="file_name" name="file_${var.index }">${bList.ORG_FILE_NAME }</a>
-	                            	<input type="file" name="file" class="file_input">
+	                            	<span class="glyphicon glyphicon-camera" aria-hidden="true"></span>
+	                            	${bList.ORG_FILE_NAME }
+	                            	<input type="hidden" name="FILE_${bList.IDX }" value="true">
 	                            	<a href="#this" class="btn" name="delete">삭제</a>
 	                            	</p>
 	                           </c:forEach>
